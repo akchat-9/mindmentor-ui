@@ -1,0 +1,39 @@
+.login-box {
+    width: 360px;
+    margin: 0 auto;
+    }
+    
+    .login-logo {
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 35px;
+    font-weight: 300;
+    }
+    
+    .card {
+    border-radius: 10px;
+    }
+    
+    .login-card-body {
+    padding: 40px;
+    }
+    
+    .input-group-append {
+    cursor: pointer;
+    }
+    
+    .btn-block {
+    border-radius: 5px;
+    }
+    
+    .social-auth-links {
+    margin-bottom: 10px;
+    }
+    
+    .social-auth-links a {
+    margin: 10px 0;
+    }
+    
+    .social-auth-links i {
+    margin-right: 5px;
+    }
