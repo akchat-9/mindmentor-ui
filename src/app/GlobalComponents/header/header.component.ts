@@ -11,29 +11,28 @@ import { RoleViewModel } from 'src/app/ViewModel/RoleViewModel';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  roles!: RoleViewModel;
-  username: string = '';
-  menuList!: Menu[];
-  constructor(
-    private userService: UserService,
-    private storage: LocalStorageService,
-    private router:Router
-  ) {}
-  userRole: string = '';
-  ngOnInit(): void {
-    const user = this.storage.getUser();
-    this.username = user.username
-    this.roles = user.roles[0];
-    console.log(this.roles);
-    this.userService
-      .getMenuByRole(this.roles.roleName)
-      .subscribe((menulist) => {
-        this.menuList = menulist;
-      });
-  }
-
-  logout(): void {
-    this.storage.signOut();
-    this.router.navigate([''])
-  }
+  // roles!: RoleViewModel;
+  // username: string = '';
+  // menuList!: Menu[];
+  // constructor(
+  //   private userService: UserService,
+  //   private storage: LocalStorageService,
+  //   private router:Router
+  // ) {}
+  // userRole: string = '';
+  // ngOnInit(): void {
+  //   const user = this.storage.getUser();
+  //   this.username = user.username
+  //   this.roles = user.roles[0];
+  //   console.log(this.roles);
+  //   this.userService
+  //     .getMenuByRole(this.roles.roleName)
+  //     .subscribe((menulist) => {
+  //       this.menuList = menulist;
+  //     });
+  // }
+  // logout(): void {
+  //   this.storage.signOut();
+  //   this.router.navigate([''])
+  // }
 }

@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { LocalStorageService } from './_services/local-storage.service';
+import { Menu } from './model/MenuModel';
+import { RoleViewModel } from './ViewModel/RoleViewModel';
+import { UserService } from './_services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -9,17 +12,45 @@ import { LocalStorageService } from './_services/local-storage.service';
 })
 export class AppComponent {
   title = 'mindmentor_ui';
+  isLoggedIn: boolean = false;
+  roles!: RoleViewModel;
+  username: string = '';
+  menuList!: Menu[];
+  userRole: string = '';
 
   constructor(
-    private router: Router,
-    private localStorate: LocalStorageService
+    private userService: UserService,
+    private storage: LocalStorageService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    if (!this.localStorate.getToken()) {
+    if (!this.storage.getToken()) {
       this.router.navigate(['']);
     } else {
-      this.router.navigate(['/dashboard']);
+      this.isLoggedIn = true;
+      this.router.navigate(['/dashboard/overview']);
     }
+
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.isLoggedIn = this.storage.isLoggedIn();
+        const user = this.storage.getUser();
+        this.username = user.username;
+        this.roles = user.roles[0];
+        console.log(this.roles);
+        this.userService
+          .getMenuByRole(this.roles.roleName)
+          .subscribe((menulist) => {
+            this.menuList = menulist;
+          });
+      }
+    });
+  }
+
+  logout(): void {
+    this.storage.signOut();
+    this.router.navigate(['']);
+    window.location.reload();
   }
 }
