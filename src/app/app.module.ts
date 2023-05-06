@@ -16,6 +16,7 @@ import { AllCoursesComponent } from './courses/all-courses/all-courses.component
 import { CreateCoursesComponent } from './courses/create-courses/create-courses.component';
 import { CourseCategoriesComponent } from './courses/course-categories/course-categories.component';
 import { CourseSettingsComponent } from './courses/course-settings/course-settings.component';
+import { AllUsersComponent } from './users/all-users/all-users.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CourseSettingsComponent } from './courses/course-settings/course-settin
     AllCoursesComponent,
     CreateCoursesComponent,
     CourseCategoriesComponent,
-    CourseSettingsComponent
+    CourseSettingsComponent,
+    AllUsersComponent
   ],
   imports: [
     BrowserModule,

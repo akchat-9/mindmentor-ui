@@ -8,6 +8,7 @@ import { AllCoursesComponent } from './courses/all-courses/all-courses.component
 import { CreateCoursesComponent } from './courses/create-courses/create-courses.component';
 import { CourseCategoriesComponent } from './courses/course-categories/course-categories.component';
 import { CourseSettingsComponent } from './courses/course-settings/course-settings.component';
+import { AllUsersComponent } from './users/all-users/all-users.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -27,7 +28,14 @@ const routes: Routes = [
       { path: 'all', component: AllCoursesComponent },
       { path: 'create', component: CreateCoursesComponent },
       { path: 'categories', component: CourseCategoriesComponent },
-      { path: 'settings', component: CourseSettingsComponent }
+      { path: 'settings', component: CourseSettingsComponent },
+    ],
+  },
+  {
+    path: 'users',
+    children: [
+      { path: '', redirectTo: 'all', pathMatch: 'full' },
+      { path: 'all', component: AllUsersComponent },
     ],
   },
 ];
