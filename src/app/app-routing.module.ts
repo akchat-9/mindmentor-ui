@@ -9,6 +9,7 @@ import { CreateCoursesComponent } from './courses/create-courses/create-courses.
 import { CourseCategoriesComponent } from './courses/course-categories/course-categories.component';
 import { CourseSettingsComponent } from './courses/course-settings/course-settings.component';
 import { AllUsersComponent } from './users/all-users/all-users.component';
+import { CreateUsersComponent } from './users/create-users/create-users.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'all', pathMatch: 'full' },
       { path: 'all', component: AllUsersComponent },
+      {path:'create', component:CreateUsersComponent}
     ],
   },
 ];

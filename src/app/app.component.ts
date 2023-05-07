@@ -17,6 +17,7 @@ export class AppComponent {
   username: string = '';
   menuList!: Menu[];
   userRole: string = '';
+  margin:string='0px'
 
   constructor(
     private userService: UserService,
@@ -38,6 +39,8 @@ export class AppComponent {
         const user = this.storage.getUser();
         this.username = user.username;
         this.roles = user.roles[0];
+        this.margin='250px';
+        console.log(this.margin)
         console.log(this.roles);
         this.userService
           .getMenuByRole(this.roles.roleName)
@@ -51,6 +54,7 @@ export class AppComponent {
   logout(): void {
     this.storage.signOut();
     this.router.navigate(['']);
-    window.location.reload();
+    this.margin = '0px'
+    // window.location.reload();
   }
 }
