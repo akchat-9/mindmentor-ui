@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { DataTablesModule } from 'angular-datatables';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { Router,Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './AuthComponents/login/login.component';
@@ -34,7 +34,10 @@ import { CreateUsersComponent } from './users/create-users/create-users.componen
     CourseCategoriesComponent,
     CourseSettingsComponent,
     AllUsersComponent,
+<<<<<<< HEAD
     CreateUsersComponent,
+=======
+>>>>>>> f9f8723f4f975d29bd88b3f15c0be019dac7ed65
   ],
   imports: [
     BrowserModule,
@@ -42,9 +45,13 @@ import { CreateUsersComponent } from './users/create-users/create-users.componen
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+<<<<<<< HEAD
     NgbModule
+=======
+    DataTablesModule
+>>>>>>> f9f8723f4f975d29bd88b3f15c0be019dac7ed65
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
