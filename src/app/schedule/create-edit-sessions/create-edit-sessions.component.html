@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col-md-6 col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <h3>{{ isEditing ? "Edit" : "Create" }} Coaching Session</h3>
+        <form [formGroup]="coachingSessionForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="date">Date</label>
+            <input
+              type="date"
+              class="form-control"
+              id="date"
+              formControlName="date"
+            />
+          </div>
+          <div class="form-group">
+            <label for="time">Time</label>
+            <input
+              type="text"
+              class="form-control"
+              id="time"
+              formControlName="time"
+            />
+          </div>
+          <div class="form-group">
+            <label for="duration">Duration (in minutes)</label>
+            <input
+              type="number"
+              class="form-control"
+              id="duration"
+              formControlName="duration"
+            />
+          </div>
+          <div class="form-group">
+            <label for="course">Course</label>
+            <select
+              class="form-control select2"
+              style="width: 100%"
+              id="course"
+              formControlName="course"
+            >
+              <option *ngFor="let course of courses" [value]="course.id">
+                {{ course.name }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="teacher">Teacher</label>
+            <select
+              class="form-control select2"
+              style="width: 100%"
+              id="teacher"
+              formControlName="teacher"
+            >
+              <option *ngFor="let teacher of teachers" [value]="teacher.id">
+                {{ teacher.name }}
+              </option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            {{ isEditing ? " Update" : "Create" }}
+          </button>
+          <button type="button" class="btn btn-danger" (click)="onCancel()">
+            Cancel
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

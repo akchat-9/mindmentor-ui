@@ -10,6 +10,11 @@ import { CourseCategoriesComponent } from './courses/course-categories/course-ca
 import { CourseSettingsComponent } from './courses/course-settings/course-settings.component';
 import { AllUsersComponent } from './users/all-users/all-users.component';
 import { CreateUsersComponent } from './users/create-users/create-users.component';
+import { CoachingSessionsComponent } from './schedule/coaching-sessions/coaching-sessions.component';
+import { AvailabilityCalendarComponent } from './schedule/availability-calendar/availability-calendar.component';
+import { BookingsComponent } from './schedule/bookings/bookings.component';
+import { RemindersComponent } from './schedule/reminders/reminders.component';
+import { CreateEditSessionsComponent } from './schedule/create-edit-sessions/create-edit-sessions.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -37,7 +42,19 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'all', pathMatch: 'full' },
       { path: 'all', component: AllUsersComponent },
-      {path:'create', component:CreateUsersComponent}
+      { path: 'create', component: CreateUsersComponent },
+    ],
+  },
+  {
+    path: 'schedule',
+    children: [
+      { path: '', redirectTo: 'sessions', pathMatch: 'full' },
+      { path: 'sessions', component: CoachingSessionsComponent },
+      { path: 'calendar', component: AvailabilityCalendarComponent },
+      { path: 'bookings', component: BookingsComponent },
+      { path: 'reminders', component: RemindersComponent },
+      { path: 'customize/:id', component: CreateEditSessionsComponent },
+      { path: 'customize', component: CreateEditSessionsComponent },
     ],
   },
 ];

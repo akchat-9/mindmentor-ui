@@ -1,0 +1,71 @@
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Scheduled session</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Buttons</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-primary card-outline">
+          <div class="card-header">
+            <h3 class="card-title">
+                <button type="button" class="btn btn-primary btn-block" (click)="createCoachingSession()">Create <i class="fa fa-plus"></i></button>
+            </h3>
+          </div>
+          <div class="card-body pad table-responsive">
+            <table
+              datatable
+              [dtOptions]="dtOptions"
+              class="table table-bordered text-center table-hover"
+            >
+              <thead>
+                <tr>
+                  <th>Course</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Duration</th>
+                  <th>Teacher</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let session of sessionList">
+                  <td>{{ session.course }}</td>
+                  <td>{{ session.date | date : "dd/MM/yyyy" }}</td>
+                  <td>{{ session.time }}</td>
+                  <td>{{ session.duration }}</td>
+                  <td>{{ session.teacher }}</td>
+                  <td>
+                    <a
+                      class="btn bg-gradient-success btn-sm mr-2"
+                      (click)="editCoachingSession(session.id)"
+                      ><i class="fas fa-edit"></i
+                    ></a>
+                    
+                    <a
+                      class="btn bg-gradient-danger btn-sm"
+                      (click)="editCoachingSession(session.id)"
+                      ><i class="fas fa-trash"></i
+                    ></a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,43 @@
+import { Component } from '@angular/core';
+import { AllSessionsViewModel } from 'src/app/ViewModel/AllSessionsViewModel';
+import { ScheduleService } from 'src/app/_services/schedule.service';
+import { DataTablesModule, DataTableDirective } from 'angular-datatables';
+import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-coaching-sessions',
+  templateUrl: './coaching-sessions.component.html',
+  styleUrls: ['./coaching-sessions.component.css'],
+})
+export class CoachingSessionsComponent {
+  sessionList!: AllSessionsViewModel[];
+
+  private dtElement!: DataTableDirective;
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject();
+
+  constructor(
+    private scheduleService: ScheduleService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10,
+      processing: true,
+    };
+    this.scheduleService.getAllSessions().subscribe((sessionList) => {
+      this.sessionList = sessionList;
+    });
+  }
+
+  editCoachingSession(sessionId: number) {
+    this.router.navigate(['/schedule/customize', sessionId]);
+  }
+
+  createCoachingSession() {
+    this.router.navigate(['/schedule/customize']);
+  }
+}

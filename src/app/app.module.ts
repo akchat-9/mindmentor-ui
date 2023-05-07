@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { DataTablesModule } from 'angular-datatables';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
+import { DataTablesModule } from 'angular-datatables';
+import { FullCalendarModule } from '@fullcalendar/angular';
+
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './AuthComponents/login/login.component';
 import { HeaderComponent } from './GlobalComponents/header/header.component';
@@ -17,8 +20,14 @@ import { CreateCoursesComponent } from './courses/create-courses/create-courses.
 import { CourseCategoriesComponent } from './courses/course-categories/course-categories.component';
 import { CourseSettingsComponent } from './courses/course-settings/course-settings.component';
 import { AllUsersComponent } from './users/all-users/all-users.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateUsersComponent } from './users/create-users/create-users.component';
+import { CoachingSessionsComponent } from './schedule/coaching-sessions/coaching-sessions.component';
+import { AvailabilityCalendarComponent } from './schedule/availability-calendar/availability-calendar.component';
+import { BookingsComponent } from './schedule/bookings/bookings.component';
+import { RemindersComponent } from './schedule/reminders/reminders.component';
+import { CreateEditSessionsComponent } from './schedule/create-edit-sessions/create-edit-sessions.component';
+
+
 
 @NgModule({
   declarations: [
@@ -34,10 +43,12 @@ import { CreateUsersComponent } from './users/create-users/create-users.componen
     CourseCategoriesComponent,
     CourseSettingsComponent,
     AllUsersComponent,
-<<<<<<< HEAD
     CreateUsersComponent,
-=======
->>>>>>> f9f8723f4f975d29bd88b3f15c0be019dac7ed65
+    CoachingSessionsComponent,
+    AvailabilityCalendarComponent,
+    BookingsComponent,
+    RemindersComponent,
+    CreateEditSessionsComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,11 +56,8 @@ import { CreateUsersComponent } from './users/create-users/create-users.componen
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-<<<<<<< HEAD
-    NgbModule
-=======
-    DataTablesModule
->>>>>>> f9f8723f4f975d29bd88b3f15c0be019dac7ed65
+    DataTablesModule,
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent],
