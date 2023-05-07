@@ -1,1 +1,26 @@
-<p>all-courses works!</p>
+<div class="container-fluid">
+  <table datatable [dtOptions]="dtOptions" class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Duration</th>
+        <th>Level</th>
+        <th>Category</th>
+        <th>Instructor</th>
+        <th>Format</th>
+        <th>Fee</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of courses">
+        <td>{{ course.name }}</td>
+        <td>{{ course.duration }}</td>
+        <td>{{ course.level }}</td>
+        <td>{{ course.category }}</td>
+        <td>{{ course.instructor }}</td>
+        <td>{{ course.format }}</td>
+        <td>{{ course.fee | currency }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
