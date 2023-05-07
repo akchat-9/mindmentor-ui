@@ -17,6 +17,8 @@ import { CreateCoursesComponent } from './courses/create-courses/create-courses.
 import { CourseCategoriesComponent } from './courses/course-categories/course-categories.component';
 import { CourseSettingsComponent } from './courses/course-settings/course-settings.component';
 import { AllUsersComponent } from './users/all-users/all-users.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CreateUsersComponent } from './users/create-users/create-users.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,10 @@ import { AllUsersComponent } from './users/all-users/all-users.component';
     CourseCategoriesComponent,
     CourseSettingsComponent,
     AllUsersComponent,
+<<<<<<< HEAD
+    CreateUsersComponent,
+=======
+>>>>>>> f9f8723f4f975d29bd88b3f15c0be019dac7ed65
   ],
   imports: [
     BrowserModule,
@@ -39,7 +45,11 @@ import { AllUsersComponent } from './users/all-users/all-users.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+<<<<<<< HEAD
+    NgbModule
+=======
     DataTablesModule
+>>>>>>> f9f8723f4f975d29bd88b3f15c0be019dac7ed65
   ],
   providers: [],
   bootstrap: [AppComponent],
