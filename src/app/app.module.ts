@@ -26,6 +26,9 @@ import { AvailabilityCalendarComponent } from './schedule/availability-calendar/
 import { BookingsComponent } from './schedule/bookings/bookings.component';
 import { RemindersComponent } from './schedule/reminders/reminders.component';
 import { CreateEditSessionsComponent } from './schedule/create-edit-sessions/create-edit-sessions.component';
+import { CreateAssignmentComponent } from './assignment/create-assignment/create-assignment.component';
+import { ViewAssignmentComponent } from './assignment/view-assignment/view-assignment.component';
+import { ViewSubmissionsComponent } from './assignment/view-submissions/view-submissions.component';
 
 
 
@@ -49,6 +52,9 @@ import { CreateEditSessionsComponent } from './schedule/create-edit-sessions/cre
     BookingsComponent,
     RemindersComponent,
     CreateEditSessionsComponent,
+    CreateAssignmentComponent,
+    ViewAssignmentComponent,
+    ViewSubmissionsComponent,
   ],
   imports: [
     BrowserModule,

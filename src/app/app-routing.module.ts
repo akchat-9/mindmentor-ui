@@ -15,6 +15,10 @@ import { AvailabilityCalendarComponent } from './schedule/availability-calendar/
 import { BookingsComponent } from './schedule/bookings/bookings.component';
 import { RemindersComponent } from './schedule/reminders/reminders.component';
 import { CreateEditSessionsComponent } from './schedule/create-edit-sessions/create-edit-sessions.component';
+import { CreateAssignmentComponent } from './assignment/create-assignment/create-assignment.component';
+import { ViewAssignmentComponent } from './assignment/view-assignment/view-assignment.component';
+import { ViewSubmissionsComponent } from './assignment/view-submissions/view-submissions.component';
+import { AssignmentRemindersComponent } from './assignment/reminders/reminders.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -55,6 +59,16 @@ const routes: Routes = [
       { path: 'reminders', component: RemindersComponent },
       { path: 'customize/:id', component: CreateEditSessionsComponent },
       { path: 'customize', component: CreateEditSessionsComponent },
+    ],
+  },
+  {
+    path: 'assignment',
+    children: [
+      { path: '', redirectTo: 'sessions', pathMatch: 'full' },
+      { path: 'create_new', component: CreateAssignmentComponent },
+      { path: 'view_assignments', component: ViewAssignmentComponent },
+      { path: 'view_submissions', component: ViewSubmissionsComponent },
+      { path: 'reminders', component: AssignmentRemindersComponent },
     ],
   },
 ];

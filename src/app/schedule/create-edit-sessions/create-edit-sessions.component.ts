@@ -70,7 +70,7 @@ export class CreateEditSessionsComponent {
   onSubmit() {
     if (this.coachingSessionForm.valid) {
       const formValue = this.coachingSessionForm.value;
-      if (!this.isEditing) {
+      if (this.isEditing) {
         this.scheduleService.updateCoachingSession(formValue);
       } else {
         this.scheduleService.addCoachingSession(formValue);
