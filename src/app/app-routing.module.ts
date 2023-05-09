@@ -16,17 +16,18 @@ import { CreateAssignmentComponent } from './assignment/create-assignment/create
 import { ViewAssignmentComponent } from './assignment/view-assignment/view-assignment.component';
 import { ViewSubmissionsComponent } from './assignment/view-submissions/view-submissions.component';
 import { AssignmentRemindersComponent } from './assignment/reminders/reminders.component';
-import {DashboardComponent } from './dashboard/dashboard.component'
+import { DashboardComponent } from './dashboard/dashboard.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {
-    path: 'dashboard', component:DashboardComponent
+    path: 'dashboard',
+    component: DashboardComponent,
     // children: [
-      // { path: '', redirectTo: 'overview', pathMatch: 'full' },
-      // { path: 'overview', component: OverviewComponent },
-      // { path: 'analytics', component: AnalyticsComponent },
-      // { path: 'notifications', component: NotificationsComponent },
+    // { path: '', redirectTo: 'overview', pathMatch: 'full' },
+    // { path: 'overview', component: OverviewComponent },
+    // { path: 'analytics', component: AnalyticsComponent },
+    // { path: 'notifications', component: NotificationsComponent },
     // ],
   },
   {
@@ -34,6 +35,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'all', pathMatch: 'full' },
       { path: 'all', component: AllCoursesComponent },
+      { path: 'all/:category', component: AllCoursesComponent },
       { path: 'create', component: CreateCoursesComponent },
       { path: 'categories', component: CourseCategoriesComponent },
       { path: 'settings', component: CourseSettingsComponent },
