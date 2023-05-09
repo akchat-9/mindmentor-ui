@@ -1,140 +1,93 @@
-    <form [formGroup]="assignmentForm" (ngSubmit)="submitAssignment()">
-  <div class="form-group">
-    <label for="title">Title</label>
-    <input
-      type="text"
-      class="form-control"
-      id="title"
-      formControlName="title"
-      placeholder="Enter assignment title"
-    />
-  </div>
+<div class="container-fluid">
+  <div class="box">
+      <div class="box-header with-border">
+          <h3 class="box-title" >Create New Assignment</h3>
+      </div>
+      <form [formGroup]="assignmentForm" (ngSubmit)="submitAssignment()">
+          <div class="box-body row card pt-2 ">
+              <div class="d-flex">
+                  <div class="form-group col-md-6">
+                      <input type="text" class="form-control" id="title" formControlName="title"
+                          placeholder="Enter Assignment Title">
+          <span *ngIf="title && title.invalid && title.touched"><i class="validation">Please enter a valid title.</i></span>
 
-  <div class="form-group">
-    <label for="description">Description</label>
-    <textarea
-      class="form-control"
-      id="description"
-      formControlName="description"
-      placeholder="Enter assignment description"
-    ></textarea>
-  </div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="maxPoints"
+                      formControlName="maxPoints"
+                      placeholder="Maximum Points Allowed"
+                    />
+                    <span *ngIf="maxPoints && maxPoints.invalid && maxPoints.touched"><i class="validation">Please enter the Maximum Points.</i></span>
+                  </div>
+              </div>
 
-  <div class="form-group">
-    <label for="dueDate">Due Date</label>
-    <input
-      type="date"
-      class="form-control"
-      id="dueDate"
-      formControlName="dueDate"
-    />
+              <div class="form-group col-md-12">
+                <textarea type="text" class="form-control" id="description" formControlName="description"
+                    placeholder="Description about Assignment"></textarea>
+                    <span *ngIf="description && description.invalid && description.touched"><i class="validation">Please enter a proper description.</i></span>
+            </div>
+            <div class="d-flex">
+              <div class="form-group col-md-6">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="allowedFileTypes"
+                  formControlName="allowedFileTypes"
+                  placeholder="Enter allowed file types"
+                />
+              </div>
+              <div class="form-group col-md-6">
+                <input
+                  type="number"
+                  class="form-control"
+                  id="maxFileSize"
+                  formControlName="maxFileSize"
+                  placeholder="Enter maximum file size"
+                />
+              </div>
+          </div>
+          <div class="form-group col-md-12 ">
+            <label for="dueDate">Due Date</label>
+            <input
+              type="date"
+              class="form-control"
+              id="dueDate"
+              formControlName="dueDate"
+            />
+            <span *ngIf="dueDate&& dueDate.invalid && dueDate.touched"><i class="validation">Please provide a valid Date.</i></span>
+          </div>
+              <div class="d-flex">
+                <div class="form-group col-md-6">
+                  <label for="attachments">Attachments</label>
+                  <input
+                    type="file"
+                    class="form-control-file"
+                    id="attachments"
+                    formControlName="attachments"
+                  />
+                </div>
+                 
+                  <div class="form-group col-md-6 ">
+                    <label for="assignmentType">Assignment Type</label>
+                    <select
+                      class="form-control"
+                      id="assignmentType"
+                      formControlName="assignmentType"
+                    >
+                      <option value="default" [defaultSelected]="defaultSelected">Select Type..</option>
+                      <option value="essay" >Essay</option>
+                      <option value="multipleChoice">Multiple Choice</option>
+                      <option value="presentation">Presentation</option>
+                    </select>
+                  </div>
+              </div>           
+              <div class="box-footer ">
+                  <button type="submit" class="btn btn-primary" [disabled]="assignmentForm.invalid">Submit</button>
+              </div>
+          </div>
+      </form>
   </div>
-
-  <div class="form-group">
-    <label for="assignmentType">Type</label>
-    <select
-      class="form-control"
-      id="assignmentType"
-      formControlName="assignmentType"
-    >
-      <option value="essay">Essay</option>
-      <option value="multipleChoice">Multiple Choice</option>
-      <option value="presentation">Presentation</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="maxPoints">Maximum Point Value</label>
-    <input
-      type="number"
-      class="form-control"
-      id="maxPoints"
-      formControlName="maxPoints"
-      placeholder="Enter maximum point value"
-    />
-  </div>
-
-  <div class="form-group">
-    <label for="materialsNeeded">Materials Needed</label>
-    <textarea
-      class="form-control"
-      id="materialsNeeded"
-      formControlName="materialsNeeded"
-      placeholder="Enter materials needed"
-    ></textarea>
-  </div>
-
-  <div class="form-group">
-    <label for="attachments">Attachments</label>
-    <input
-      type="file"
-      class="form-control-file"
-      id="attachments"
-      formControlName="attachments"
-    />
-  </div>
-
-  <div class="form-group">
-    <label for="allowedFileTypes">Allowed File Types</label>
-    <input
-      type="text"
-      class="form-control"
-      id="allowedFileTypes"
-      formControlName="allowedFileTypes"
-      placeholder="Enter allowed file types"
-    />
-  </div>
-
-  <div class="form-group">
-    <label for="maxFileSize">Maximum File Size</label>
-    <input
-      type="number"
-      class="form-control"
-      id="maxFileSize"
-      formControlName="maxFileSize"
-      placeholder="Enter maximum file size"
-    />
-  </div>
-
-  <div class="form-group">
-    <label for="submissionDeadline">Submission Deadline</label>
-    <input
-      type="datetime-local"
-      class="form-control"
-      id="submissionDeadline"
-      formControlName="submissionDeadline"
-    />
-  </div>
-
-  <div class="form-group">
-    <label for="gradingCriteria">Grading Criteria</label>
-    <textarea
-      class="form-control"
-      id="gradingCriteria"
-      formControlName="gradingCriteria"
-      placeholder="Enter grading criteria"
-    ></textarea>
-  </div>
-
-  <div class="form-group">
-    <label for="instruction">Instructions</label>
-    <textarea
-      class="form-control"
-      id="instruction"
-      formControlName="instruction"
-      placeholder="Enter instructions"
-    ></textarea>
-  </div>
-
-  <div class="form-group">
-    <label for="notes">Notes</label>
-    <textarea
-      class="form-control"
-      id="notes"
-      formControlName="notes"
-      placeholder="Enter additional notes"
-    ></textarea>
-  </div>
-
-  <button type="submit" class="btn btn-primary">Create</button>
-</form>
+</div>

@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './AuthComponents/login/login.component';
-import { OverviewComponent } from './dashboard/overview/overview.component';
-import { AnalyticsComponent } from './dashboard/analytics/analytics.component';
-import { NotificationsComponent } from './dashboard/notifications/notifications.component';
 import { AllCoursesComponent } from './courses/all-courses/all-courses.component';
 import { CreateCoursesComponent } from './courses/create-courses/create-courses.component';
 import { CourseCategoriesComponent } from './courses/course-categories/course-categories.component';
@@ -19,17 +16,18 @@ import { CreateAssignmentComponent } from './assignment/create-assignment/create
 import { ViewAssignmentComponent } from './assignment/view-assignment/view-assignment.component';
 import { ViewSubmissionsComponent } from './assignment/view-submissions/view-submissions.component';
 import { AssignmentRemindersComponent } from './assignment/reminders/reminders.component';
+import {DashboardComponent } from './dashboard/dashboard.component'
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {
-    path: 'dashboard',
-    children: [
-      { path: '', redirectTo: 'overview', pathMatch: 'full' },
-      { path: 'overview', component: OverviewComponent },
-      { path: 'analytics', component: AnalyticsComponent },
-      { path: 'notifications', component: NotificationsComponent },
-    ],
+    path: 'dashboard', component:DashboardComponent
+    // children: [
+      // { path: '', redirectTo: 'overview', pathMatch: 'full' },
+      // { path: 'overview', component: OverviewComponent },
+      // { path: 'analytics', component: AnalyticsComponent },
+      // { path: 'notifications', component: NotificationsComponent },
+    // ],
   },
   {
     path: 'courses',

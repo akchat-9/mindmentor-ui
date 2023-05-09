@@ -1,6 +1,8 @@
 .login-box {
     width: 360px;
     margin: 0 auto;
+    padding-top: 3rem;
+    height: 100vh;
     }
     
     .login-logo {
@@ -12,6 +14,7 @@
     
     .card {
     border-radius: 10px;
+    height: 25rem;
     }
     
     .login-card-body {
@@ -36,4 +39,7 @@
     
     .social-auth-links i {
     margin-right: 5px;
+    }
+    .validation{
+        color: red;
     }
