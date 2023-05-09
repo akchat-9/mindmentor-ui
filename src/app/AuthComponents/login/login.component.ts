@@ -22,11 +22,18 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      username: ['', Validators.required],
+      username: ['', [Validators.required, Validators.pattern('[a-z,A-Z]+$')]],
       // email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
     });
   }
+
+get username(){
+  return this.loginForm.get('username');
+}
+get password(){
+  return this.loginForm.get('password');
+}
 
   login() {
     this.responseStatus = { StatusCode: 0, Message: 'Redirecting...' };

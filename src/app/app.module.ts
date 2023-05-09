@@ -12,9 +12,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './AuthComponents/login/login.component';
 import { HeaderComponent } from './GlobalComponents/header/header.component';
 import { RegisterComponent } from './AuthComponents/register/register.component';
-import { OverviewComponent } from './dashboard/overview/overview.component';
-import { AnalyticsComponent } from './dashboard/analytics/analytics.component';
-import { NotificationsComponent } from './dashboard/notifications/notifications.component';
 import { AllCoursesComponent } from './courses/all-courses/all-courses.component';
 import { CreateCoursesComponent } from './courses/create-courses/create-courses.component';
 import { CourseCategoriesComponent } from './courses/course-categories/course-categories.component';
@@ -29,6 +26,7 @@ import { CreateEditSessionsComponent } from './schedule/create-edit-sessions/cre
 import { CreateAssignmentComponent } from './assignment/create-assignment/create-assignment.component';
 import { ViewAssignmentComponent } from './assignment/view-assignment/view-assignment.component';
 import { ViewSubmissionsComponent } from './assignment/view-submissions/view-submissions.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
@@ -38,9 +36,6 @@ import { ViewSubmissionsComponent } from './assignment/view-submissions/view-sub
     LoginComponent,
     HeaderComponent,
     RegisterComponent,
-    OverviewComponent,
-    AnalyticsComponent,
-    NotificationsComponent,
     AllCoursesComponent,
     CreateCoursesComponent,
     CourseCategoriesComponent,
@@ -55,6 +50,7 @@ import { ViewSubmissionsComponent } from './assignment/view-submissions/view-sub
     CreateAssignmentComponent,
     ViewAssignmentComponent,
     ViewSubmissionsComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

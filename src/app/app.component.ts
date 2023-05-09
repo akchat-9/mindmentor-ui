@@ -17,7 +17,9 @@ export class AppComponent {
   username: string = '';
   menuList!: Menu[];
   userRole: string = '';
-  margin:string='0px'
+
+  margin: string = '0px';
+  height: string = '100vh';
 
   constructor(
     private userService: UserService,
@@ -30,7 +32,7 @@ export class AppComponent {
       this.router.navigate(['']);
     } else {
       this.isLoggedIn = true;
-      this.router.navigate(['/dashboard/overview']);
+      this.router.navigate(['/dashboard']);
     }
 
     this.router.events.subscribe((event) => {
@@ -39,13 +41,17 @@ export class AppComponent {
         const user = this.storage.getUser();
         this.username = user.username;
         this.roles = user.roles[0];
-        this.margin='250px';
-        console.log(this.margin)
-        console.log(this.roles);
+
+        this.margin = '250px';
+        this.height = '91.5vh';
+
+        // console.log(this.margin)
+        // console.log(this.roles);
         this.userService
           .getMenuByRole(this.roles.roleName)
           .subscribe((menulist) => {
             this.menuList = menulist;
+            console.log(this.menuList);
           });
       }
     });
@@ -54,7 +60,7 @@ export class AppComponent {
   logout(): void {
     this.storage.signOut();
     this.router.navigate(['']);
-    this.margin = '0px'
+    this.margin = '0px';
     // window.location.reload();
   }
 }
