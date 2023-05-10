@@ -1,3 +1,14 @@
 .logged-out {
   display: none;
 }
+.logout{
+  position: absolute;
+    right: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    
+}
+.username{
+  margin-left: 1rem;
+  font-weight: 600;
+}

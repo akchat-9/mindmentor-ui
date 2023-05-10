@@ -1,28 +1,24 @@
 .breadcrumb {
-    background-color: transparent;
-  }
-  .main-container {
-    padding: 0.4rem 1.5rem 0;
-  }
-  .dashboard-header-col {
-    display: flex;
-    align-items: center;
-  }
-  .dashboard-header-col:nth-child(2) {
-    justify-content: end;
-  }
-  
-  /* .breadcrumb {
-    background-color: transparent;
-  }
-  .main-container {
-    padding: 0.4rem 1.5rem 0;
-  }
-  .dashboard-header-col {
-    display: flex;
-    align-items: center;
-  }
-  .dashboard-header-col:nth-child(2) {
-    justify-content: end;
-  } */
-  
+  background-color: transparent;
+}
+.main-container {
+  padding: 0.4rem 1.5rem 0;
+}
+.dashboard-header-col {
+  display: flex;
+  align-items: center;
+}
+.dashboard-header-col:nth-child(2) {
+  justify-content: end;
+}
+
+.box-title,
+.table-title {
+  color: #343a40;
+}
+.container-fluid {
+  padding: 1rem 1.5rem 0;
+}
+.row .info-box .icon{
+  height: 4rem;
+}

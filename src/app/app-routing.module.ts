@@ -17,18 +17,14 @@ import { ViewAssignmentComponent } from './assignment/view-assignment/view-assig
 import { ViewSubmissionsComponent } from './assignment/view-submissions/view-submissions.component';
 import { AssignmentRemindersComponent } from './assignment/reminders/reminders.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CreateFeedbackComponent } from './feedback/create-feedback/create-feedback.component';
+import { ViewFeedbackComponent } from './feedback/view-feedback/view-feedback.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {
     path: 'dashboard',
     component: DashboardComponent,
-    // children: [
-    // { path: '', redirectTo: 'overview', pathMatch: 'full' },
-    // { path: 'overview', component: OverviewComponent },
-    // { path: 'analytics', component: AnalyticsComponent },
-    // { path: 'notifications', component: NotificationsComponent },
-    // ],
   },
   {
     path: 'courses',
@@ -69,6 +65,14 @@ const routes: Routes = [
       { path: 'view_assignments', component: ViewAssignmentComponent },
       { path: 'view_submissions', component: ViewSubmissionsComponent },
       { path: 'reminders', component: AssignmentRemindersComponent },
+    ],
+  },
+  {
+    path: 'feedback',
+    children: [
+      { path: '', redirectTo: 'sessions', pathMatch: 'full' },
+      { path: 'createNew', component: CreateFeedbackComponent },
+      { path: 'viewFeedback', component: ViewFeedbackComponent }
     ],
   },
 ];

@@ -40,6 +40,7 @@ export class AppComponent {
         this.isLoggedIn = this.storage.isLoggedIn();
         const user = this.storage.getUser();
         this.username = user.username;
+        this.username = this.username.toUpperCase();
         this.roles = user.roles[0];
 
         this.margin = '250px';
