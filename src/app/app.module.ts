@@ -27,6 +27,8 @@ import { CreateAssignmentComponent } from './assignment/create-assignment/create
 import { ViewAssignmentComponent } from './assignment/view-assignment/view-assignment.component';
 import { ViewSubmissionsComponent } from './assignment/view-submissions/view-submissions.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CreateFeedbackComponent } from './feedback/create-feedback/create-feedback.component';
+import { ViewFeedbackComponent } from './feedback/view-feedback/view-feedback.component';
 
 
 
@@ -51,6 +53,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ViewAssignmentComponent,
     ViewSubmissionsComponent,
     DashboardComponent,
+    CreateFeedbackComponent,
+    ViewFeedbackComponent,
   ],
   imports: [
     BrowserModule,

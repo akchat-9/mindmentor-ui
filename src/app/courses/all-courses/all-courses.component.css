@@ -1,3 +1,7 @@
+.box-title,
+.table-title {
+  color: #343a40;
+}
 .container-fluid {
-  padding: 1.5rem;
+  padding: 1rem 1.5rem 0;
 }
