@@ -14,6 +14,7 @@
             <th class="table-title">Instructor</th>
             <th class="table-title">Format</th>
             <th class="table-title">Fee</th>
+            <th class="table-title">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -25,6 +26,19 @@
             <td>{{ course.instructor }}</td>
             <td>{{ course.format }}</td>
             <td>{{ course.fee | currency }}</td>
+            <td>
+              <a
+                class="btn bg-gradient-success btn-sm mr-2"
+                (click)="editCourses(course.id)"
+                ><i class="fas fa-edit"></i
+              ></a>
+
+              <a
+                class="btn bg-gradient-danger btn-sm"
+                (click)="editCourses(course.id)"
+                ><i class="fas fa-trash"></i
+              ></a>
+            </td>
           </tr>
         </tbody>
       </table>

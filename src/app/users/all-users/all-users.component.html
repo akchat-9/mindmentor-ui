@@ -13,16 +13,30 @@
             <th class="table-title">Email</th>
             <th class="table-title">Role</th>
             <th class="table-title">Joining Date</th>
+            <th class="table-title">Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let course of courses">
-            <td>{{ course.name }}</td>
-            <td>{{ course.duration }}</td>
-            <td>{{ course.level }}</td>
-            <td>{{ course.category }}</td>
-            <td>{{ course.instructor }}</td>
-            <td>{{ course.format }}</td>
+          <tr *ngFor="let user of users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
+            <td>{{ user.joiningDate }}</td>
+            <td>
+              <a
+                class="btn bg-gradient-success btn-sm mr-2"
+                (click)="editUsers(user.id)"
+                ><i class="fas fa-edit"></i
+              ></a>
+
+              <a
+                class="btn bg-gradient-danger btn-sm"
+                (click)="editUsers(user.id)"
+                ><i class="fas fa-trash"></i
+              ></a>
+            </td>
           </tr>
         </tbody>
       </table>

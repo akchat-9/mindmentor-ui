@@ -1,4 +1,5 @@
 export interface CoursesViewModel {
+  id:number;
   name: string;
   duration: string;
   level: string;

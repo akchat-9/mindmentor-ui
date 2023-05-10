@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CoursesViewModel } from 'src/app/ViewModel/CoursesViewModel';
 import { CoursesService } from 'src/app/_services/courses.service';
+import { RandomColor } from 'angular-randomcolor';
 
 interface Category {
   name: string;
@@ -17,7 +18,9 @@ export class CourseCategoriesComponent {
   courses!: CoursesViewModel[];
   categories: any = {};
 
+  newColor: string = '';
   ngOnInit(): void {
+    this.newColor = RandomColor.generateColor();
     // get courses from the service
     this.courseService.getUsers().subscribe((courses) => {
       this.courses = courses;

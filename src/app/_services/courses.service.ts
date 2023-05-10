@@ -7,9 +7,13 @@ import { CoursesViewModel } from '../ViewModel/CoursesViewModel';
   providedIn: 'root',
 })
 export class CoursesService {
-  constructor() {}
+  private staticCourses: CoursesViewModel[] = courses;
 
   getUsers(): Observable<CoursesViewModel[]> {
-    return of(courses);
+    return of(this.staticCourses);
+  }
+
+  getCoursesById(courseId: number): CoursesViewModel | null {
+    return this.staticCourses.find((c) => c.id == courseId) || null;
   }
 }
