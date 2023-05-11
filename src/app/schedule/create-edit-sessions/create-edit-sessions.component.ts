@@ -32,7 +32,6 @@ export class CreateEditSessionsComponent {
       duration: ['', Validators.required],
       course: ['', Validators.required],
       teacher: ['', Validators.required],
-      // student: ['', Validators.required],`
     });
 
     this.commonService
@@ -66,7 +65,21 @@ export class CreateEditSessionsComponent {
       }
     });
   }
-
+  get date(){
+    return this.coachingSessionForm.get('date')
+  }
+  get time(){
+    return this.coachingSessionForm.get('time')
+  }
+  get duration(){
+    return this.coachingSessionForm.get('duration')
+  }
+  get course(){
+    return this.coachingSessionForm.get('course')
+  }
+  get teacher(){
+    return this.coachingSessionForm.get('teacher')
+  }
   onSubmit() {
     if (this.coachingSessionForm.valid) {
       // console.log(this.coachingSessionForm.value)

@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="box">
         <div class="box-header with-border">
-            <h3 class="box-title" >Create New Course</h3>
+            <h3 class="box-title">Create New Course</h3>
         </div>
         <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
             <div class="box-body row card pt-2 ">
@@ -9,12 +9,14 @@
                     <div class="form-group col-md-6">
                         <input type="text" class="form-control" id="name" formControlName="name"
                             placeholder="Course Name">
-                            <span *ngIf="name && name.invalid && name.touched"><i class="validation">Please enter a valid Course name.</i></span>
+                        <span *ngIf="name && name.invalid && name.touched"><i class="validation">Please enter a valid
+                                Course name.</i></span>
                     </div>
                     <div class="form-group col-md-6">
                         <input type="text" class="form-control" id="department" formControlName="department"
-                            placeholder="Course Department">
-                            <span *ngIf="department && department.invalid && department.touched"><i class="validation">Please enter a valid Course department.</i></span>
+                            placeholder="Course Category">
+                        <span *ngIf="department && department.invalid && department.touched"><i
+                                class="validation">Please enter a valid Course category.</i></span>
                     </div>
                 </div>
                 <div class="form-group col-md-12">
@@ -23,58 +25,81 @@
                 </div>
                 <div class="d-flex">
                     <div class="form-group col-md-6 ">
-                        <input type="text" class="form-control " id="duration" formControlName="duration" placeholder="Course Duration">
-                        <span *ngIf="duration && duration.invalid && duration.touched"><i class="validation">Please enter a valid Course duration.</i></span>
+                        <input type="text" class="form-control " id="duration" formControlName="duration"
+                            placeholder="Course Duration">
+                        <span *ngIf="duration && duration.invalid && duration.touched"><i class="validation">Please
+                                enter a valid Course duration.</i></span>
                     </div>
                     <div class="form-group col-md-6 ">
-                        <input type="text" class="form-control " id="level" formControlName="level" placeholder="Course Level">
-                        <span *ngIf="level && level.invalid && level.touched"><i class="validation">Please enter a valid Course level.</i></span>
+                        <!-- <input type="text" class="form-control " id="level" formControlName="level"
+                            placeholder="Course Level"> -->
+                            <select class="form-control" id="level" formControlName="level">
+                                <option value="" selected class="box-title">Select Course Level</option>
+                                <option value="beginner">Beginner</option>
+                                <option value="intermediate">Intermediate</option>
+                                <option value="advanced">Advanced</option>
+                                <option value="undergraduate">Under Graduate</option>
+                                <option value="postgraduate">Post Graduate</option>
+                            </select>
+                        <span *ngIf="level && level.invalid && level.touched"><i class="validation">Please enter a valid
+                                Course level.</i></span>
                     </div>
                 </div>
                 <div class="d-flex">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="price" formControlName="price" placeholder="Course Price">
-                    <span *ngIf="price && price.invalid && price.touched"><i class="validation">Please enter a valid amount.</i></span>
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" id="price" formControlName="price"
+                            placeholder="Course Fees">
+                        <span *ngIf="price && price.invalid && price.touched"><i class="validation">Please enter a valid
+                                amount.</i></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" id="maxEnrollment" formControlName="maxEnrollment"
+                            placeholder="Maximum Enrollment">
+                        <span *ngIf="maxEnrollment&& maxEnrollment.invalid && maxEnrollment.touched"><i
+                                class="validation">Please enter a valid number.</i></span>
+                    </div>
                 </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="maxEnrollment" formControlName="maxEnrollment" placeholder="Maximum Enrollment">
-                    <span *ngIf="maxEnrollment&& maxEnrollment.invalid && maxEnrollment.touched"><i class="validation">Please enter a valid number.</i></span>
-                </div>
-            </div>
                 <div class="form-group col-md-12">
-                    <input type="text" class="form-control" id="prerequisites" formControlName="prerequisites" placeholder="Prerequisites">
+                    <input type="text" class="form-control" id="prerequisites" formControlName="prerequisites"
+                        placeholder="Prerequisites">
                 </div>
                 <div class="d-flex">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="instructor 
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" id="instructor 
           Name" formControlName="instructorName" placeholder="Instructor Name">
-          <span *ngIf="instructorName && instructorName.invalid && instructorName.touched"><i class="validation">Please enter a valid Course instructorName.</i></span>
+                        <span *ngIf="instructorName && instructorName.invalid && instructorName.touched"><i
+                                class="validation">Please enter a valid Course instructorName.</i></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input class="form-control" type="text" id="instructorBio" formControlName="instructorBio"
+                            placeholder="Instructor Details">
+                        <span *ngIf="instructorBio && instructorBio.invalid && instructorBio.touched"><i
+                                class="validation">Please enter some details about the instructor.</i></span>
+                    </div>
                 </div>
-                <div class="form-group col-md-6">
-                    <input class="form-control" type="text" id="instructorBio" formControlName="instructorBio" placeholder="Instructor Details">
-                    <span *ngIf="instructorBio && instructorBio.invalid && instructorBio.touched"><i class="validation">Please enter some details about the instructor.</i></span>
-                </div>
-            </div>
                 <div class="d-flex">
                     <div class="form-group col-md-4 ">
                         <label for="format" class="label">Course Format</label>
-                        <select class="form-control" id="format" formControlName="format" >
+                        <select class="form-control" id="format" formControlName="format">
                             <option value="" selected>Select Course Format</option>
-                            <option value="male">Online</option>
-                            <option value="female">Offline</option>
-                            <option value="other">Hybrid</option>
-                          </select>
-                          <span *ngIf="format && format.invalid && format.touched"><i class="validation">Please select a valid Course format.</i></span>
+                            <option value="online">Online</option>
+                            <option value="offline">Offline</option>
+                            <option value="hybrid">Hybrid</option>
+                        </select>
+                        <span *ngIf="format && format.invalid && format.touched"><i class="validation">Please select a
+                                valid Course format.</i></span>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="startDate" class="label">Start Date</label>
                         <input type="date" class="form-control" id="startDate" formControlName="startDate">
-                        <span *ngIf="startDate && startDate.invalid && startDate.touched"><i class="validation">Please select a valid Date.</i></span>
+                        <span *ngIf="startDate && startDate.invalid && startDate.touched"><i class="validation">Please
+                                select a valid Date.</i></span>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="endDate" class="label">End Date</label>
                         <input type="date" class="form-control" id="endDate" formControlName="endDate">
-                    <span *ngIf="endDate && endDate.invalid && endDate.touched"><i class="validation">Please select a valid Date.</i></span>
+                        <span *ngIf="endDate && endDate.invalid && endDate.touched"><i class="validation">Please select
+                                a valid Date.</i></span>
                     </div>
                 </div>
                 <div class="box-footer ">

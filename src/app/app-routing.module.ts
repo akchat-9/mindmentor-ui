@@ -20,6 +20,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CreateFeedbackComponent } from './feedback/create-feedback/create-feedback.component';
 import { ViewFeedbackComponent } from './feedback/view-feedback/view-feedback.component';
 import { UserSettingsComponent } from './users/user-settings/user-settings.component';
+import { UserGroupsComponent } from './users/user-groups/user-groups.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -45,6 +46,7 @@ const routes: Routes = [
       { path: 'all', component: AllUsersComponent },
       { path: 'create', component: CreateUsersComponent },
       { path: 'settings/:id', component: UserSettingsComponent },
+      { path: 'groups', component: UserGroupsComponent },
     ],
   },
   {
@@ -53,7 +55,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'sessions', pathMatch: 'full' },
       { path: 'sessions', component: CoachingSessionsComponent },
       { path: 'calendar', component: AvailabilityCalendarComponent },
-      { path: 'bookings', component: BookingsComponent },
+      { path: 'create', component: BookingsComponent },
       { path: 'reminders', component: RemindersComponent },
       { path: 'customize/:id', component: CreateEditSessionsComponent },
       { path: 'customize', component: CreateEditSessionsComponent },

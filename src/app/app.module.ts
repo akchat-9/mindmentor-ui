@@ -30,9 +30,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CreateFeedbackComponent } from './feedback/create-feedback/create-feedback.component';
 import { ViewFeedbackComponent } from './feedback/view-feedback/view-feedback.component';
 import { UserSettingsComponent } from './users/user-settings/user-settings.component';
-
-
-
+import { UserGroupsComponent } from './users/user-groups/user-groups.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +55,7 @@ import { UserSettingsComponent } from './users/user-settings/user-settings.compo
     CreateFeedbackComponent,
     ViewFeedbackComponent,
     UserSettingsComponent,
+    UserGroupsComponent,
   ],
   imports: [
     BrowserModule,
