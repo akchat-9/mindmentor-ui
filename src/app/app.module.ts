@@ -31,9 +31,6 @@ import { CreateFeedbackComponent } from './feedback/create-feedback/create-feedb
 import { ViewFeedbackComponent } from './feedback/view-feedback/view-feedback.component';
 import { UserSettingsComponent } from './users/user-settings/user-settings.component';
 import { UserGroupsComponent } from './users/user-groups/user-groups.component';
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +64,7 @@ import { UserGroupsComponent } from './users/user-groups/user-groups.component';
     ReactiveFormsModule,
     HttpClientModule,
     DataTablesModule,
-    FullCalendarModule
+    FullCalendarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

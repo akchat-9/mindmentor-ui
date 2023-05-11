@@ -14,7 +14,7 @@
             <th class="table-title">Instructor</th>
             <th class="table-title">Format</th>
             <th class="table-title">Fee</th>
-            <th class="table-title">Actions</th>
+            <th *ngIf="IsAdminTeacher" class="table-title">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -26,7 +26,7 @@
             <td>{{ course.instructor }}</td>
             <td>{{ course.format }}</td>
             <td>{{ course.fee | currency }}</td>
-            <td>
+            <td *ngIf="IsAdminTeacher">
               <a
                 class="btn bg-gradient-success btn-sm mr-2"
                 (click)="editCourses(course.id)"

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/_services/auth.service';
 import { LocalStorageService } from 'src/app/_services/local-storage.service';
 import { ResponseStatusModel } from 'src/app/model/ResponseStatusModel';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -42,6 +43,7 @@ get password(){
       next: (res) => {
         console.log(res);
         this.responseStatus = { StatusCode: 200, Message: 'Login successful' };
+        Swal.fire('Success!', 'Login successful', 'success');
         this.storate.saveToken(res.accessToken);
         this.storate.saveUser(res);
         // this.userService.UpdateMenu.next();

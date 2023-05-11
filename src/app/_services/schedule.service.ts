@@ -6,6 +6,7 @@ import { AllSessionsViewModel } from '../ViewModel/AllSessionsViewModel';
 import { allsessions } from '../FakeDb/allsessions';
 import { CoursesViewModel } from '../ViewModel/CoursesViewModel';
 import { CoachingSessionModel } from '../model/CoachingSessionModel';
+import { Menu } from '../model/MenuModel';
 
 @Injectable({
   providedIn: 'root',
@@ -36,5 +37,8 @@ export class ScheduleService {
 
   addCoachingSession(sessionDetail: CoachingSessionModel) {
     // console.log(sessionDetail);
+  }
+  getMenuByRole(role: string) {
+    return this.http.get<Menu[]>(`http://localhost:8080/menu/${role}`);
   }
 }
