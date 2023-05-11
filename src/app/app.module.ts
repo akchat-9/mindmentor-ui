@@ -29,7 +29,10 @@ import { ViewSubmissionsComponent } from './assignment/view-submissions/view-sub
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CreateFeedbackComponent } from './feedback/create-feedback/create-feedback.component';
 import { ViewFeedbackComponent } from './feedback/view-feedback/view-feedback.component';
+import { UserSettingsComponent } from './users/user-settings/user-settings.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+
+
 
 @NgModule({
   declarations: [
@@ -54,6 +57,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     DashboardComponent,
     CreateFeedbackComponent,
     ViewFeedbackComponent,
+    UserSettingsComponent,
   ],
   imports: [
     BrowserModule,

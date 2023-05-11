@@ -27,7 +27,7 @@ export class CreateCoursesComponent {
       endDate: ['', Validators.required],
       maxEnrollment: ['', [Validators.required, Validators.pattern('[0-9]+$')]],
     });
-  }
+  } 
 
 get name(){
   return this.courseForm.get('name')

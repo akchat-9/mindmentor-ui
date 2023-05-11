@@ -19,6 +19,7 @@ import { AssignmentRemindersComponent } from './assignment/reminders/reminders.c
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CreateFeedbackComponent } from './feedback/create-feedback/create-feedback.component';
 import { ViewFeedbackComponent } from './feedback/view-feedback/view-feedback.component';
+import { UserSettingsComponent } from './users/user-settings/user-settings.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -34,7 +35,7 @@ const routes: Routes = [
       { path: 'all/:category', component: AllCoursesComponent },
       { path: 'create', component: CreateCoursesComponent },
       { path: 'categories', component: CourseCategoriesComponent },
-      { path: 'settings', component: CourseSettingsComponent },
+      { path: 'settings/:id', component: CourseSettingsComponent },
     ],
   },
   {
@@ -43,6 +44,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'all', pathMatch: 'full' },
       { path: 'all', component: AllUsersComponent },
       { path: 'create', component: CreateUsersComponent },
+      { path: 'settings/:id', component: UserSettingsComponent },
     ],
   },
   {
@@ -72,7 +74,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'sessions', pathMatch: 'full' },
       { path: 'createNew', component: CreateFeedbackComponent },
-      { path: 'viewFeedback', component: ViewFeedbackComponent }
+      { path: 'viewFeedback', component: ViewFeedbackComponent },
     ],
   },
 ];

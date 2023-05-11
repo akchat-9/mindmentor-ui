@@ -3,7 +3,7 @@ import { Subject } from 'rxjs';
 import { DataTablesModule, DataTableDirective } from 'angular-datatables';
 import { CoursesService } from 'src/app/_services/courses.service';
 import { CoursesViewModel } from 'src/app/ViewModel/CoursesViewModel';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-all-courses',
   templateUrl: './all-courses.component.html',
@@ -18,7 +18,8 @@ export class AllCoursesComponent {
   category: string = '';
   constructor(
     private courseService: CoursesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
   ngOnInit(): void {
     this.courseService.getUsers().subscribe((courses) => {
@@ -54,5 +55,9 @@ export class AllCoursesComponent {
 
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
+  }
+
+  editCourses(id: number) {
+    this.router.navigate(['/courses/settings', id]);
   }
 }
