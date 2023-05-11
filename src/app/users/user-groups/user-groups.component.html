@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div class="box">
+      <div _ngcontent-rnq-c3="" class="box-header with-border mb-1">
+        <h3 _ngcontent-rnq-c3="" class="box-title">User Group</h3>
+      </div>
+      <div class="card card-primary card-outline p-2">
+        <div class="row">
+          <div class="col-md-4" *ngFor="let category of categories">
+            <div class="info-box d-flex align-items-center" >
+              <div class="info-box-icon bg-green ml-1" style="height: 4rem">
+                <i class="fa fa-book"></i>
+              </div>
+              <div class="info-box-content ml-4">
+                <span class="info-box-text">{{ category.name }}</span>
+                <span class="info-box-number"
+                  >Total Strength: {{ category.courses.length }}</span
+                >
+                <div>
+                  <a [routerLink]="['/courses/all', category.name]">View All</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -30,7 +30,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CreateFeedbackComponent } from './feedback/create-feedback/create-feedback.component';
 import { ViewFeedbackComponent } from './feedback/view-feedback/view-feedback.component';
 import { UserSettingsComponent } from './users/user-settings/user-settings.component';
-import { CarouselModule } from 'ngx-owl-carousel-o';
+import { UserGroupsComponent } from './users/user-groups/user-groups.component';
 
 
 
@@ -58,6 +58,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     CreateFeedbackComponent,
     ViewFeedbackComponent,
     UserSettingsComponent,
+    UserGroupsComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,8 +67,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     ReactiveFormsModule,
     HttpClientModule,
     DataTablesModule,
-    FullCalendarModule,
-    CarouselModule 
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

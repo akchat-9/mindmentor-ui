@@ -31,9 +31,7 @@ export class BookingsComponent {
         duration: ['', Validators.required],
         course: ['', Validators.required],
         teacher: ['', Validators.required],
-        // student: ['', Validators.required],`
       });
-
       this.commonService
         .getAllCourses()
         .subscribe((courses) => (this.courses = courses));
@@ -42,12 +40,28 @@ export class BookingsComponent {
         .getAllTeachers()
         .subscribe((teachers) => (this.teachers = teachers));
     }
+    get date(){
+      return this.coachingSessionForm.get('date')
+    }
+    get time(){
+      return this.coachingSessionForm.get('time')
+    }
+    get duration(){
+      return this.coachingSessionForm.get('duration')
+    }
+    get course(){
+      return this.coachingSessionForm.get('course')
+    }
+    get teacher(){
+      return this.coachingSessionForm.get('teacher')
+    }
   onSubmit() {
     if (this.coachingSessionForm.valid) {
-      // console.log(this.coachingSessionForm.value)
+      console.log(this.coachingSessionForm.value)
       const formValue = this.coachingSessionForm.value;
       this.scheduleService.addCoachingSession(formValue);
       this.router.navigate(['/schedule/sessions']);
+
     }
   }
   onCancel() {

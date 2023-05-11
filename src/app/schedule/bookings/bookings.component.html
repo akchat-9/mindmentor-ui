@@ -1,71 +1,58 @@
-<div class="row">
-    <div class="col-md-6 col-sm-12">
-      <div class="card">
-        <div class="card-body">
-          <h3>Book Coaching Session</h3>
-          <form [formGroup]="coachingSessionForm" (ngSubmit)="onSubmit()">
-            <div class="form-group">
-              <label for="date">Date</label>
-              <input
-                type="date"
-                class="form-control"
-                id="date"
-                formControlName="date"
-              />
-            </div>
-            <div class="form-group">
-              <label for="time">Time</label>
-              <input
-                type="text"
-                class="form-control"
-                id="time"
-                formControlName="time"
-              />
-            </div>
-            <div class="form-group">
-              <label for="duration">Duration (in minutes)</label>
-              <input
-                type="number"
-                class="form-control"
-                id="duration"
-                formControlName="duration"
-              />
-            </div>
-            <div class="form-group">
-              <label for="course">Course</label>
-              <select
-                class="form-control select2"
-                style="width: 100%"
-                id="course"
-                formControlName="course"
-              >
-                <option *ngFor="let course of courses" [value]="course.id">
-                  {{ course.name }}
-                </option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="teacher">Teacher</label>
-              <select
-                class="form-control select2"
-                style="width: 100%"
-                id="teacher"
-                formControlName="teacher"
-              >
-                <option *ngFor="let teacher of teachers" [value]="teacher.id">
-                  {{ teacher.name }}
-                </option>
-              </select>
-            </div>
-            <button type="submit" class="btn btn-primary">
-              Create
-            </button>
-            <button type="button" class="btn btn-danger" (click)="onCancel()">
-              Cancel
-            </button>
-          </form>
-        </div>
+<div class="container main-container">
+
+  <div class="container-fluid mb-2">
+      <div class="row">
+          <div class="col-sm-6 dashboard-header-col">
+              <h3 class="box-title">Create Coaching Session</h3>
+          </div>
       </div>
-    </div>
   </div>
-  
+  <div class="card card-primary card-outline p-2 mx-2">
+    <form [formGroup]="coachingSessionForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="date">Date</label>
+        <input type="date" class="form-control" id="date" formControlName="date" />
+         <span *ngIf="date && date.invalid && date.touched"><i class="validation">Please enter a valid
+                                Date.</i></span>
+      </div>
+      <div class="form-group">
+        <label for="time">Time</label>
+        <input type="text" class="form-control" id="time" formControlName="time" placeholder="4:15 AM"/>
+         <span *ngIf="time && time.invalid && time.touched"><i class="validation">Please enter a valid
+                                Time.</i></span>
+      </div>
+      <div class="form-group">
+        <label for="duration">Duration (in minutes)</label>
+        <input type="number" class="form-control" id="duration" formControlName="duration" />
+         <span *ngIf="duration && duration.invalid && duration.touched"><i class="validation">Please enter a valid
+                                Course Duration.</i></span>
+      </div>
+      <div class="form-group">
+        <label for="course">Course</label>
+        <select class="form-control select2" style="width: 100%" id="course" formControlName="course">
+          <option *ngFor="let course of courses" [value]="course.id">
+            {{ course.name }}
+          </option>
+        </select>
+         <span *ngIf="course && course.invalid && course.touched"><i class="validation">Please enter a valid
+                                Course name.</i></span>
+      </div>
+      <div class="form-group">
+        <label for="teacher">Teacher</label>
+        <select class="form-control select2" style="width: 100%" id="teacher" formControlName="teacher">
+          <option *ngFor="let teacher of teachers" [value]="teacher.id">
+            {{ teacher.name }}
+          </option>
+        </select>
+         <span *ngIf="teacher && teacher.invalid && teacher.touched"><i class="validation">Please enter a valid
+                                Teacher name.</i></span>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="coachingSessionForm.invalid">
+        Create
+      </button>
+      <button type="submit" class="btn btn-danger" (click)="onCancel()">
+        Cancel
+      </button>
+    </form>
+  </div>
+</div>
