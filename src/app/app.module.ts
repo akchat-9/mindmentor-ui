@@ -29,8 +29,7 @@ import { ViewSubmissionsComponent } from './assignment/view-submissions/view-sub
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CreateFeedbackComponent } from './feedback/create-feedback/create-feedback.component';
 import { ViewFeedbackComponent } from './feedback/view-feedback/view-feedback.component';
-
-
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -63,7 +62,8 @@ import { ViewFeedbackComponent } from './feedback/view-feedback/view-feedback.co
     ReactiveFormsModule,
     HttpClientModule,
     DataTablesModule,
-    FullCalendarModule
+    FullCalendarModule,
+    CarouselModule 
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -17,6 +17,19 @@ export class CourseCategoriesComponent {
   courses!: CoursesViewModel[];
   categories: any = {};
 
+// for random colors
+  colors:string[] = [
+    'bg-primary',
+    'bg-secondary',
+    'bg-success',
+    'bg-danger',
+    'bg-warning',
+    'bg-info',
+    'bg-light',
+    'bg-dark',
+];
+
+
   ngOnInit(): void {
     // get courses from the service
     this.courseService.getUsers().subscribe((courses) => {

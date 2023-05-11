@@ -52,7 +52,7 @@ export class AppComponent {
           .getMenuByRole(this.roles.roleName)
           .subscribe((menulist) => {
             this.menuList = menulist;
-            console.log(this.menuList);
+            // console.log(this.menuList);
           });
       }
     });

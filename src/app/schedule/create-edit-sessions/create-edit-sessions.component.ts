@@ -32,7 +32,7 @@ export class CreateEditSessionsComponent {
       duration: ['', Validators.required],
       course: ['', Validators.required],
       teacher: ['', Validators.required],
-      student: ['', Validators.required],
+      // student: ['', Validators.required],`
     });
 
     this.commonService
@@ -46,11 +46,11 @@ export class CreateEditSessionsComponent {
     this.route.params.subscribe((params) => {
       if (params['id']) {
         this.isEditing = true;
-        console.log('Is newwwwwwwww',this.isEditing)
+        // console.log('Is newwwwwwwww',this.isEditing)
         const coachingSessionId = +params['id'];
         this.CoachingSession =
           this.scheduleService.getCoachingSessionById(coachingSessionId);
-          console.log(this.CoachingSession)
+          // console.log(this.CoachingSession)
         if (this.CoachingSession != null) {
           this.coachingSessionForm.patchValue({
             date: this.CoachingSession.date,
@@ -69,10 +69,14 @@ export class CreateEditSessionsComponent {
 
   onSubmit() {
     if (this.coachingSessionForm.valid) {
+      // console.log(this.coachingSessionForm.value)
       const formValue = this.coachingSessionForm.value;
+      console.log(this.isEditing)
       if (this.isEditing) {
+        console.log(formValue)
         this.scheduleService.updateCoachingSession(formValue);
       } else {
+        console.log(formValue)
         this.scheduleService.addCoachingSession(formValue);
       }
       this.router.navigate(['/schedule/sessions']);

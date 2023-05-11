@@ -31,10 +31,10 @@ export class ScheduleService {
   }
 
   updateCoachingSession(sessionDetail: CoachingSessionModel) {
-    console.log(sessionDetail);
+    // console.log(sessionDetail);
   }
 
   addCoachingSession(sessionDetail: CoachingSessionModel) {
-    console.log(sessionDetail);
+    // console.log(sessionDetail);
   }
 }
