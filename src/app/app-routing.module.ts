@@ -64,6 +64,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'sessions', pathMatch: 'full' },
       { path: 'create_new', component: CreateAssignmentComponent },
+      { path: 'create_new/:id', component: CreateAssignmentComponent },
       { path: 'view_assignments', component: ViewAssignmentComponent },
       { path: 'view_submissions', component: ViewSubmissionsComponent },
       { path: 'reminders', component: AssignmentRemindersComponent },

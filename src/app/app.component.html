@@ -89,8 +89,8 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                <li class="nav-item  ">
-                    <a routerLink="/dashboard" class="nav-link">
+                <li class="nav-item " [ngClass]="{'menu-active': activeMenu === 'dashboard'}">
+                    <a routerLink="/dashboard" class="nav-link" (click)="setActiveMenu('dashboard')">
                         <i class="nav-icon fa fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -98,8 +98,8 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item has-treeview menu-open" *ngFor="let menu of menuList">
-                    <a href="#" class="nav-link">
+                <li class="nav-item has-treeview" *ngFor="let menu of menuList" [ngClass]="{'menu-active': activeMenu === menu.menu_name}">
+                    <a href="#" class="nav-link" (click)="setActiveMenu(menu.menu_name)">
                         <i class="nav-icon {{menu.menu_icon}}"></i>
                         <p>
                             {{menu.menu_name}}
@@ -107,13 +107,8 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item" *ngFor="let subMenu of menu.submenus">
-                            <!-- <a href="./index.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v1</p>
-
-                            </a> -->
-                            <a routerLink="{{subMenu.sub_menu_link}}" class="nav-link">
+                        <li class="nav-item" *ngFor="let subMenu of menu.submenus" [ngClass]="{'active': activeSubmenu === subMenu.sub_menu_name}">
+                            <a routerLink="{{subMenu.sub_menu_link}}" class="nav-link" (click)="setActiveSubmenu(subMenu.sub_menu_name)">
                                 <!-- <i class="{{subMenu.sub_menu_icon}}"></i> {{subMenu.sub_menu_name}} -->
                                 <i class="{{subMenu.sub_menu_icon}} fa-xs nav-icon"></i>
                                 <p>

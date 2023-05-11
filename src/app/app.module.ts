@@ -30,7 +30,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CreateFeedbackComponent } from './feedback/create-feedback/create-feedback.component';
 import { ViewFeedbackComponent } from './feedback/view-feedback/view-feedback.component';
 import { UserSettingsComponent } from './users/user-settings/user-settings.component';
-import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 
@@ -67,7 +66,6 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     HttpClientModule,
     DataTablesModule,
     FullCalendarModule,
-    CarouselModule 
   ],
   providers: [],
   bootstrap: [AppComponent],

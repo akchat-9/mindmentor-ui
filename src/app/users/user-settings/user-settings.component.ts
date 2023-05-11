@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
-import { UserViewModel } from 'src/app/ViewModel/UsersViewModel';
+import { UserViewModel } from 'src/app/ViewModel/UserViewModel';
+import { UsersViewModel } from 'src/app/ViewModel/UsersViewModel';
 import { UserService } from 'src/app/_services/user.service';
 
 @Component({
@@ -12,7 +13,8 @@ import { UserService } from 'src/app/_services/user.service';
 })
 export class UserSettingsComponent {
   registrationForm!: FormGroup;
-  user!: UserViewModel | null;
+  user!: UsersViewModel | null;
+  // user!: UserViewModel | null;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -37,7 +39,8 @@ export class UserSettingsComponent {
       if (params['id']) {
         const userId = params['id'];
         this.user = this.userService.getUsersById(userId);
-        console.log(this.user)
+        // this.user = this.userService.getUserById(userId);
+        console.log(this.user);
         if (this.user != null) {
           this.registrationForm.patchValue({
             firstName: this.user.name,
@@ -47,6 +50,15 @@ export class UserSettingsComponent {
             username: this.user.username,
             role: this.user.role,
           });
+          // this.registrationForm.patchValue({
+          //   firstName: this.user.firstName,
+          //   lastName: this.user.lastName,
+          //   email: this.user.email,
+          //   address:this.user.address,
+          //   joiningDate: moment(this.user.joiningDate).format('YYYY-MM-DD'),
+          //   username: this.user.username,
+          //   role: this.user.role,
+          // });
         }
       }
     });
