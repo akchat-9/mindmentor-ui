@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { CoursesSelectData } from '../FakeDb/CoursesSelectData';
-import { teachers } from '../FakeDb/teachers';
+import { instructors } from '../FakeDb/teachers';
 import { Observable } from 'rxjs';
 import { of } from 'rxjs';
+import { UsersDDLViewModel } from '../ViewModel/UsersDDLViewModel';
 @Injectable({
   providedIn: 'root',
 })
@@ -13,7 +14,7 @@ export class CommonService {
     return of(CoursesSelectData);
   }
 
-  getAllTeachers(): Observable<any[]> {
-    return of(teachers);
+  getAllInstrutors(): Observable<UsersDDLViewModel[]> {
+    return of(instructors);
   }
 }

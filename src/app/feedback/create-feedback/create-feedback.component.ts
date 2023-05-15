@@ -15,7 +15,8 @@ export class CreateFeedbackComponent {
   CoachingSession!: CoachingSessionModel | null;
   courses: any[] = [];
   teachers: any[] = [];
-  defaultSelected='Rate your teacher...'
+  selectedOption: any;
+  selectedOption1: any;
   constructor(
     private fb: FormBuilder,
     private scheduleService: ScheduleService,
@@ -26,7 +27,8 @@ export class CreateFeedbackComponent {
   ngOnInit(): void {
     this.coachingSessionForm = this.fb.group({
       teacher: ['', Validators.required],
-      rating: ['', Validators.required],
+      course: ['', Validators.required],
+      rating: [''],
       feedback: [''],
     });
 
@@ -35,15 +37,15 @@ export class CreateFeedbackComponent {
       .subscribe((courses) => (this.courses = courses));
 
     this.commonService
-      .getAllTeachers()
+      .getAllInstrutors()
       .subscribe((teachers) => (this.teachers = teachers));
   }
   onSubmit() {
     if (this.coachingSessionForm.valid) {
       const formValue = this.coachingSessionForm.value;
+      console.log(formValue);
       this.scheduleService.addCoachingSession(formValue);
-      console.log(formValue)
-      
+
       this.router.navigate(['/feedback/viewFeedback']);
     }
   }
