@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CoursesViewModel } from 'src/app/ViewModel/CoursesViewModel';
 import { CoursesService } from 'src/app/_services/courses.service';
+import { CourseModel } from 'src/app/model/CourseModel';
 
 @Component({
   selector: 'app-course-settings',
@@ -11,7 +12,7 @@ import { CoursesService } from 'src/app/_services/courses.service';
 })
 export class CourseSettingsComponent {
   courseForm!: FormGroup;
-  course!: CoursesViewModel | null;
+  course!: CourseModel | null;
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -20,74 +21,74 @@ export class CourseSettingsComponent {
 
   ngOnInit() {
     this.courseForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      department: ['', Validators.required],
-      description: ['', Validators.required],
-      duration: ['', [Validators.required, Validators.pattern('[0-9]+$')]],
-      format: ['', Validators.required],
-      level: ['', Validators.required],
+      courseName: ['', Validators.required],
+      courseCategoryId: ['', Validators.required],
+      courseDescription: ['', Validators.required],
+      courseDuration: ['', [Validators.required, Validators.pattern('[0-9]+$')]],
+      courseFormat: ['', Validators.required],
+      courseLevel: ['', Validators.required],
       prerequisites: [''],
-      instructorName: ['', Validators.required],
-      instructorBio: ['', Validators.required],
+      instructorsIds: ['', Validators.required],
+      // instructorBio: ['', Validators.required],
       // materials: [''],
-      price: ['', [Validators.required, Validators.pattern('[0-9]+$')]],
+      courseFees: ['', [Validators.required, Validators.pattern('[0-9]+$')]],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
-      maxEnrollment: ['', [Validators.required, Validators.pattern('[0-9]+$')]],
+      enrollment: ['', [Validators.required, Validators.pattern('[0-9]+$')]],
     });
 
     this.route.params.subscribe((params) => {
       if (params['id']) {
         const courseId = params['id'];
         console.log(courseId);
-        this.course = this.courseService.getCoursesById(courseId);
+        // this.course = this.courseService.getCoursesById(courseId);
         if (this.course != null) {
           this.courseForm.patchValue({
-            name: this.course.name,
-            department: this.course.category,
-            duration: this.course.duration,
-            format: this.course.format,
-            level: this.course.level,
-            instructorName: this.course.instructor,
-            price: this.course.fee,
+            courseName: this.course.courseName,
+            courseCategoryId: this.course.courseCategoryId,
+            courseDuration: this.course.courseDuration,
+            courseFormat: this.course.courseFormat,
+            courseLevel: this.course.courseLevel,
+            instructorsIds: this.course.instructorsIds,
+            courseFees: this.course.courseFees,
           });
         }
       }
     });
   }
 
-  get name() {
-    return this.courseForm.get('name');
+  get courseName() {
+    return this.courseForm.get('courseName');
   }
-  get department() {
-    return this.courseForm.get('department');
+  get courseCategoryId() {
+    return this.courseForm.get('courseCategoryId');
   }
   // get description(){
   //   return this.courseForm.get('description')
   // }
-  get duration() {
-    return this.courseForm.get('duration');
+  get courseDuration() {
+    return this.courseForm.get('courseDuration');
   }
-  get format() {
-    return this.courseForm.get('format');
+  get courseFormat() {
+    return this.courseForm.get('courseFormat');
   }
-  get level() {
-    return this.courseForm.get('level');
+  get courseLevel() {
+    return this.courseForm.get('courseLevel');
   }
-  get price() {
-    return this.courseForm.get('price');
+  get courseFees() {
+    return this.courseForm.get('courseFees');
   }
   get prerequisites() {
     return this.courseForm.get('prerequisites');
   }
-  get instructorName() {
-    return this.courseForm.get('instructorName');
+  get instructorsIds() {
+    return this.courseForm.get('instructorsIds');
   }
-  get instructorBio() {
-    return this.courseForm.get('instructorBio');
-  }
-  get maxEnrollment() {
-    return this.courseForm.get('maxEnrollment');
+  // get instructorBio() {
+  //   return this.courseForm.get('instructorBio');
+  // }
+  get enrollment() {
+    return this.courseForm.get('enrollment');
   }
   get startDate() {
     return this.courseForm.get('startDate');

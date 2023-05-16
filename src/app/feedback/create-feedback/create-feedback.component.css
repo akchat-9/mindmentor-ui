@@ -6,7 +6,11 @@
   padding: 1rem 1.5rem 0;
 }
 
-label.star[_ngcontent-ayj-c21]{
-float: left !important;
-font-size: 24px;
+label.star[_ngcontent-ayj-c21] {
+  float: left !important;
+  font-size: 24px;
+}
+.info-box .info-box-content{
+  padding: 0;
+  display: inline-block;
 }
