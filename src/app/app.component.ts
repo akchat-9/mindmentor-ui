@@ -4,6 +4,7 @@ import { LocalStorageService } from './_services/local-storage.service';
 import { Menu } from './model/MenuModel';
 import { RoleViewModel } from './ViewModel/RoleViewModel';
 import { UserService } from './_services/user.service';
+import { ScheduleService } from './_services/schedule.service';
 import { HostListener } from '@angular/core';
 
 @Component({
@@ -18,6 +19,8 @@ export class AppComponent {
   username: string = '';
   menuList!: Menu[];
   userRole: string = '';
+  activeMenu = 'dashboard';
+  activeSubmenu: any = undefined;
 
   margin: string = '0px';
   height: string = '100vh';
@@ -28,6 +31,7 @@ export class AppComponent {
   constructor(
     private userService: UserService,
     private storage: LocalStorageService,
+    private scheduleServive:ScheduleService,
     private router: Router
   ) {
     this.getScreenSize();
@@ -64,7 +68,7 @@ export class AppComponent {
 
         // console.log(this.margin)
         // console.log(this.roles);
-        this.userService
+        this.scheduleServive
           .getMenuByRole(this.roles.roleName)
           .subscribe((menulist) => {
             this.menuList = menulist;
@@ -80,4 +84,14 @@ export class AppComponent {
     this.margin = '0px';
     // window.location.reload();
   }
+
+  setActiveMenu(menuName: string): void {
+    this.activeMenu = menuName;
+    this.activeSubmenu = undefined;
+  }
+  
+  setActiveSubmenu(submenuName: string): void {
+    this.activeSubmenu = submenuName;
+  }
+  
 }

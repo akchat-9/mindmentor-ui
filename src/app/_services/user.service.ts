@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Menu } from '../model/MenuModel';
-import { UserViewModel } from '../ViewModel/UsersViewModel';
+import { UsersViewModel } from '../ViewModel/UsersViewModel';
 import { users } from '../FakeDb/Users';
+import { UserModel } from '../model/UserModel';
+import { CoursesViewModel } from '../ViewModel/CoursesViewModel';
+import { UserViewModel } from '../ViewModel/UserViewModel';
 
-const API_URL = 'http://localhost:8080/api/test/';
+const API_URL = 'http://localhost:5000/api';
 
+// const httpOptions = {
+//   // observe: 'response',
+// };
 @Injectable({
   providedIn: 'root',
 })
@@ -29,15 +35,33 @@ export class UserService {
     return this.http.get(API_URL + 'admin', { responseType: 'text' });
   }
 
-  getMenuByRole(role: string) {
-    return this.http.get<Menu[]>(`http://localhost:8080/menu/${role}`);
-  }
-
-  getUsers(): Observable<UserViewModel[]> {
+  getUsers(): Observable<UsersViewModel[]> {
     return of(users);
   }
 
-  getUsersById(userId: number): UserViewModel | null {
+  getUsersById(userId: number): UsersViewModel | null {
     return users.find((u) => (u.id = userId)) || null;
+  }
+
+  SaveUserDetails(userModel: UserModel): string {
+    // const headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    let message = '';
+    this.http
+      .post(API_URL + '/create', userModel, { observe: 'response' })
+      .subscribe((response) => {
+        if (response.status === 200) {
+          console.log(response.status);
+          message = 'User created successfully';
+        } else message = 'failed';
+      });
+    return message;
+  }
+
+  getAllUsers(): Observable<UserViewModel[]> {
+    return this.http.get<UserViewModel[]>(API_URL + '/getall/list');
+  }
+
+  getUserById(id: number): Observable<UserViewModel> {
+    return this.http.get<UserViewModel>(API_URL + `get/${id}`);
   }
 }

@@ -4,6 +4,7 @@ import { DataTablesModule, DataTableDirective } from 'angular-datatables';
 import { CoursesService } from 'src/app/_services/courses.service';
 import { CoursesViewModel } from 'src/app/ViewModel/CoursesViewModel';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LocalStorageService } from 'src/app/_services/local-storage.service';
 @Component({
   selector: 'app-all-courses',
   templateUrl: './all-courses.component.html',
@@ -16,17 +17,25 @@ export class AllCoursesComponent {
   dtTrigger: Subject<any> = new Subject();
   courses!: CoursesViewModel[];
   category: string = '';
+  userRole: string = '';
+  IsAdminTeacher: boolean = false;
   constructor(
     private courseService: CoursesService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private storage: LocalStorageService
   ) {}
   ngOnInit(): void {
     this.courseService.getUsers().subscribe((courses) => {
       this.courses = courses;
       this.dtTrigger.next(true);
     });
-
+    const user = this.storage.getUser();
+    this.userRole = user.roles[0].roleName;
+    console.log(this.userRole)
+    if (this.userRole == 'teacher' || this.userRole == 'admin') {
+      this.IsAdminTeacher = true;
+    }
     this.route.params.subscribe((params) => {
       this.category = params['category'];
       if (this.category != null) {
