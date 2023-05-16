@@ -7,5 +7,6 @@ export interface UserModel {
   phone: number;
   address: string;
   password: string;
+  joiningDate: string;
   role: string;
 }
