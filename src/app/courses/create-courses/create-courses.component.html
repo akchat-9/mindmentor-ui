@@ -7,36 +7,36 @@
             <div class="box-body row card pt-2">
                 <div class="d-flex">
                     <div class="form-group col-md-6">
-                        <input type="text" class="form-control" id="name" formControlName="name"
+                        <input type="text" class="form-control" id="courseName" formControlName="courseName"
                             placeholder="Course Name" />
-                        <span *ngIf="name && name.invalid && name.touched"><i class="validation">Please enter a valid
+                        <span *ngIf="courseName && courseName.invalid && courseName.touched"><i class="validation">Please enter a valid
                                 Course name.</i></span>
                     </div>
                     <div class="form-group col-md-6">
-                        <select class="form-control" id="category" formControlName="category">
+                        <select class="form-control" id="courseCategoryId" formControlName="courseCategoryId">
                             <option [ngValue]="null" disabled selected>Choose a category...</option>
                             <option *ngFor="let category of categoryList" value={{category.id}}>{{
                                 category.category_name }}</option>
                         </select>
-                        <span *ngIf="department && department.invalid && department.touched"><i
+                        <span *ngIf="courseCategoryId && courseCategoryId.invalid && courseCategoryId.touched"><i
                                 class="validation">Please enter a valid Course category.</i></span>
                     </div>
                 </div>
                 <div class="form-group col-md-12">
-                    <textarea class="form-control" id="description" formControlName="description"
+                    <textarea class="form-control" id="courseDescription" formControlName="courseDescription"
                         placeholder="Course Description"></textarea>
                 </div>
                 <div class="d-flex">
                     <div class="form-group col-md-6">
-                        <input type="text" class="form-control" id="duration" formControlName="duration"
+                        <input type="text" class="form-control" id="courseDuration" formControlName="courseDuration"
                             placeholder="Course Duration" />
-                        <span *ngIf="duration && duration.invalid && duration.touched"><i class="validation">Please
+                        <span *ngIf="courseDuration && courseDuration.invalid && courseDuration.touched"><i class="validation">Please
                                 enter a valid Course duration.</i></span>
                     </div>
                     <div class="form-group col-md-6">
                         <!-- <input type="text" class="form-control " id="level" formControlName="level"
                             placeholder="Course Level"> -->
-                        <select class="form-control" id="level" formControlName="level">
+                        <select class="form-control" id="courseLevel" formControlName="courseLevel">
                             <option value="" selected class="box-title">
                                 Select Course Level
                             </option>
@@ -46,58 +46,59 @@
                             <option value="UNDERGRADUATE">Under Graduate</option>
                             <option value="POSTGRADUATE">Post Graduate</option>
                         </select>
-                        <span *ngIf="level && level.invalid && level.touched"><i class="validation">Please enter a valid
+                        <span *ngIf="courseLevel && courseLevel.invalid && courseLevel.touched"><i class="validation">Please enter a valid
                                 Course level.</i></span>
                     </div>
                 </div>
                 <div class="d-flex">
                     <div class="form-group col-md-6">
-                        <input type="text" class="form-control" id="price" formControlName="price"
+                        <input type="text" class="form-control" id="courseFees" formControlName="courseFees"
                             placeholder="Course Fees" />
-                        <span *ngIf="price && price.invalid && price.touched"><i class="validation">Please enter a valid
+                        <span *ngIf="courseFees && courseFees.invalid && courseFees.touched"><i class="validation">Please enter a valid
                                 amount.</i></span>
                     </div>
                     <div class="form-group col-md-6">
-                        <input type="text" class="form-control" id="maxEnrollment" formControlName="maxEnrollment"
+                        <input type="text" class="form-control" id="enrollment" formControlName="enrollment"
                             placeholder="Maximum Enrollment" />
                         <span *ngIf="
-                maxEnrollment && maxEnrollment.invalid && maxEnrollment.touched
+                enrollment && enrollment.invalid && enrollment.touched
               "><i class="validation">Please enter a valid number.</i></span>
                     </div>
                 </div>
-                <div class="form-group col-md-12">
-                    <input type="text" class="form-control" id="prerequisites" formControlName="prerequisites"
-                        placeholder="Prerequisites" />
-                </div>
+                
                 <div class="d-flex">
                     <div class="form-group col-md-6">
-                        <select class="form-control" id="instructor" formControlName="instructor">
+                        <input type="text" class="form-control" id="prerequisites" formControlName="prerequisites"
+                            placeholder="Prerequisites" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <select class="form-control" id="instructorsIds" formControlName="instructorsIds">
                             <option [ngValue]="null" disabled selected>Choose a instructor...</option>
                             <option *ngFor="let instructor of instructorList" value={{instructor.id}}>
                                 {{instructor.firstName }} {{instructor.lastName }}
                             </option>
                         </select>
-                        <span *ngIf="instructor && instructor.invalid && instructor.touched
+                        <span *ngIf="instructorsIds && instructorsIds.invalid && instructorsIds.touched
               "><i class="validation">Please enter a valid Course instructorName.</i></span>
                     </div>
-                    <div class="form-group col-md-6">
+                    <!-- <div class="form-group col-md-6">
                         <input class="form-control" type="text" id="instructorBio" formControlName="instructorBio"
                             placeholder="Instructor Details" />
                         <span *ngIf="
                 instructorBio && instructorBio.invalid && instructorBio.touched
               "><i class="validation">Please enter some details about the instructor.</i></span>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="d-flex">
                     <div class="form-group col-md-4">
                         <label for="format" class="label">Course Format</label>
-                        <select class="form-control" id="format" formControlName="format">
+                        <select class="form-control" id="courseFormat" formControlName="courseFormat">
                             <option value="" selected>Select Course Format</option>
                             <option value="ONLINE">Online</option>
                             <option value="OFFLINE">Offline</option>
                             <option value="HYBRID">Hybrid</option>
                         </select>
-                        <span *ngIf="format && format.invalid && format.touched"><i class="validation">Please select a
+                        <span *ngIf="courseFormat && courseFormat.invalid && courseFormat.touched"><i class="validation">Please select a
                                 valid Course format.</i></span>
                     </div>
                     <div class="form-group col-md-4">

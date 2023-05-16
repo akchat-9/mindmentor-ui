@@ -17,7 +17,7 @@ export class CourseCategoriesComponent {
   courses!: CoursesViewModel[];
   categories: any = {};
 
-  newColor: string = '';
+  // newColor: string = '';
   ngOnInit(): void {
     // this.newColor = RandomColor.generateColor();
     // get courses from the service
