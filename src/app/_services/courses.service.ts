@@ -33,9 +33,9 @@ export class CoursesService {
     return throwError(() => error);
   }
 
-  getCoursesById(courseId: number): CoursesViewModel | null {
-    return this.staticCourses.find((c) => c.id == courseId) || null;
-  }
+  // getCoursesById(courseId: number): CourseModel | null {
+  //   return this.staticCourses.find((c) => c.id == courseId) || null;
+  // }
 
   getAllCategories(): Observable<CategoryViewModel[]> {
     return of(categories);

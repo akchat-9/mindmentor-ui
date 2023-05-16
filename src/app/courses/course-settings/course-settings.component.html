@@ -7,64 +7,64 @@
             <div class="box-body row card pt-2 ">
                 <div class="d-flex">
                     <div class="form-group col-md-6">
-                        <input type="text" class="form-control" id="name" formControlName="name"
+                        <input type="text" class="form-control" id="courseName" formControlName="courseName"
                             placeholder="Course Name">
-                            <span *ngIf="name && name.invalid && name.touched"><i class="validation">Please enter a valid Course name.</i></span>
+                            <span *ngIf="courseName && courseName.invalid && courseName.touched"><i class="validation">Please enter a valid Course name.</i></span>
                     </div>
                     <div class="form-group col-md-6">
-                        <input type="text" class="form-control" id="department" formControlName="department"
+                        <input type="text" class="form-control" id="courseCategoryId" formControlName="courseCategoryId"
                             placeholder="Course Department">
-                            <span *ngIf="department && department.invalid && department.touched"><i class="validation">Please enter a valid Course department.</i></span>
+                            <span *ngIf="courseCategoryId && courseCategoryId.invalid && courseCategoryId.touched"><i class="validation">Please enter a valid Course department.</i></span>
                     </div>
                 </div>
                 <div class="form-group col-md-12">
-                    <textarea class="form-control" id="description" formControlName="description"
+                    <textarea class="form-control" id="courseDescription" formControlName="courseDescription"
                         placeholder="Course Description"></textarea>
                 </div>
                 <div class="d-flex">
                     <div class="form-group col-md-6 ">
-                        <input type="text" class="form-control " id="duration" formControlName="duration" placeholder="Course Duration">
-                        <span *ngIf="duration && duration.invalid && duration.touched"><i class="validation">Please enter a valid Course duration.</i></span>
+                        <input type="text" class="form-control " id="courseDuration" formControlName="courseDuration" placeholder="Course Duration">
+                        <span *ngIf="courseDuration && courseDuration.invalid && courseDuration.touched"><i class="validation">Please enter a valid Course duration.</i></span>
                     </div>
                     <div class="form-group col-md-6 ">
-                        <input type="text" class="form-control " id="level" formControlName="level" placeholder="Course Level">
-                        <span *ngIf="level && level.invalid && level.touched"><i class="validation">Please enter a valid Course level.</i></span>
+                        <input type="text" class="form-control " id="courseLevel" formControlName="courseLevel" placeholder="Course Level">
+                        <span *ngIf="courseLevel && courseLevel.invalid && courseLevel.touched"><i class="validation">Please enter a valid Course level.</i></span>
                     </div>
                 </div>
                 <div class="d-flex">
                 <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="price" formControlName="price" placeholder="Course Price">
-                    <span *ngIf="price && price.invalid && price.touched"><i class="validation">Please enter a valid amount.</i></span>
+                    <input type="text" class="form-control" id="courseFees" formControlName="courseFees" placeholder="Course Price">
+                    <span *ngIf="courseFees && courseFees.invalid && courseFees.touched"><i class="validation">Please enter a valid amount.</i></span>
                 </div>
                 <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="maxEnrollment" formControlName="maxEnrollment" placeholder="Maximum Enrollment">
-                    <span *ngIf="maxEnrollment&& maxEnrollment.invalid && maxEnrollment.touched"><i class="validation">Please enter a valid number.</i></span>
+                    <input type="text" class="form-control" id="enrollment" formControlName="enrollment" placeholder="Maximum Enrollment">
+                    <span *ngIf="enrollment&& enrollment.invalid && enrollment.touched"><i class="validation">Please enter a valid number.</i></span>
                 </div>
             </div>
-                <div class="form-group col-md-12">
-                    <input type="text" class="form-control" id="prerequisites" formControlName="prerequisites" placeholder="Prerequisites">
-                </div>
+                
                 <div class="d-flex">
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" id="prerequisites" formControlName="prerequisites" placeholder="Prerequisites">
+                    </div>
                 <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="instructor 
-          Name" formControlName="instructorName" placeholder="Instructor Name">
-          <span *ngIf="instructorName && instructorName.invalid && instructorName.touched"><i class="validation">Please enter a valid Course instructorName.</i></span>
+                    <input type="text" class="form-control" id="instructorsIds " formControlName="instructorsIds" placeholder="Instructor Name">
+          <span *ngIf="instructorsIds && instructorsIds.invalid && instructorsIds.touched"><i class="validation">Please enter a valid Course instructorName.</i></span>
                 </div>
-                <div class="form-group col-md-6">
+                <!-- <div class="form-group col-md-6">
                     <input class="form-control" type="text" id="instructorBio" formControlName="instructorBio" placeholder="Instructor Details">
                     <span *ngIf="instructorBio && instructorBio.invalid && instructorBio.touched"><i class="validation">Please enter some details about the instructor.</i></span>
-                </div>
+                </div> -->
             </div>
                 <div class="d-flex">
                     <div class="form-group col-md-4 ">
                         <label for="format" class="label">Course Format</label>
-                        <select class="form-control" id="format" formControlName="format" >
+                        <select class="form-control" id="courseFormat" formControlName="courseFormat" >
                             <option value="" selected>Select Course Format</option>
                             <option value="male">Online</option>
                             <option value="female">Offline</option>
                             <option value="other">Hybrid</option>
                           </select>
-                          <span *ngIf="format && format.invalid && format.touched"><i class="validation">Please select a valid Course format.</i></span>
+                          <span *ngIf="courseFormat && courseFormat.invalid && courseFormat.touched"><i class="validation">Please select a valid Course format.</i></span>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="startDate" class="label">Start Date</label>

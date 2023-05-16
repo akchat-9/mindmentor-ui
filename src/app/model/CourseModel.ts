@@ -9,4 +9,7 @@ export interface CourseModel {
   courseFormat: string;
   startDate: string;
   endDate: string;
+  organisationId: number;
+  courseCategoryId: number;
+  instructorsIds:number;
 }
