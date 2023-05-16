@@ -1,82 +1,22 @@
-export const teachers = [
-  {
-    id: 1,
-    name: 'Dr. Rajesh Sharma',
-  },
-  {
-    id: 2,
-    name: 'Prof. Swati Gupta',
-  },
-  {
-    id: 3,
-    name: 'Mr. Amit Singh',
-  },
-  {
-    id: 4,
-    name: 'Ms. Neha Verma',
-  },
-  {
-    id: 5,
-    name: 'Dr. Preeti Singh',
-  },
-  {
-    id: 6,
-    name: 'Prof. Rakesh Singh',
-  },
-  {
-    id: 7,
-    name: 'Ms. Shweta Choudhary',
-  },
-  {
-    id: 8,
-    name: 'Mr. Vikas Sharma',
-  },
-  {
-    id: 9,
-    name: 'Dr. Manoj Kumar',
-  },
-  {
-    id: 10,
-    name: 'Ms. Sunita Mishra',
-  },
-  {
-    id: 11,
-    name: 'Dr. Ajay Singh',
-  },
-  {
-    id: 12,
-    name: 'Ms. Anjali Gupta',
-  },
-  {
-    id: 13,
-    name: 'Mr. Sanjay Kumar',
-  },
-  {
-    id: 14,
-    name: 'Ms. Ritu Singh',
-  },
-  {
-    id: 15,
-    name: 'Dr. Suresh Verma',
-  },
-  {
-    id: 16,
-    name: 'Mr. Abhishek Sharma',
-  },
-  {
-    id: 17,
-    name: 'Ms. Meena Choudhary',
-  },
-  {
-    id: 18,
-    name: 'Dr. Anil Kumar',
-  },
-  {
-    id: 19,
-    name: 'Ms. Jyoti Singh',
-  },
-  {
-    id: 20,
-    name: 'Mr. Arvind Verma',
-  },
+export const instructors = [
+  { id: 1, firstName: 'Ravi', lastName: 'Sharma' },
+  { id: 2, firstName: 'Priya', lastName: 'Patel' },
+  { id: 3, firstName: 'Rajesh', lastName: 'Gupta' },
+  { id: 4, firstName: 'Naina', lastName: 'Khanna' },
+  { id: 5, firstName: 'Sanjay', lastName: 'Verma' },
+  { id: 6, firstName: 'Meera', lastName: 'Joshi' },
+  { id: 7, firstName: 'Deepak', lastName: 'Singhania' },
+  { id: 8, firstName: 'Aarti', lastName: 'Desai' },
+  { id: 9, firstName: 'Rohit', lastName: 'Malhotra' },
+  { id: 10, firstName: 'Shalini', lastName: 'Chatterjee' },
+  { id: 11, firstName: 'Anand', lastName: 'Kapoor' },
+  { id: 12, firstName: 'Pooja', lastName: 'Agrawal' },
+  { id: 13, firstName: 'Ajay', lastName: 'Bhatia' },
+  { id: 14, firstName: 'Nisha', lastName: 'Reddy' },
+  { id: 15, firstName: 'Vikram', lastName: 'Mehra' },
+  { id: 16, firstName: 'Neha', lastName: 'Sharma' },
+  { id: 17, firstName: 'Sameer', lastName: 'Rao' },
+  { id: 18, firstName: 'Shweta', lastName: 'Kapoor' },
+  { id: 19, firstName: 'Rahul', lastName: 'Choudhary' },
+  { id: 20, firstName: 'Sonali', lastName: 'Banerjee' },
 ];

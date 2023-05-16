@@ -39,7 +39,7 @@ export class CreateEditSessionsComponent {
       .subscribe((courses) => (this.courses = courses));
 
     this.commonService
-      .getAllTeachers()
+      .getAllInstrutors()
       .subscribe((teachers) => (this.teachers = teachers));
 
     this.route.params.subscribe((params) => {
