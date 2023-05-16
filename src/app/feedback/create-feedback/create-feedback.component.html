@@ -9,7 +9,7 @@
       </section>
       <form [formGroup]="coachingSessionForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <label for="teacher" class="table-title">Choose a Teacher...</label>
+          <!-- <label for="teacher" class="table-title">Choose a Teacher...</label> -->
           <select class="form-control   " id="teacher" formControlName="teacher">
             <option *ngFor="let teacher of teachers" [value]="teacher.id">
               {{ teacher.name }}
@@ -17,7 +17,6 @@
           </select>
           <label for="teacher" class="table-title">Rating</label>
           <select class="form-control " id="teacher" formControlName="rating">
-            <option [defaultSelected]="defaultSelected">Choose a rating...</option>
             <option>1</option>
             <option>2</option>
             <option>3</option>

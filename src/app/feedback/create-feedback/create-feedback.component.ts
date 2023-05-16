@@ -16,6 +16,7 @@ export class CreateFeedbackComponent {
   courses: any[] = [];
   teachers: any[] = [];
   defaultSelected='Rate your teacher...'
+selectedOption: any;
   constructor(
     private fb: FormBuilder,
     private scheduleService: ScheduleService,
