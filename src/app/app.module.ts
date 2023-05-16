@@ -31,6 +31,8 @@ import { CreateFeedbackComponent } from './feedback/create-feedback/create-feedb
 import { ViewFeedbackComponent } from './feedback/view-feedback/view-feedback.component';
 import { UserSettingsComponent } from './users/user-settings/user-settings.component';
 import { UserGroupsComponent } from './users/user-groups/user-groups.component';
+import { OrganisationComponent } from './organisation/organisation.component';
+import { SubscribersComponent } from './subscribers/subscribers.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +58,8 @@ import { UserGroupsComponent } from './users/user-groups/user-groups.component';
     ViewFeedbackComponent,
     UserSettingsComponent,
     UserGroupsComponent,
+    OrganisationComponent,
+    SubscribersComponent,
   ],
   imports: [
     BrowserModule,

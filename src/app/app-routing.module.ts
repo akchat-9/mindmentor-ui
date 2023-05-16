@@ -21,12 +21,22 @@ import { CreateFeedbackComponent } from './feedback/create-feedback/create-feedb
 import { ViewFeedbackComponent } from './feedback/view-feedback/view-feedback.component';
 import { UserSettingsComponent } from './users/user-settings/user-settings.component';
 import { UserGroupsComponent } from './users/user-groups/user-groups.component';
+import { OrganisationComponent } from './organisation/organisation.component';
+import { SubscribersComponent } from './subscribers/subscribers.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {
     path: 'dashboard',
     component: DashboardComponent,
+  },
+  {
+    path: 'organisation',
+    component: OrganisationComponent,
+  },
+  {
+    path: 'subscribers',
+    component: SubscribersComponent,
   },
   {
     path: 'courses',

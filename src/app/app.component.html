@@ -55,7 +55,44 @@
             </div>
         </div>
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+            <ul 
+            class="nav nav-pills nav-sidebar flex-column" 
+            data-widget="treeview" 
+            role="menu" 
+            data-accordion="false"
+            *ngIf="IsSuperAdmin"
+            >
+
+                <li class="nav-item ">
+                    <a routerLink="/dashboard" class="nav-link">
+                        <i class="nav-icon fa fa-tachometer-alt"></i>
+                        <p>
+                            Dashboard
+                        </p>
+                    </a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a routerLink="/organisation" class="nav-link">
+                        <i class="nav-icon fas fa-sitemap"></i>
+                        <p>
+                            Organisation
+                        </p>
+                    </a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a routerLink="/subscribers" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Subscribers
+                        </p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false"
+            *ngIf="!IsSuperAdmin">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item " [ngClass]="{'menu-active': activeMenu === 'dashboard'}">
