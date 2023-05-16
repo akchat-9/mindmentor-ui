@@ -31,6 +31,7 @@ import { CreateFeedbackComponent } from './feedback/create-feedback/create-feedb
 import { ViewFeedbackComponent } from './feedback/view-feedback/view-feedback.component';
 import { UserSettingsComponent } from './users/user-settings/user-settings.component';
 import { UserGroupsComponent } from './users/user-groups/user-groups.component';
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +68,7 @@ import { UserGroupsComponent } from './users/user-groups/user-groups.component';
     FullCalendarModule,
     NgxStarRatingModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
