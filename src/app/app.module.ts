@@ -33,6 +33,7 @@ import { UserSettingsComponent } from './users/user-settings/user-settings.compo
 import { UserGroupsComponent } from './users/user-groups/user-groups.component';
 import { OrganisationComponent } from './organisation/organisation.component';
 import { SubscribersComponent } from './subscribers/subscribers.component';
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +72,7 @@ import { SubscribersComponent } from './subscribers/subscribers.component';
     FullCalendarModule,
     NgxStarRatingModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -7,6 +7,7 @@ import { CoursesViewModel } from 'src/app/ViewModel/CoursesViewModel';
 import { UsersDDLViewModel } from 'src/app/ViewModel/UsersDDLViewModel';
 import { CommonService } from 'src/app/_services/common.service';
 import { CoursesService } from 'src/app/_services/courses.service';
+import { CourseModel } from 'src/app/model/CourseModel';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -18,6 +19,7 @@ export class CreateCoursesComponent {
   courseForm!: FormGroup;
   categoryList!: CategoryViewModel[];
   instructorList!: UsersDDLViewModel[];
+  courseDetails!: CourseModel;
   constructor(
     private formBuilder: FormBuilder,
     private courseService: CoursesService,
@@ -28,14 +30,15 @@ export class CreateCoursesComponent {
     this.courseForm = this.formBuilder.group({
       courseName: ['', Validators.required],
       courseCategoryId: [null, Validators.required],
-      // description: ['', Validators.required],
-      courseDuration: ['', [Validators.required, Validators.pattern('[0-9]+$')]],
+      courseDescription: ['', Validators.required],
+      courseDuration: [
+        '',
+        [Validators.required, Validators.pattern('[0-9]+$')],
+      ],
       courseFormat: ['', Validators.required],
       courseLevel: ['', Validators.required],
       prerequisites: [''],
       instructorsIds: [null, Validators.required],
-      // instructorBio: ['', Validators.required],
-      // materials: [''],
       courseFees: ['', [Validators.required, Validators.pattern('[0-9]+$')]],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
@@ -60,9 +63,12 @@ export class CreateCoursesComponent {
     console.log(this.courseForm.value);
 
     if (this.courseForm.valid) {
+      this.courseDetails = this.courseForm.value;
+      this.courseDetails.organisationId = 1;
+      console.log('courseDetails --- component ', this.courseDetails);
       this.courseService.saveCourse(this.courseForm.value).subscribe({
         next: (v) => {
-          Swal.fire('Success!', 'Course created successfully', 'success');
+          Swal.fire('Success!', v, 'success');
         },
         error: (e) => console.log(e),
       });

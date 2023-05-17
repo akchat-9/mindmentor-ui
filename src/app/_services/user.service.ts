@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, catchError, of, throwError } from 'rxjs';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+  HttpResponse,
+} from '@angular/common/http';
 import { Menu } from '../model/MenuModel';
 import { UsersViewModel } from '../ViewModel/UsersViewModel';
 import { users } from '../FakeDb/Users';
@@ -19,20 +24,31 @@ const API_URL = 'http://localhost:5000/api';
 export class UserService {
   constructor(private http: HttpClient) {}
 
-  getPublicContent(): Observable<any> {
-    return this.http.get(API_URL + 'all', { responseType: 'text' });
+  // getPublicContent(): Observable<any> {
+  //   return this.http.get(API_URL + 'all', { responseType: 'text' });
+  // }
+
+  // getUserBoard(): Observable<any> {
+  //   return this.http.get(API_URL + 'user', { responseType: 'text' });
+  // }
+
+  // getModeratorBoard(): Observable<any> {
+  //   return this.http.get(API_URL + 'mod', { responseType: 'text' });
+  // }
+
+  // getAdminBoard(): Observable<any> {
+  //   return this.http.get(API_URL + 'admin', { responseType: 'text' });
+  // }
+
+  private handleResponse(response: HttpResponse<any>): any {
+    console.log('API call successful');
+    console.log(response.body); // Response body
+    return response.body; // Return the validated response data to the component
   }
 
-  getUserBoard(): Observable<any> {
-    return this.http.get(API_URL + 'user', { responseType: 'text' });
-  }
-
-  getModeratorBoard(): Observable<any> {
-    return this.http.get(API_URL + 'mod', { responseType: 'text' });
-  }
-
-  getAdminBoard(): Observable<any> {
-    return this.http.get(API_URL + 'admin', { responseType: 'text' });
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    console.log('API call error');
+    return throwError(() => error);
   }
 
   getUsers(): Observable<UsersViewModel[]> {
@@ -63,5 +79,20 @@ export class UserService {
 
   getUserById(id: number): Observable<UserViewModel> {
     return this.http.get<UserViewModel>(API_URL + `get/${id}`);
+  }
+
+  saveUser(userDetail: UserModel) {
+    console.log('UserDetails:: ', userDetail);
+    return this.http
+      .post<any>(
+        'http://localhost:5000/api/course/create?organisationId=1&courseCategoryId=1&instructorIds=1',
+        userDetail,
+        { observe: 'response' }
+      )
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          return this.handleError(error);
+        })
+      );
   }
 }

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { StateDDLViewModel } from 'src/app/ViewModel/StateDDLViewModel';
+import { CommonService } from 'src/app/_services/common.service';
 import { UserService } from 'src/app/_services/user.service';
 import Swal from 'sweetalert2';
 
@@ -11,10 +13,12 @@ import Swal from 'sweetalert2';
 })
 export class CreateUsersComponent {
   registrationForm!: FormGroup;
-
+  stateList!: StateDDLViewModel[];
+  cityList!: StateDDLViewModel[];
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
+    private commonService: CommonService,
     private router: Router
   ) {}
 
@@ -27,16 +31,25 @@ export class CreateUsersComponent {
       address: ['', Validators.required],
       gender: ['', Validators.required],
       dateOfBirth: ['', Validators.required],
-      // occupation: ['', Validators.required],
-      // educationLevel: ['', Validators.required],
-      // coachingProgram: ['', Validators.required],
+      stateId: [null, Validators.required],
+      cityId: [null, Validators.required],
       joiningDate: ['', Validators.required],
-      userName: ['', Validators.required],
       role: ['', Validators.required],
-      // emergencyContactName: ['', Validators.required],
-      // emergencyContactPhone: ['', Validators.required],
-      // healthInformation: [''],
-      // priorCoachingExperience: [''],
+    });
+
+    this.getStates();
+    this.getCities();
+  }
+
+  getStates() {
+    this.commonService.getStates().subscribe((states) => {
+      this.stateList = states;
+    });
+  }
+
+  getCities() {
+    this.commonService.getCity().subscribe((cities) => {
+      this.cityList = cities;
     });
   }
 
@@ -54,6 +67,12 @@ export class CreateUsersComponent {
   }
   get address() {
     return this.registrationForm.get('address');
+  }
+  get stateId() {
+    return this.registrationForm.get('stateId');
+  }
+  get cityId() {
+    return this.registrationForm.get('cityId');
   }
   get gender() {
     return this.registrationForm.get('gender');
