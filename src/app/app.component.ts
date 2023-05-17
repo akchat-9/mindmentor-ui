@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { LocalStorageService } from './_services/local-storage.service';
 import { Menu } from './model/MenuModel';
@@ -28,10 +28,12 @@ export class AppComponent {
   screenHeight!: number;
   screenWidth!: number;
 
+  IsSuperAdmin: boolean = false;
+
   constructor(
     private userService: UserService,
     private storage: LocalStorageService,
-    private scheduleServive:ScheduleService,
+    private scheduleServive: ScheduleService,
     private router: Router
   ) {
     this.getScreenSize();
@@ -50,6 +52,13 @@ export class AppComponent {
     } else {
       this.isLoggedIn = true;
       this.router.navigate(['/dashboard']);
+    }
+
+    const user = this.storage.getUser();
+    this.userRole = user.roles[0].roleName;
+    if (this.userRole == 'superAdmin') {
+      this.IsSuperAdmin = true;
+      console.log(this.IsSuperAdmin);
     }
 
     this.router.events.subscribe((event) => {
@@ -89,9 +98,8 @@ export class AppComponent {
     this.activeMenu = menuName;
     this.activeSubmenu = undefined;
   }
-  
+
   setActiveSubmenu(submenuName: string): void {
     this.activeSubmenu = submenuName;
   }
-  
 }
