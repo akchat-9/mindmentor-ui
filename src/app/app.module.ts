@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DataTablesModule } from 'angular-datatables';
 import { FullCalendarModule } from '@fullcalendar/angular';
-import { NgxStarRatingModule } from "ngx-star-rating";
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './AuthComponents/login/login.component';
@@ -71,10 +70,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     DataTablesModule,
     FullCalendarModule,
-    NgxStarRatingModule,
     NgbModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

@@ -1,15 +1,15 @@
 export interface CourseModel {
+  organisationId: number;
   courseName: string;
+  courseCategoryId: number;
   courseDescription: string;
-  courseDuration: string;
+  courseDuration: number;
   courseLevel: string;
-  courseFees: string;
-  enrollment: string;
+  courseFees: number;
+  enrollment: number;
   prerequisites: string;
+  instructorIds: number[];
   courseFormat: string;
   startDate: string;
   endDate: string;
-  organisationId: number;
-  courseCategoryId: number;
-  instructorsIds: number;
 }

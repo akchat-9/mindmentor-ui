@@ -17,7 +17,7 @@ export class CourseSettingsComponent {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private courseService: CoursesService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.courseForm = this.formBuilder.group({
@@ -37,24 +37,24 @@ export class CourseSettingsComponent {
       enrollment: ['', [Validators.required, Validators.pattern('[0-9]+$')]],
     });
 
-    this.route.params.subscribe((params) => {
-      if (params['id']) {
-        const courseId = params['id'];
-        console.log(courseId);
-        // this.course = this.courseService.getCoursesById(courseId);
-        if (this.course != null) {
-          this.courseForm.patchValue({
-            courseName: this.course.courseName,
-            courseCategoryId: this.course.courseCategoryId,
-            courseDuration: this.course.courseDuration,
-            courseFormat: this.course.courseFormat,
-            courseLevel: this.course.courseLevel,
-            instructorsIds: this.course.instructorsIds,
-            courseFees: this.course.courseFees,
-          });
-        }
-      }
-    });
+    // this.route.params.subscribe((params) => {
+    //   if (params['id']) {
+    //     const courseId = params['id'];
+    //     console.log(courseId);
+    //     // this.course = this.courseService.getCoursesById(courseId);
+    //     if (this.course != null) {
+    //       this.courseForm.patchValue({
+    //         courseName: this.course.courseName,
+    //         courseCategoryId: this.course.courseCategoryId,
+    //         courseDuration: this.course.courseDuration,
+    //         courseFormat: this.course.courseFormat,
+    //         courseLevel: this.course.courseLevel,
+    //         instructorsIds: this.course.instructorsIds,
+    //         courseFees: this.course.courseFees,
+    //       });
+    //     }
+    //   }
+    // });
   }
 
   get courseName() {

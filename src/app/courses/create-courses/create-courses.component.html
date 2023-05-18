@@ -76,13 +76,13 @@
                             placeholder="Prerequisites" />
                     </div>
                     <div class="form-group col-md-6">
-                        <select class="form-control" id="instructorsIds" formControlName="instructorsIds">
+                        <select class="form-control" id="instructorIds" formControlName="instructorIds">
                             <option [ngValue]="null" disabled selected>Choose a instructor...</option>
                             <option *ngFor="let instructor of instructorList" value={{instructor.id}}>
                                 {{instructor.firstName }} {{instructor.lastName }}
                             </option>
                         </select>
-                        <span *ngIf="instructorsIds && instructorsIds.invalid && instructorsIds.touched
+                        <span *ngIf="instructorIds && instructorIds.invalid && instructorIds.touched
               "><i class="validation">Please enter a valid Course instructorName.</i></span>
                     </div>
                     <!-- <div class="form-group col-md-6">
