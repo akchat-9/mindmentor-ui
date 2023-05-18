@@ -1,2 +1,109 @@
-/* @import 'node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css';
-@import 'node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css'; */
+.container-fluid {
+  padding: 1rem 1.5rem 0;
+}
+.card {
+  height: 85vh;
+  padding: 0.2rem 0.6rem;
+  overflow-y: hidden;
+  position: relative;
+}
+.card-body-custom::-webkit-scrollbar {
+  width: 0.2em;
+}
+.card-header {
+  position: sticky;
+  top: 0;
+  padding: 0.5rem 1.85rem;
+}
+.card-body-custom {
+  position: relative;
+  overflow-y: scroll;
+  padding: 0.2rem 0.5rem;
+}
+.info-box {
+  background-color: #f9f9f9;
+}
+.dropdown-menu {
+  min-width: 5rem;
+  left: -10.5px;
+}
+.instructor-name {
+  font-weight: 800;
+  font-size: 14px;
+}
+.feedback-row {
+  margin: 10px 0px;
+  /* border: 2px solid blue; */
+  /* background: white; */
+}
+.container {
+  /* background: yellow; */
+  padding: 1.3rem;
+}
+
+.table-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.para-txt {
+  font-size: 12.5px;
+}
+.table-heading {
+  display: flex;
+  font-weight: 800;
+  font-size: 16px;
+}
+p {
+  margin-bottom: 0.3rem;
+}
+.table-heading:nth-child(1) {
+  justify-content: start;
+}
+.col-1 {
+  text-align: center;
+}
+
+.review-heading {
+  justify-content: start;
+}
+.btn {
+  background-color: white;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.125), 0 1px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 0.25rem;
+  font-weight: 600;
+  font-size: 14.5px;
+}
+/* .star {
+  font-size: 20px;
+  color: gray;
+}
+
+.star.filled {
+  color: gold;
+}
+
+.color5 {
+  color: red;
+}
+
+.color4 {
+  color: orange;
+} */
+
+i {
+  font-size: 1.5rem;
+  padding-right: 0.1rem;
+  color: #b0c4de;
+}
+.filled {
+  color: #1e90ff;
+}
+.low {
+  color: #deb0b0;
+}
+.filled.low {
+  color: #ff1e1e;
+}
+
+/* Add similar classes for other rating values */

@@ -50,7 +50,7 @@ export class OrganisationComponent {
     });
   }
   getAllInstrutors() {
-    this.commonService.getAllInstrutors().subscribe((instructors) => {
+    this.commonService.getAllInstructors().subscribe((instructors) => {
       this.instructorList = instructors;
     });
   }

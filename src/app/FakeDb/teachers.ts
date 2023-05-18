@@ -1,5 +1,5 @@
 export const instructors = [
-  { id: 1, firstName: 'Ravi', lastName: 'Sharma' },
+  { id: 1, firstName: 'Debabrata', lastName: 'Barik' },
   { id: 2, firstName: 'Priya', lastName: 'Patel' },
   { id: 3, firstName: 'Rajesh', lastName: 'Gupta' },
   { id: 4, firstName: 'Naina', lastName: 'Khanna' },

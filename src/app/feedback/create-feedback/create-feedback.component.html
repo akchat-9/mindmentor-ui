@@ -1,96 +1,51 @@
-<div class="container-fluid">
-  <div class="box">
-    <div _ngcontent-rnq-c3="" class="box-header with-border">
-      <h3 _ngcontent-rnq-c3="" class="box-title py-2">
-        Rate Teacher's Performance
-      </h3>
+<!-- <div class="container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2>Review</h2>
+      </div>
+      <div class="col">
+        <h2>Course</h2>
+      </div>
+      <div class="col">
+        <h2>Rating</h2>
+      </div>
+      <div class="col">
+        <h2>Details</h2>
+      </div>
+      <div class="col">
+        <h2>Action</h2>
+      </div>
     </div>
-    <div class="card card-primary card-outline p-2">
-      <section class="content-header">
-        <!-- <h5>Rate Teacher's Performance</h5> -->
-      </section>
-      <!-- <form [formGroup]="coachingSessionForm" (ngSubmit)="onSubmit()">
-        <div class="form-group row">
-          <div class="form-group col-md-4">
-            <label for="teacher" class="table-title">Teacher</label>
-            <select class="form-control" id="teacher" formControlName="teacher" [(ngModel)]="selectedOption">
-              <option class="" disabled selected value="undefined">
-                Choose a teacher...
-              </option>
-              <option *ngFor="let teacher of teachers" [value]="teacher.id">
-                {{ teacher.name }}
-              </option>
-            </select>
-          </div>
-          <div class="form-group col-md-4">
-            <label for="course" class="table-title">Course</label>
-            <select
-              class="form-control"
-              id="course"
-              formControlName="course"
-              [(ngModel)]="selectedOption1"
-            >
-              <option class="" disabled selected value="undefined">
-                Choose a course...
-              </option>
-              <option *ngFor="let course of courses" [value]="course.id">
-                {{ course.name }}
-              </option>
-            </select>
-          </div>
-          <div class="form-group col-md-4">
-            <label for="rating" class="table-title">Rating</label>
-            <ngx-star-rating
-              id="rating"
-              formControlName="rating"
-            ></ngx-star-rating>
-          </div>
-          <div class="form-group col-md-12">
-            <label for="teacher" class="table-title">Feedback</label>
-            <textarea
-              class="form-control"
-              id="description"
-              formControlName="feedback"
-              placeholder="Give your Feedback"
-            ></textarea>
-          </div>
-        </div>
-        <div class="d-flex justify-content-end">
-          <button type="submit" class="btn btn-primary ml-2">Add</button>
+  
+    <div class="row" *ngFor="let review of teacherReviews">
+      <div class="col">
+        <h4>{{ review.teacherName }}</h4>
+        <p>{{ review.reviewDescription }}</p>
+      </div>
+      <div class="col">{{ review.course }}</div>
+      <div class="col">
+        <span class="stars">{{ review.rating }}</span>
+      </div>
+      <div class="col">
+        <button class="btn btn-primary" (click)="openModal(review)">Details</button>
+      </div>
+      <div class="col">
+        <div class="dropdown">
           <button
+            class="btn btn-secondary dropdown-toggle"
             type="button"
-            class="btn btn-danger ml-2"
-            (click)="onCancel()"
+            data-toggle="dropdown"
           >
-            Cancel
+            Action
           </button>
-        </div>
-      </form> -->
-
-      <!-- <div class="card card-primary card-outline p-2"> -->
-        <div class="row">
-          <div class="col-md-4" *ngFor="let teacher of teachers" >
-            <div class="info-box d-flex align-items-center" >
-              <!-- <div class="info-box-icon bg-green ml-1" style="height: 4rem">
-                <i class="fa fa-book"></i>
-              </div> -->
-              <div class="info-box-content ml-4">
-                <span class="info-box-text">{{ teacher.firstName }} {{ teacher.lastName }}</span>
-                <!-- <span class="info-box-number"
-                  >Total Strength: {{ teacher.courses.length }}</span
-                > -->
-                <!-- <div>
-                  <a [routerLink]="['/courses/all', teacher.firstName]">View All</a>
-                </div> -->
-                <ngx-star-rating
-              id="rating"
-              formControlName="rating"
-            ></ngx-star-rating>
-              </div>
-            </div>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" (click)="openCreateModal(review)">Create</a>
+            <a class="dropdown-item" (click)="deleteFeedback(review)">Delete</a>
           </div>
         </div>
-      <!-- </div> -->
+      </div>
     </div>
   </div>
-</div>
+  
+</div> -->

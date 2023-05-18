@@ -24,7 +24,7 @@ export class CreateCoursesComponent {
     private formBuilder: FormBuilder,
     private courseService: CoursesService,
     private commonService: CommonService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.courseForm = this.formBuilder.group({
@@ -45,7 +45,7 @@ export class CreateCoursesComponent {
       enrollment: ['', [Validators.required, Validators.pattern('[0-9]+$')]],
     });
     this.getAllCategories();
-    this.getAllInstrutors();
+    this.getAllInstructors();
   }
 
   getAllCategories() {
@@ -53,8 +53,8 @@ export class CreateCoursesComponent {
       this.categoryList = categories;
     });
   }
-  getAllInstrutors() {
-    this.commonService.getAllInstrutors().subscribe((instructors) => {
+  getAllInstructors() {
+    this.commonService.getAllInstructors().subscribe((instructors) => {
       this.instructorList = instructors;
     });
   }
@@ -66,11 +66,11 @@ export class CreateCoursesComponent {
       this.courseDetails = this.courseForm.value;
       this.courseDetails.organisationId = 1;
       console.log('courseDetails --- component ', this.courseDetails);
-      this.courseService.saveCourse(this.courseForm.value).subscribe({
-        next: (v) => {
-          Swal.fire('Success!', v, 'success');
-        },
-        error: (e) => console.log(e),
+      this.courseService.saveCourse(this.courseForm.value).subscribe(response => {
+        console.log(response.status)
+        if (response.status === 201) {
+          Swal.fire('Success!', 'Course created successfully', 'success')
+        }
       });
     }
   }

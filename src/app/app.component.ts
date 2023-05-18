@@ -33,7 +33,7 @@ export class AppComponent {
   constructor(
     private userService: UserService,
     private storage: LocalStorageService,
-    private scheduleServive: ScheduleService,
+    private scheduleService: ScheduleService,
     private router: Router
   ) {
     this.getScreenSize();
@@ -77,7 +77,7 @@ export class AppComponent {
 
         // console.log(this.margin)
         // console.log(this.roles);
-        this.scheduleServive
+        this.scheduleService
           .getMenuByRole(this.roles.roleName)
           .subscribe((menulist) => {
             this.menuList = menulist;

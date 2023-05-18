@@ -34,6 +34,7 @@ import { UserGroupsComponent } from './users/user-groups/user-groups.component';
 import { OrganisationComponent } from './organisation/organisation.component';
 import { SubscribersComponent } from './subscribers/subscribers.component';
 import { DatePipe } from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +71,8 @@ import { DatePipe } from '@angular/common';
     HttpClientModule,
     DataTablesModule,
     FullCalendarModule,
-    NgxStarRatingModule
+    NgxStarRatingModule,
+    NgbModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],

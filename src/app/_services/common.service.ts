@@ -17,7 +17,7 @@ export class CommonService {
     return of(CoursesSelectData);
   }
 
-  getAllInstrutors(): Observable<UsersDDLViewModel[]> {
+  getAllInstructors(): Observable<UsersDDLViewModel[]> {
     return of(instructors);
   }
 

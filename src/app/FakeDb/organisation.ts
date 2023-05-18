@@ -1,0 +1,22 @@
+export const orgs = [
+    { id: 1, name: 'SuccessMasters Academy' },
+    { id: 2, name: 'BrightEdge Coaching Centre' },
+    { id: 3, name: 'EduPro Tutorials' },
+    { id: 4, name: 'Achievers Institute' },
+    { id: 5, name: 'KnowledgeHub Coaching' },
+    { id: 6, name: 'EliteGurus Academy' },
+    { id: 7, name: 'TalentMax Tutorials' },
+    { id: 8, name: 'WisdomQuest Institute' },
+    { id: 9, name: 'SkillBuilders Coaching Centre' },
+    { id: 10, name: 'LearnSmart Academy' },
+    { id: 11, name: 'ProdigyMinds Tutorials' },
+    { id: 12, name: 'ExcelCoaches Institute' },
+    { id: 13, name: 'MentorMinds Coaching' },
+    { id: 14, name: 'GeniusZone Academy' },
+    { id: 15, name: 'Insightful Scholars Tutorials' },
+    { id: 16, name: 'VisionaryLearn Coaching Centre' },
+    { id: 17, name: 'ApexAcademy Institute' },
+    { id: 18, name: 'AchievePlus Tutorials' },
+    { id: 19, name: 'CareerCrafters Academy' },
+    { id: 20, name: 'ExpertEdge Coaching Centre' }
+];

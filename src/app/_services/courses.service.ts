@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { courses } from '../FakeDb/courses';
-import { Observable, catchError, of, throwError, map } from 'rxjs';
-// import { map } from 'rxjs/operator';
+import { Observable, catchError, of, throwError } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { CoursesViewModel } from '../ViewModel/CoursesViewModel';
 import { categories } from '../FakeDb/categories';
 import { CategoryViewModel } from '../ViewModel/CategoryViewModel';
@@ -22,7 +22,7 @@ import { CourseSettingsComponent } from '../courses/course-settings/course-setti
 export class CoursesService {
   private staticCourses: CoursesViewModel[] = courses;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   getUsers(): Observable<CoursesViewModel[]> {
     return of(this.staticCourses);
   }
@@ -65,20 +65,10 @@ export class CoursesService {
     console.log(courseApiModel);
     return this.http
       .post<any>(
-        `http://localhost:5000/api/course/create?organisationId=${courseDetails.organisationId}&courseCategoryId=${courseDetails.courseCategoryId}&instructorIds=1`,
+        // `http://localhost:5000/api/course/create?organisationId=${courseDetails.organisationId}&courseCategoryId=${courseDetails.courseCategoryId}&instructorIds=1`,
+        `http://localhost:5000/api/course/create?organisationId=1&courseCategoryId=1&instructorIds=1`,
         courseApiModel,
         { observe: 'response' }
-      )
-      .pipe(
-        map((response: HttpResponse<any>) => {
-          // Handle the success condition here
-          return response.body.text;
-        }),
-        catchError((error: HttpErrorResponse) => {
-          console.error('Error creating course:', error);
-          // Handle the error condition appropriately
-          throw error; // Rethrow the error if needed
-        })
       );
   }
 }

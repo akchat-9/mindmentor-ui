@@ -1,13 +1,61 @@
-<!-- <owl-carousel-o [options]="carouselOptions">
-  <ng-container *ngFor="let testimonial of testimonials">
-    <div class="item">
-      <div class="testimonial">
-        <p class="text">{{testimonial.text}}</p>
-        <div class="testimonial-info">
-          <h4 class="name">{{testimonial.name}}</h4>
-          <span class="designation">{{testimonial.designation}}</span>
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-header row">
+      <div class="col-7 table-col review-heading">
+        <p class="table-heading">Review</p>
+      </div>
+      <div class="col-1 table-col">
+        <p class="table-heading">Course</p>
+      </div>
+      <div class="col-2 table-col">
+        <button class="btn" (click)="sortByRating()">
+          Sort
+          <span *ngIf="sortDirection === 'asc'">&#8593;</span> <!-- Ascending icon -->
+          <span *ngIf="sortDirection === 'desc'">&#8595;</span> <!-- Descending icon -->
+        </button>
+      </div>
+      <div class="col-1 table-col">
+        <p class="table-heading">Details</p>
+      </div>
+      <div class="col-1 table-col">
+        <p class="table-heading">Action</p>
+      </div>
+    </div>
+    <div class="card-body-custom">
+
+      <div class="row feedback-row info-box card-body" *ngFor="let feedback of feedbackList">
+        <div class="col-7 table-col">
+          <div class="review-col">
+            <p class="instructor-name">{{ feedback.instructorName }}</p>
+            <p class="para-txt">{{ feedback.review }}</p>
+          </div>
+        </div>
+        <div class="col-1 table-col para-txt">{{ feedback.courseName }}</div>
+        <div class="col-2 table-col">
+          <!-- <span class="stars">{{ feedback.rating }}</span> -->
+          <ngb-rating [max]="5" [(rate)]="feedback.rating" [readonly]="false">
+            <ng-template let-fill="fill">
+              <span class="star color{{feedback.rating}}" [class.filled]="fill === 100">&#9733;</span>
+            </ng-template>
+          </ngb-rating>
+        </div>
+        <div class="col-1 table-col">
+          <button class="btn">Details</button>
+        </div>
+        <div class="col-1 table-col">
+          <div class="dropdown">
+            <button class="btn" type="button" data-toggle="dropdown">
+              <i class="fas fa-ellipsis-v"></i>
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item">Create</a>
+              <a class="dropdown-item">Delete</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </ng-container>
-</owl-carousel-o> -->
+
+  </div>
+
+</div>
