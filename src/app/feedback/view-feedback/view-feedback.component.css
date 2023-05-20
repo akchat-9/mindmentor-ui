@@ -6,6 +6,7 @@
   padding: 0.2rem 0.6rem;
   overflow-y: hidden;
   position: relative;
+  /* padding-bottom: 3.1rem; */
 }
 .card-body-custom::-webkit-scrollbar {
   width: 0.2em;
@@ -74,6 +75,9 @@ p {
   font-weight: 600;
   font-size: 14.5px;
 }
+.ngx-pagination {
+  padding-bottom: 3.1rem;
+}
 /* .star {
   font-size: 20px;
   color: gray;
@@ -106,4 +110,9 @@ i {
   color: #ff1e1e;
 }
 
+.card-footer-custom {
+  position: absolute;
+  bottom: 9px;
+  right: 16px;
+}
 /* Add similar classes for other rating values */

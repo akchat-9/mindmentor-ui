@@ -10,7 +10,7 @@ import { Menu } from '../model/MenuModel';
 import { UsersViewModel } from '../ViewModel/UsersViewModel';
 import { users } from '../FakeDb/Users';
 import { UserModel } from '../model/UserModel';
-import { CoursesViewModel } from '../ViewModel/CoursesViewModel';
+import { CourseListViewModel } from '../ViewModel/CourseListViewModel';
 import { UserViewModel } from '../ViewModel/UserViewModel';
 
 const API_URL = 'http://localhost:5000/api';

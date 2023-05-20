@@ -12,13 +12,20 @@ export class ViewFeedbackComponent {
 
   feedbackList!: FeedbackViewModel[];
   sortDirection: 'asc' | 'desc' = 'asc';
+  currentPage = 1;
+  itemsPerPage = 10;
+  totalItems = 0;
   constructor(private feedbackService: FeedbackService) { }
   ngOnInit() {
     this.getAllFeedback();
   }
+  onPageChange(event: any): void {
+    this.currentPage = event;
+  }
   getAllFeedback() {
     this.feedbackService.getAllFeedbacks().subscribe(feedbacks => {
       this.feedbackList = feedbacks
+      this.totalItems = this.feedbackList.length;
     })
   }
 

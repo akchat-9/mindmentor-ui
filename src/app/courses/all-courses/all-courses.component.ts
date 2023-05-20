@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { DataTablesModule, DataTableDirective } from 'angular-datatables';
 import { CoursesService } from 'src/app/_services/courses.service';
-import { CoursesViewModel } from 'src/app/ViewModel/CoursesViewModel';
+import { CourseListViewModel } from 'src/app/ViewModel/CourseListViewModel';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/_services/local-storage.service';
 @Component({
@@ -15,21 +15,36 @@ export class AllCoursesComponent {
   dtElement!: DataTableDirective;
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
-  courses!: CoursesViewModel[];
+  courseList!: CourseListViewModel[];
   category: string = '';
   userRole: string = '';
   IsAdminTeacher: boolean = false;
+  organisationId: number = 1;
   constructor(
     private courseService: CoursesService,
     private route: ActivatedRoute,
     private router: Router,
     private storage: LocalStorageService
-  ) {}
+  ) { }
   ngOnInit(): void {
-    this.courseService.getUsers().subscribe((courses) => {
-      this.courses = courses;
-      this.dtTrigger.next(true);
-    });
+    // this.courseService.getUsers().subscribe((courses) => {
+    //   this.courses = courses;
+    //   this.dtTrigger.next(true);
+    // });
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10,
+      processing: true,
+      searching: true,
+    };
+
+    this.courseService.getCourseList(this.organisationId).subscribe(response => {
+      if (response.statusCode === 200) {
+        console.log(response);
+        this.courseList = response.data;
+        this.dtTrigger.next(true);
+      }
+    })
     const user = this.storage.getUser();
     this.userRole = user.roles[0].roleName;
     console.log(this.userRole)

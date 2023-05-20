@@ -18,26 +18,20 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let course of courses">
-            <td>{{ course.name }}</td>
-            <td>{{ course.duration }}</td>
-            <td>{{ course.level }}</td>
-            <td>{{ course.category }}</td>
-            <td>{{ course.instructor }}</td>
-            <td>{{ course.format }}</td>
-            <td>{{ course.fee | currency }}</td>
+          <tr *ngFor="let course of courseList">
+            <td>{{ course.courseName }}</td>
+            <td>{{ course.courseDuration }}</td>
+            <td>{{ course.courseLevel }}</td>
+            <td>{{ course.courseCategoryName }}</td>
+            <td>{{ course.instructorName[0] }}</td>
+            <td>{{ course.courseFormat }}</td>
+            <td>{{ course.courseFee | currency }}</td>
             <td *ngIf="IsAdminTeacher">
-              <a
-                class="btn bg-gradient-success btn-sm mr-2"
-                (click)="editCourses(course.id)"
-                ><i class="fas fa-edit"></i
-              ></a>
+              <a class="btn bg-gradient-success btn-sm mr-2" (click)="editCourses(course.courseId)"><i
+                  class="fas fa-edit"></i></a>
 
-              <a
-                class="btn bg-gradient-danger btn-sm"
-                (click)="editCourses(course.id)"
-                ><i class="fas fa-trash"></i
-              ></a>
+              <a class="btn bg-gradient-danger btn-sm" (click)="editCourses(course.courseId)"><i
+                  class="fas fa-trash"></i></a>
             </td>
           </tr>
         </tbody>

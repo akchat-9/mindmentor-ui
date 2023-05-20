@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { sessions } from '../FakeDb/Sessions';
 import { AllSessionsViewModel } from '../ViewModel/AllSessionsViewModel';
 import { allsessions } from '../FakeDb/allsessions';
-import { CoursesViewModel } from '../ViewModel/CoursesViewModel';
+import { CourseListViewModel } from '../ViewModel/CourseListViewModel';
 import { CoachingSessionModel } from '../model/CoachingSessionModel';
 import { Menu } from '../model/MenuModel';
 

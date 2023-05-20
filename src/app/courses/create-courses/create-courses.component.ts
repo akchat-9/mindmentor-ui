@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { instructors } from 'src/app/FakeDb/teachers';
 import { CategoryViewModel } from 'src/app/ViewModel/CategoryViewModel';
-import { CoursesViewModel } from 'src/app/ViewModel/CoursesViewModel';
+import { CourseListViewModel } from 'src/app/ViewModel/CourseListViewModel';
 import { UsersDDLViewModel } from 'src/app/ViewModel/UsersDDLViewModel';
 import { CommonService } from 'src/app/_services/common.service';
 import { CoursesService } from 'src/app/_services/courses.service';
@@ -79,8 +79,9 @@ export class CreateCoursesComponent {
     }
     console.log('courseDetails --- component ', courseDetails);
     this.courseService.saveCourse(courseDetails).subscribe((response) => {
-      console.log('component response : ',response.status);
-      if (response.status === 201) {
+      const responseBody = response.body;
+      console.log('component response : ', response);
+      if (response.statusCode === 201) {
         Swal.fire('Success!', 'Course created successfully', 'success');
       }
     });

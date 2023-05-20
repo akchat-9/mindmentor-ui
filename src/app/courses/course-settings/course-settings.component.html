@@ -59,10 +59,10 @@
                     <div class="form-group col-md-4 ">
                         <label for="format" class="label">Course Format</label>
                         <select class="form-control" id="courseFormat" formControlName="courseFormat" >
-                            <option value="" selected>Select Course Format</option>
-                            <option value="male">Online</option>
-                            <option value="female">Offline</option>
-                            <option value="other">Hybrid</option>
+                            <option [ngValue]="null" selected>Select Course Format...</option>
+                            <option value="ONLINE">Online</option>
+                            <option value="OFFLINE">Offline</option>
+                            <option value="HYBRID">Hybrid</option>
                           </select>
                           <span *ngIf="courseFormat && courseFormat.invalid && courseFormat.touched"><i class="validation">Please select a valid Course format.</i></span>
                     </div>

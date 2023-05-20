@@ -9,7 +9,7 @@
       </div>
       <div class="col-2 table-col">
         <button class="btn" (click)="sortByRating()">
-          Sort
+          Rating
           <span *ngIf="sortDirection === 'asc'">&#8593;</span> <!-- Ascending icon -->
           <span *ngIf="sortDirection === 'desc'">&#8595;</span> <!-- Descending icon -->
         </button>
@@ -23,7 +23,8 @@
     </div>
     <div class="card-body-custom">
 
-      <div class="row feedback-row info-box card-body" *ngFor="let feedback of feedbackList">
+      <div class="row feedback-row info-box card-body"
+        *ngFor="let feedback of feedbackList|paginate:{ itemsPerPage: 5, currentPage: currentPage, totalItems: totalItems }">
         <div class="col-7 table-col">
           <div class="review-col">
             <p class="instructor-name">{{ feedback.instructorName }}</p>
@@ -55,7 +56,9 @@
         </div>
       </div>
     </div>
-
+    <div class="card-footer-custom">
+      <pagination-controls (pageChange)="onPageChange($event)"></pagination-controls>
+    </div>
   </div>
 
 </div>

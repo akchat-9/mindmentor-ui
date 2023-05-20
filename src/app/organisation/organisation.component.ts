@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { error } from 'jquery';
 import { instructors } from 'src/app/FakeDb/teachers';
 import { CategoryViewModel } from 'src/app/ViewModel/CategoryViewModel';
-import { CoursesViewModel } from 'src/app/ViewModel/CoursesViewModel';
+import { CourseListViewModel } from 'src/app/ViewModel/CourseListViewModel';
 import { UsersDDLViewModel } from 'src/app/ViewModel/UsersDDLViewModel';
 import { CommonService } from 'src/app/_services/common.service';
 import { CoursesService } from 'src/app/_services/courses.service';
