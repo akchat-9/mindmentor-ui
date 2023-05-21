@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { DataTablesModule } from 'angular-datatables';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { DatePipe } from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './AuthComponents/login/login.component';
@@ -33,8 +35,6 @@ import { UserSettingsComponent } from './users/user-settings/user-settings.compo
 import { UserGroupsComponent } from './users/user-groups/user-groups.component';
 import { OrganisationComponent } from './organisation/organisation.component';
 import { SubscribersComponent } from './subscribers/subscribers.component';
-import { DatePipe } from '@angular/common';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,

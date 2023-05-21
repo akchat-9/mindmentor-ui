@@ -8,113 +8,57 @@
       <div class="box-body row card pt-2">
         <div class="d-flex">
           <div class="form-group col-md-6">
-            <input
-              type="text"
-              class="form-control"
-              id="firstName"
-              formControlName="firstName"
-              placeholder="First Name"
-            />
-            <span *ngIf="firstName && firstName.invalid && firstName.touched"
-              ><i class="validation">Please enter a valid name.</i></span
-            >
+            <input type="text" class="form-control" id="firstName" formControlName="firstName"
+              placeholder="First Name" />
+            <span *ngIf="firstName && firstName.invalid && firstName.touched"><i class="validation">Please enter a valid
+                name.</i></span>
           </div>
           <div class="form-group col-md-6">
-            <input
-              type="text"
-              class="form-control"
-              id="lastName"
-              formControlName="lastName"
-              placeholder="Last Name"
-            />
-            <span *ngIf="lastName && lastName.invalid && lastName.touched"
-              ><i class="validation">Please enter a valid name.</i></span
-            >
+            <input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="Last Name" />
+            <span *ngIf="lastName && lastName.invalid && lastName.touched"><i class="validation">Please enter a valid
+                name.</i></span>
           </div>
         </div>
         <div class="d-flex">
           <div class="form-group col-md-6">
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              formControlName="email"
-              placeholder="Email Address"
-            />
-            <span *ngIf="email && email.invalid && email.touched"
-              ><i class="validation"
-                >Please enter a valid Email Address.</i
-              ></span
-            >
+            <input type="emailAddress" class="form-control" id="emailAddress" formControlName="emailAddress"
+              placeholder="emailAddress Address" />
+            <span *ngIf="emailAddress && emailAddress.invalid && emailAddress.touched"><i class="validation">Please
+                enter a valid email address.</i></span>
           </div>
           <div class="form-group col-md-6">
-            <input
-              type="text"
-              class="form-control"
-              id="userName"
-              formControlName="userName"
-              placeholder="Username"
-            />
-            <span *ngIf="userName && userName.invalid && userName.touched"
-              ><i class="validation">Please provide a UserName.</i></span
-            >
+            <input type="text" class="form-control" id="password
+              formControlName=" password placeholder="password" />
+            <span *ngIf="password && password.invalid && password.touched"><i class="validation">Update your
+                password.</i></span>
           </div>
         </div>
         <div class="d-flex">
           <div class="form-group col-md-6">
-            <input
-              type="text"
-              class="form-control"
-              id="address"
-              formControlName="address"
-              placeholder="Address"
-            />
-            <span *ngIf="address && address.invalid && address.touched"
-              ><i class="validation">Please provide an Address.</i></span
-            >
+            <input type="text" class="form-control" id="address" formControlName="address" placeholder="Address" />
+            <span *ngIf="address && address.invalid && address.touched"><i class="validation">Please provide an
+                Address.</i></span>
           </div>
           <div class="form-group col-md-6">
-            <input
-              type="text"
-              class="form-control"
-              id="phone"
-              formControlName="phone"
-              placeholder="Phone Number"
-            />
-            <span *ngIf="phone && phone.invalid && phone.touched"
-              ><i class="validation"
-                >Please enter a valid Phone Number.</i
-              ></span
-            >
+            <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber"
+              placeholder="Phone Number" />
+            <span *ngIf="phoneNumber && phoneNumber.invalid && phoneNumber.touched"><i class="validation">Please enter a
+                valid phone number.</i></span>
           </div>
         </div>
 
         <div class="d-flex">
           <div class="form-group col-md-6">
             <label for="dateOfBirth" class="label">Date of Birth</label>
-            <input
-              type="date"
-              class="form-control"
-              id="dateOfBirth"
-              formControlName="dateOfBirth"
-            />
-            <span
-              *ngIf="dateOfBirth && dateOfBirth.invalid && dateOfBirth.touched"
-              ><i class="validation">Please select a valid Date.</i></span
-            >
+            <input type="date" class="form-control" id="dateOfBirth" formControlName="dateOfBirth" />
+            <span *ngIf="dateOfBirth && dateOfBirth.invalid && dateOfBirth.touched"><i class="validation">Please select
+                a valid Date.</i></span>
           </div>
           <div class="form-group col-md-6">
             <label for="joiningDate" class="label">Joining Date</label>
-            <input
-              type="date"
-              class="form-control"
-              id="joiningDate"
-              formControlName="joiningDate"
-            />
-            <span
-              *ngIf="joiningDate && joiningDate.invalid && joiningDate.touched"
-              ><i class="validation">Please select a valid Date.</i></span
-            >
+            <input type="date" class="form-control" id="joiningDate" formControlName="joiningDate" />
+            <span *ngIf="joiningDate && joiningDate.invalid && joiningDate.touched"><i class="validation">Please select
+                a valid Date.</i></span>
           </div>
         </div>
         <div class="d-flex">
@@ -122,32 +66,27 @@
             <label for="gender" class="label">Gender</label>
             <select class="form-control" id="gender" formControlName="gender">
               <option value="" selected>Select a Gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="others">Others</option>
+              <option value="MALE">Male</option>
+              <option value="FEMALE">Female</option>
+              <option value="OTHERS">Others</option>
             </select>
-            <span *ngIf="gender && gender.invalid && gender.touched"
-              ><i class="validation">Please select a valid Gender.</i></span
-            >
+            <span *ngIf="gender && gender.invalid && gender.touched"><i class="validation">Please select a valid
+                Gender.</i></span>
           </div>
           <div class="form-group col-md-6">
             <label for="role" class="label">User Role</label>
             <select class="form-control" id="role" formControlName="role">
               <option value="" selected>Select a Role</option>
-              <option value="teacher">Teacher</option>
-              <option value="student">Student</option>
+              <option value="ADMIN">Admin</option>
+              <option value="TEACHER">Teacher</option>
+              <option value="STUDENT">Student</option>
             </select>
-            <span *ngIf="role && role.invalid && role.touched"
-              ><i class="validation">Please select a valid role.</i></span
-            >
+            <span *ngIf="roleName && roleName.invalid && roleName.touched"><i class="validation">Please select a valid
+                role.</i></span>
           </div>
         </div>
         <div class="box-footer">
-          <button
-            type="submit"
-            class="btn btn-primary"
-            [disabled]="registrationForm.invalid"
-          >
+          <button type="submit" class="btn btn-primary" [disabled]="registrationForm.invalid">
             Submit
           </button>
         </div>

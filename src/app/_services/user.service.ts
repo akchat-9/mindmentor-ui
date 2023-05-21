@@ -7,13 +7,15 @@ import {
   HttpResponse,
 } from '@angular/common/http';
 import { Menu } from '../model/MenuModel';
-import { UsersViewModel } from '../ViewModel/UsersViewModel';
+import { UserViewModel } from '../ViewModel/UserViewModel';
 import { users } from '../FakeDb/Users';
 import { UserModel } from '../model/UserModel';
 import { CourseListViewModel } from '../ViewModel/CourseListViewModel';
-import { UserViewModel } from '../ViewModel/UserViewModel';
+import { UserListViewModel } from '../ViewModel/UserListViewModel';
+import { ApiResponse } from '../model/ApiResponseModel';
+import { RoleAndUserCountViewModel } from '../ViewModel/RoleAndUserCountViewModel';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'http://localhost:5000/api/user/';
 
 // const httpOptions = {
 //   // observe: 'response',
@@ -22,7 +24,7 @@ const API_URL = 'http://localhost:5000/api';
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   // getPublicContent(): Observable<any> {
   //   return this.http.get(API_URL + 'all', { responseType: 'text' });
@@ -51,48 +53,31 @@ export class UserService {
     return throwError(() => error);
   }
 
-  getUsers(): Observable<UsersViewModel[]> {
-    return of(users);
+  // getUsers(): Observable<UserViewModel[]> {
+  //   return of(users);
+  // }
+
+  // getUsersById(userId: number): UserViewModel | null {
+  //   return users.find((u) => (u.id = userId)) || null;
+  // }
+
+  saveUserDetails(userDetails: UserModel): Observable<ApiResponse<string>> {
+    return this.http.post<ApiResponse<string>>(API_URL + 'create', userDetails)
   }
 
-  getUsersById(userId: number): UsersViewModel | null {
-    return users.find((u) => (u.id = userId)) || null;
+  getAllUsers(organisationId: number): Observable<ApiResponse<UserListViewModel[]>> {
+    return this.http.get<ApiResponse<UserListViewModel[]>>(API_URL + `getUserList/all/${organisationId}`);
   }
 
-  SaveUserDetails(userModel: UserModel): string {
-    // const headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-    let message = '';
-    this.http
-      .post(API_URL + '/create', userModel, { observe: 'response' })
-      .subscribe((response) => {
-        if (response.status === 200) {
-          console.log(response.status);
-          message = 'User created successfully';
-        } else message = 'failed';
-      });
-    return message;
+  getUserById(userId: number): Observable<ApiResponse<UserViewModel>> {
+    return this.http.get<ApiResponse<UserViewModel>>(API_URL + `getUserDetails/${userId}`);
   }
 
-  getAllUsers(): Observable<UserViewModel[]> {
-    return this.http.get<UserViewModel[]>(API_URL + '/getall/list');
+  getRoleAndUserCount(organisationId: number): Observable<ApiResponse<RoleAndUserCountViewModel[]>> {
+    return this.http.get<ApiResponse<RoleAndUserCountViewModel[]>>(API_URL + `getRoleAndUserCount/all/${organisationId}`)
   }
 
-  getUserById(id: number): Observable<UserViewModel> {
-    return this.http.get<UserViewModel>(API_URL + `get/${id}`);
-  }
-
-  saveUser(userDetail: UserModel) {
-    console.log('UserDetails:: ', userDetail);
-    return this.http
-      .post<any>(
-        'http://localhost:5000/api/course/create?organisationId=1&courseCategoryId=1&instructorIds=1',
-        userDetail,
-        { observe: 'response' }
-      )
-      .pipe(
-        catchError((error: HttpErrorResponse) => {
-          return this.handleError(error);
-        })
-      );
+  deleteUser(userId: number): Observable<ApiResponse<string>> {
+    return this.http.delete<ApiResponse<string>>(API_URL + `delete/${userId}`)
   }
 }

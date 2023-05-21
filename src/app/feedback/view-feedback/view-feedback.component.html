@@ -8,7 +8,7 @@
         <p class="table-heading">Course</p>
       </div>
       <div class="col-2 table-col">
-        <button class="btn" (click)="sortByRating()">
+        <button class="btn btn-datatable" (click)="sortByRating()">
           Rating
           <span *ngIf="sortDirection === 'asc'">&#8593;</span> <!-- Ascending icon -->
           <span *ngIf="sortDirection === 'desc'">&#8595;</span> <!-- Descending icon -->
@@ -34,22 +34,22 @@
         <div class="col-1 table-col para-txt">{{ feedback.courseName }}</div>
         <div class="col-2 table-col">
           <!-- <span class="stars">{{ feedback.rating }}</span> -->
-          <ngb-rating [max]="5" [(rate)]="feedback.rating" [readonly]="false">
+          <ngb-rating [max]="5" [(rate)]="feedback.rating" [readonly]="true">
             <ng-template let-fill="fill">
               <span class="star color{{feedback.rating}}" [class.filled]="fill === 100">&#9733;</span>
             </ng-template>
           </ngb-rating>
         </div>
         <div class="col-1 table-col">
-          <button class="btn">Details</button>
+          <button class="btn btn-datatable">Details</button>
         </div>
         <div class="col-1 table-col">
           <div class="dropdown">
-            <button class="btn" type="button" data-toggle="dropdown">
+            <button class="btn btn-datatable" type="button" data-toggle="dropdown">
               <i class="fas fa-ellipsis-v"></i>
             </button>
             <div class="dropdown-menu">
-              <a class="dropdown-item">Create</a>
+              <a class="dropdown-item" data-toggle="modal" data-target="#createFeedback">Create</a>
               <a class="dropdown-item">Delete</a>
             </div>
           </div>
@@ -58,6 +58,53 @@
     </div>
     <div class="card-footer-custom">
       <pagination-controls (pageChange)="onPageChange($event)"></pagination-controls>
+    </div>
+  </div>
+
+  <div class="modal fade" id="createFeedback" tabindex="-1" role="dialog" aria-labelledby="createFeedback"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="createFeedback">Give your review</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="instructorId">Instructor</label>
+              <select class="form-control" id="instructorId" formControlName="instructorId">
+                <option [ngValue]="null" disabled>Select an instructorId</option>
+                <option *ngFor="let instructor of instructors" [ngValue]="instructor.id">{{ instructor.firstName }} {{
+                  instructor.lastName }}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="course">Course</label>
+              <select class="form-control" id="courseId" formControlName="courseId">
+                <option [ngValue]="null" disabled>Select a course</option>
+                <option *ngFor="let course of courses" [ngValue]=course.courseId>{{ course.courseName }}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="rating">Rating: </label>
+              <ngb-rating [max]="5" [readonly]="false" (rateChange)="onRatingChange($event)"></ngb-rating>
+              <input type="hidden" formControlName="rating" [value]="ratingValue">
+            </div>
+            <div class="form-group">
+              <label for="review">Review</label>
+              <textarea class="form-control" id="review" formControlName="review"></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
     </div>
   </div>
 

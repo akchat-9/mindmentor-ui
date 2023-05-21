@@ -27,10 +27,6 @@ export class AllCoursesComponent {
     private storage: LocalStorageService
   ) { }
   ngOnInit(): void {
-    // this.courseService.getUsers().subscribe((courses) => {
-    //   this.courses = courses;
-    //   this.dtTrigger.next(true);
-    // });
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 10,
@@ -42,7 +38,7 @@ export class AllCoursesComponent {
       if (response.statusCode === 200) {
         console.log(response);
         this.courseList = response.data;
-        this.dtTrigger.next(true);
+        this.dtTrigger.next(null);
       }
     })
     const user = this.storage.getUser();
@@ -72,13 +68,6 @@ export class AllCoursesComponent {
         };
       }
     });
-  }
-  ngAfterViewInit(): void {
-    this.dtTrigger.next(true);
-  }
-
-  ngOnDestroy(): void {
-    this.dtTrigger.unsubscribe();
   }
 
   editCourses(id: number) {
