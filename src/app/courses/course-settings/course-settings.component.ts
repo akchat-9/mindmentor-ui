@@ -54,7 +54,7 @@ export class CourseSettingsComponent {
                 enrollment: this.courseData.enrollment,
                 endDate: this.courseData.endDate,
                 prerequisites: this.courseData.prerequisites,
-                startDate: this.courseData.startDate,
+                startDate: this.courseData.startDate, 
                 courseDescription: this.courseData.courseDescription,
                 courseCategoryId: this.courseData.courseCategoryId,
               });

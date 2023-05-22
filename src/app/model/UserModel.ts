@@ -1,12 +1,15 @@
 export interface UserModel {
-  firstName: string;
-  lastName: string;
-  gender: string;
-  dob: number;
-  email: string;
-  phone: number;
-  address: string;
-  password: string;
-  joiningDate: string;
-  role: string;
+  organisationId: number
+  role: string
+  stateId: number
+  cityId: number
+  address: string
+  emailAddress: string
+  password: string
+  firstName: string
+  lastName: string
+  phoneNumber: number
+  gender: string
+  dateOfBirth: string
+  joiningDate: string
 }
