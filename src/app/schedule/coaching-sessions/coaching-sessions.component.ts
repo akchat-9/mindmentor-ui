@@ -4,6 +4,7 @@ import { ScheduleService } from 'src/app/_services/schedule.service';
 import { DataTablesModule, DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { ScheduleViewModel } from 'src/app/ViewModel/ScheduleViewModel';
 
 @Component({
   selector: 'app-coaching-sessions',
@@ -11,8 +12,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./coaching-sessions.component.css'],
 })
 export class CoachingSessionsComponent {
-  sessionList!: AllSessionsViewModel[];
-
+  sessionList!: ScheduleViewModel[];
+  organisationId: number = 1
   private dtElement!: DataTableDirective;
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
@@ -20,7 +21,7 @@ export class CoachingSessionsComponent {
   constructor(
     private scheduleService: ScheduleService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -28,8 +29,13 @@ export class CoachingSessionsComponent {
       pageLength: 10,
       processing: true,
     };
-    this.scheduleService.getAllSessions().subscribe((sessionList) => {
-      this.sessionList = sessionList;
+    this.scheduleService.getAllSessions(this.organisationId).subscribe((response) => {
+      if (response.statusCode !== 200) {
+        console.log(response);
+        return;
+      }
+      this.sessionList = response.data
+      this.dtTrigger.next(null);
     });
   }
 

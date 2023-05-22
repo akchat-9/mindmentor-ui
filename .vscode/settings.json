@@ -2,6 +2,7 @@
     "cSpell.words": [
         "adminlte",
         "compat",
+        "datatable",
         "datatables",
         "daygrid",
         "devkit",
@@ -15,6 +16,7 @@
         "popperjs",
         "pushmenu",
         "Scrollbars",
+        "Swal",
         "sweetalert",
         "timegrid"
     ]

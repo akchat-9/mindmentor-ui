@@ -47,7 +47,7 @@ export class ViewFeedbackComponent {
       review: ['', Validators.required],
     });
 
-    this.getAllFeedback();
+    // this.getAllFeedback();
     this.getAllCourseList();
     this.getAllInstructors();
   }
@@ -97,12 +97,12 @@ export class ViewFeedbackComponent {
     })
   }
 
-  getAllFeedback() {
-    this.feedbackService.getAllFeedbacks().subscribe(feedbacks => {
-      this.feedbackList = feedbacks
-      this.totalItems = this.feedbackList.length;
-    })
-  }
+  // getAllFeedback() {
+  //   this.feedbackService.getAllFeedbacks().subscribe(feedbacks => {
+  //     this.feedbackList = feedbacks
+  //     this.totalItems = this.feedbackList.length;
+  //   })
+  // }
 
   onRatingChange(rating: number) {
     console.log(rating)

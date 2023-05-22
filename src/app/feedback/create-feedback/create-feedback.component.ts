@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
-import { UsersViewModel } from 'src/app/ViewModel/UsersViewModel';
+import { UserViewModel } from 'src/app/ViewModel/UserViewModel';
 import { CommonService } from 'src/app/_services/common.service';
 import { ScheduleService } from 'src/app/_services/schedule.service';
 import { CoachingSessionModel } from 'src/app/model/CoachingSessionModel';
@@ -24,7 +24,7 @@ export class CreateFeedbackComponent {
   private dtElement!: DataTableDirective;
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
-  users!: UsersViewModel[];
+  users!: UserViewModel[];
   // users!: UserViewModel[];
   userRole: string = '';
   IsAdminTeacher: boolean = false;

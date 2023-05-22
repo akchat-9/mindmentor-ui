@@ -14,9 +14,11 @@ const API_URL = 'http://localhost:5000/api/feedback/'
 export class FeedbackService {
 
   constructor(private http: HttpClient) { }
+  organisationId: number = 1;
 
-  getAllFeedbacks(): Observable<FeedbackViewModel[]> {
-    return of(feedbacks)
+  getAllFeedbacks(): Observable<ApiResponse<FeedbackViewModel[]>> {
+    // return of(feedbacks)
+    return this.http.get<ApiResponse<FeedbackViewModel[]>>(API_URL + `getAllByOrg/${this.organisationId}`);
   }
 
   saveFeedback(feedback: FeedbackModel): Observable<ApiResponse<string>> {
