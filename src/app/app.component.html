@@ -120,6 +120,14 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item " [ngClass]="{'menu-active': activeMenu === 'dashboard'}">
+                    <a routerLink="/rating" class="nav-link" (click)="setActiveMenu('dashboard')">
+                        <i class="nav-icon fas fa-star"></i>
+                        <p>
+                            Rating
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

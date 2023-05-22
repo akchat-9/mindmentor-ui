@@ -1,0 +1,102 @@
+<div class="container-fluid">
+    <div class="box">
+      <div _ngcontent-rnq-c3="" class="box-header with-border">
+        <h3 _ngcontent-rnq-c3="" class="box-title">Rating</h3>
+      </div>
+      <div class="card">
+  
+        <div class="card-header row">
+          <div class="col-7 table-col review-heading">
+            <p class="table-heading">Review</p>
+          </div>
+          <div class="col-1 table-col">
+            <p class="table-heading">Course</p>
+          </div>
+          <div class="col-2 table-col">
+            <button class="btn" (click)="sortByRating()">
+              Rating
+              <span *ngIf="sortDirection === 'asc'">&#8593;</span> <!-- Ascending icon -->
+              <span *ngIf="sortDirection === 'desc'">&#8595;</span> <!-- Descending icon -->
+            </button>
+          </div>
+          <div class="col-1 table-col">
+            <p class="table-heading">Join</p>
+          </div>
+          <div class="col-1 table-col">
+            <p class="table-heading">Action</p>
+          </div>
+        </div>
+        <div class="card-body-custom">
+  
+          <div class="row feedback-row info-box card-body"
+            *ngFor="let feedback of feedbackList|paginate:{ itemsPerPage: 5, currentPage: currentPage, totalItems: totalItems }">
+            <div class="col-7 table-col">
+              <div class="review-col">
+                <p class="instructor-name">{{ feedback.instructorName }}</p>
+                <p class="para-txt">{{ feedback.review }}</p>
+              </div>
+            </div>
+            <div class="col-1 table-col para-txt">{{ feedback.courseName }}</div>
+            <div class="col-2 table-col">
+              <!-- <span class="stars">{{ feedback.rating }}</span> -->
+              <ngb-rating [max]="5" [(rate)]="feedback.rating" [readonly]="false">
+                <ng-template let-fill="fill">
+                  <span class="star color{{feedback.rating}}" [class.filled]="fill === 100">&#9733;</span>
+                </ng-template>
+              </ngb-rating>
+            </div>
+            <div class="col-1 table-col">
+              <button class="btn">Join</button>
+  
+            </div>
+            <div class="col-1 table-col">
+              <div class="dropdown">
+                <button class="btn" type="button" data-toggle="dropdown">
+                  <i class="fas fa-ellipsis-v table-title"></i>
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item">Create</a>
+                  <a class="dropdown-item">Delete</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer-custom ">
+          <pagination-controls (pageChange)="onPageChange($event)"></pagination-controls>
+        </div>
+  
+        <div class="row footer">
+          <div class="col-sm-12 col-md-5">
+            <div class="dataTables_info" id="DataTables_Table_1_info" role="status" aria-live="polite">Showing 1 to 10 of
+              21 entries</div>
+          </div>
+          <!-- <div class="col-sm-12 col-md-7 page">
+            <div class="dataTables_paginate paging_full_numbers" id="DataTables_Table_1_paginate">
+              <ul class="pagination">
+                <li class="paginate_button page-item first disabled" id="DataTables_Table_1_first"><a
+                    aria-controls="DataTables_Table_1" aria-disabled="true" aria-role="link" data-dt-idx="first"
+                    tabindex="0" class="page-link">First</a></li>
+                <li class="paginate_button page-item previous disabled" id="DataTables_Table_1_previous"><a
+                    aria-controls="DataTables_Table_1" aria-disabled="true" aria-role="link" data-dt-idx="previous"
+                    tabindex="0" class="page-link">Previous</a></li>
+                <li class="paginate_button page-item active"><a href="#" aria-controls="DataTables_Table_1"
+                    aria-role="link" aria-current="page" data-dt-idx="0" tabindex="0" class="page-link">1</a></li>
+                <li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_1" aria-role="link"
+                    data-dt-idx="1" tabindex="0" class="page-link">2</a></li>
+                <li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_1" aria-role="link"
+                    data-dt-idx="2" tabindex="0" class="page-link">3</a></li>
+                <li class="paginate_button page-item next" id="DataTables_Table_1_next"><a href="#"
+                    aria-controls="DataTables_Table_1" aria-role="link" data-dt-idx="next" tabindex="0"
+                    class="page-link">Next</a></li>
+                <li class="paginate_button page-item last" id="DataTables_Table_1_last"><a href="#"
+                    aria-controls="DataTables_Table_1" aria-role="link" data-dt-idx="last" tabindex="0"
+                    class="page-link">Last</a></li>
+              </ul>
+            </div>
+          </div> -->
+        </div>
+  
+      </div>
+    </div>
+  </div>

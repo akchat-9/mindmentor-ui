@@ -1,8 +1,13 @@
 .container-fluid {
   padding: 1rem 1.5rem 0;
 }
+.box-title,
+.table-title {
+  color: #343a40;
+}
+
 .card {
-  height: 85vh;
+  height: 90vh;
   padding: 0.2rem 0.6rem;
   overflow-y: hidden;
   position: relative;
@@ -70,7 +75,7 @@ p {
 }
 .btn-datatable{
   background-color: white;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.125), 0 1px 3px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 0 1px rgba(0, 0, 0, 0.125), 0 1px 3px rgba(0, 0, 0, 0.2); */
   border-radius: 0.25rem;
   font-weight: 600;
   font-size: 14.5px;
@@ -116,3 +121,14 @@ i {
   right: 16px;
 }
 /* Add similar classes for other rating values */
+.footer{
+  margin: 1rem 0 1rem 0.8rem;
+}
+.page{
+  position: absolute;
+  right: 0;
+  max-width: 40.333333%;
+}
+.box{
+  height: 100vh;
+}

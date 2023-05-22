@@ -27,7 +27,17 @@
                         <span *ngIf="courseDuration && courseDuration.invalid && courseDuration.touched"><i class="validation">Please enter a valid Course duration.</i></span>
                     </div>
                     <div class="form-group col-md-6 ">
-                        <input type="text" class="form-control " id="courseLevel" formControlName="courseLevel" placeholder="Course Level">
+                        <!-- <input type="text" class="form-control " id="courseLevel" formControlName="courseLevel" placeholder="Course Level"> -->
+                        <select class="form-control" id="courseLevel" formControlName="courseLevel">
+                            <option value="" selected class="box-title">
+                                Select Course Level
+                            </option>
+                            <option value="BEGINNER">Beginner</option>
+                            <option value="INTERMEDIATE">Intermediate</option>
+                            <option value="ADVANCED">Advanced</option>
+                            <option value="UNDERGRADUATE">Under Graduate</option>
+                            <option value="POSTGRADUATE">Post Graduate</option>
+                        </select>
                         <span *ngIf="courseLevel && courseLevel.invalid && courseLevel.touched"><i class="validation">Please enter a valid Course level.</i></span>
                     </div>
                 </div>

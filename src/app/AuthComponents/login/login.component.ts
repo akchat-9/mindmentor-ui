@@ -48,6 +48,7 @@ get password(){
         this.storate.saveUser(res);
         // this.userService.UpdateMenu.next();
         this.router.navigate(['/dashboard']);
+        window.location.reload()
       },
       error: (err) => {
         console.log(err);
