@@ -23,12 +23,17 @@ import { UserSettingsComponent } from './users/user-settings/user-settings.compo
 import { UserGroupsComponent } from './users/user-groups/user-groups.component';
 import { OrganisationComponent } from './organisation/organisation.component';
 import { SubscribersComponent } from './subscribers/subscribers.component';
+import { RatingComponent } from './rating/rating.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {
     path: 'dashboard',
     component: DashboardComponent,
+  },
+  {
+    path: 'rating',
+    component: RatingComponent,
   },
   {
     path: 'organisation',
@@ -82,14 +87,14 @@ const routes: Routes = [
       { path: 'reminders', component: AssignmentRemindersComponent },
     ],
   },
-  {
-    path: 'feedback',
-    children: [
-      { path: '', redirectTo: 'sessions', pathMatch: 'full' },
-      { path: 'createNew', component: CreateFeedbackComponent },
-      { path: 'viewFeedback', component: ViewFeedbackComponent },
-    ],
-  },
+  // {
+  //   path: 'feedback',
+  //   children: [
+  //     { path: '', redirectTo: 'sessions', pathMatch: 'full' },
+  //     { path: 'createNew', component: CreateFeedbackComponent },
+  //     { path: 'viewFeedback', component: ViewFeedbackComponent },
+  //   ],
+  // },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

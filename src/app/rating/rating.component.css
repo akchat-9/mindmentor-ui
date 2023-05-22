@@ -1,0 +1,139 @@
+.container-fluid {
+    padding: 1rem 1.5rem 0;
+  }
+  .box-title,
+  .table-title {
+    color: #343a40;
+  }
+  
+  .card {
+    height: 90vh;
+    padding: 0.2rem 0.6rem;
+    overflow-y: hidden;
+    position: relative;
+    /* padding-bottom: 3.1rem; */
+  }
+  .card-body-custom::-webkit-scrollbar {
+    width: 0.2em;
+  }
+  .card-header {
+    position: sticky;
+    top: 0;
+    padding: 0.5rem 1.85rem;
+  }
+  .card-body-custom {
+    position: relative;
+    overflow-y: scroll;
+    padding: 0.2rem 0.5rem;
+  }
+  .info-box {
+    background-color: #f9f9f9;
+  }
+  .dropdown-menu {
+    min-width: 5rem;
+    left: -10.5px;
+  }
+  .instructor-name {
+    font-weight: 800;
+    font-size: 14px;
+  }
+  .feedback-row {
+    margin: 10px 0px;
+    /* border: 2px solid blue; */
+    /* background: white; */
+  }
+  .container {
+    /* background: yellow; */
+    padding: 1.3rem;
+  }
+  
+  .table-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .para-txt {
+    font-size: 12.5px;
+  }
+  .table-heading {
+    display: flex;
+    font-weight: 800;
+    font-size: 16px;
+  }
+  p {
+    margin-bottom: 0.3rem;
+  }
+  .table-heading:nth-child(1) {
+    justify-content: start;
+  }
+  .col-1 {
+    text-align: center;
+  }
+  
+  .review-heading {
+    justify-content: start;
+  }
+  .btn {
+    background-color: white;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.125), 0 1px 3px rgba(0, 0, 0, 0.2);
+    border-radius: 0.25rem;
+    font-weight: 600;
+    font-size: 14.5px;
+  }
+  .ngx-pagination {
+    padding-bottom: 3.1rem;
+  }
+  /* .star {
+    font-size: 20px;
+    color: gray;
+  }
+  
+  .star.filled {
+    color: gold;
+  }
+  
+  .color5 {
+    color: red;
+  }
+  
+  .color4 {
+    color: orange;
+  } */
+  
+  i {
+    font-size: 1.5rem;
+    padding-right: 0.1rem;
+    color: #b0c4de;
+  }
+  .filled {
+    color: gold;
+  }
+  .star{
+    /* text-shadow:  0 0 1em white, 0 0 0.2em blue; */
+    font-size: 1.2rem;
+  }
+  .low {
+    color: #deb0b0;
+  }
+  .filled.low {
+    color: #ff1e1e;
+  }
+  
+  .card-footer-custom {
+    position: absolute;
+    bottom: -1px;
+    right: 16px;
+  }
+  /* Add similar classes for other rating values */
+  .footer{
+    margin: 1rem 0 1rem 0.8rem;
+  }
+  .page{
+    position: absolute;
+    right: 0;
+    max-width: 40.333333%;
+    
+  }
+  .box{
+    height: 100vh;
+  }

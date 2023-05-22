@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DataTableDirective } from 'angular-datatables';
+import { Subject } from 'rxjs';
+import { UsersViewModel } from 'src/app/ViewModel/UsersViewModel';
 import { CommonService } from 'src/app/_services/common.service';
 import { ScheduleService } from 'src/app/_services/schedule.service';
 import { CoachingSessionModel } from 'src/app/model/CoachingSessionModel';
@@ -17,6 +20,14 @@ export class CreateFeedbackComponent {
   teachers: any[] = [];
   selectedOption: any;
   selectedOption1: any;
+
+  private dtElement!: DataTableDirective;
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject();
+  users!: UsersViewModel[];
+  // users!: UserViewModel[];
+  userRole: string = '';
+  IsAdminTeacher: boolean = false;
   constructor(
     private fb: FormBuilder,
     private scheduleService: ScheduleService,
@@ -25,6 +36,11 @@ export class CreateFeedbackComponent {
     private commonService: CommonService
   ) {}
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10,
+      processing: true,
+    };
     this.coachingSessionForm = this.fb.group({
       teacher: ['', Validators.required],
       course: ['', Validators.required],

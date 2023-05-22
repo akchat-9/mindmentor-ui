@@ -1,51 +1,79 @@
-<!-- <div class="container-fluid">
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <h2>Review</h2>
-      </div>
-      <div class="col">
-        <h2>Course</h2>
-      </div>
-      <div class="col">
-        <h2>Rating</h2>
-      </div>
-      <div class="col">
-        <h2>Details</h2>
-      </div>
-      <div class="col">
-        <h2>Action</h2>
-      </div>
+<div class="container-fluid">
+  <div class="box">
+    <div _ngcontent-rnq-c3="" class="box-header with-border">
+      <h3 _ngcontent-rnq-c3="" class="box-title">All Users</h3>
     </div>
-  
-    <div class="row" *ngFor="let review of teacherReviews">
-      <div class="col">
-        <h4>{{ review.teacherName }}</h4>
-        <p>{{ review.reviewDescription }}</p>
-      </div>
-      <div class="col">{{ review.course }}</div>
-      <div class="col">
-        <span class="stars">{{ review.rating }}</span>
-      </div>
-      <div class="col">
-        <button class="btn btn-primary" (click)="openModal(review)">Details</button>
-      </div>
-      <div class="col">
-        <div class="dropdown">
-          <button
-            class="btn btn-secondary dropdown-toggle"
-            type="button"
-            data-toggle="dropdown"
-          >
-            Action
-          </button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" (click)="openCreateModal(review)">Create</a>
-            <a class="dropdown-item" (click)="deleteFeedback(review)">Delete</a>
-          </div>
-        </div>
-      </div>
+    <div class="card card-primary card-outline p-2">
+      <table datatable [dtOptions]="dtOptions" class="table table-hover">
+        <thead>
+          <tr>
+            <th class="table-title">#</th>
+            <th class="table-title">Name</th>
+            <th class="table-title">Username</th>
+            <th class="table-title">Email</th>
+            <th class="table-title">Role</th>
+            <th class="table-title">Joining Date</th>
+            <!-- <th *ngIf="IsAdminTeacher" class="table-title">Actions</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
+            <td>{{ user.joiningDate }}</td>
+            <!-- <td *ngIf="IsAdminTeacher">
+              <a
+                class="btn bg-gradient-success btn-sm mr-2"
+                (click)="editUsers(user.id)"
+                ><i class="fas fa-edit"></i
+              ></a>
+
+              <a
+                class="btn bg-gradient-danger btn-sm"
+                (click)="editUsers(user.id)"
+                ><i class="fas fa-trash"></i
+              ></a>
+            </td> -->
+          </tr>
+        </tbody>
+      </table>
+      <!-- <table datatable [dtOptions]="dtOptions" class="table table-hover">
+        <thead>
+          <tr>
+            <th class="table-title">Name</th>
+            <th class="table-title">Username</th>
+            <th class="table-title">Email</th>
+            <th class="table-title">Role</th>
+            <th class="table-title">Joining Date</th>
+            <th *ngIf="IsAdminTeacher" class="table-title">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.firstName }} {{user.lastName}}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
+            <td>{{ user.joiningDate }}</td>
+            <td *ngIf="IsAdminTeacher">
+              <a
+                class="btn bg-gradient-success btn-sm mr-2"
+                (click)="editUsers(user.id)"
+                ><i class="fas fa-edit"></i
+              ></a>
+
+              <a
+                class="btn bg-gradient-danger btn-sm"
+                (click)="editUsers(user.id)"
+                ><i class="fas fa-trash"></i
+              ></a>
+            </td>
+          </tr>
+        </tbody>
+      </table> -->
     </div>
   </div>
-  
-</div> -->
+</div>

@@ -35,6 +35,7 @@ import { OrganisationComponent } from './organisation/organisation.component';
 import { SubscribersComponent } from './subscribers/subscribers.component';
 import { DatePipe } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RatingComponent } from './rating/rating.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,6 +63,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     UserGroupsComponent,
     OrganisationComponent,
     SubscribersComponent,
+    RatingComponent,
   ],
   imports: [
     BrowserModule,
