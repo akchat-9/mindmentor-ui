@@ -9,6 +9,7 @@ import { CoursesService } from 'src/app/_services/courses.service';
 import { CourseModel } from 'src/app/model/CourseModel';
 import Swal from 'sweetalert2';
 import * as moment from 'moment';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -23,7 +24,8 @@ export class CreateCoursesComponent {
   constructor(
     private formBuilder: FormBuilder,
     private courseService: CoursesService,
-    private commonService: CommonService
+    private commonService: CommonService,
+    private router:Router
   ) { }
 
   ngOnInit() {
@@ -54,8 +56,12 @@ export class CreateCoursesComponent {
     });
   }
   getAllInstructors() {
-    this.commonService.getAllInstructors().subscribe((instructors) => {
-      this.instructorList = instructors;
+    this.commonService.getAllInstructors().subscribe((response) => {
+      if (response.statusCode !== 200) {
+        console.log(response)
+        return;
+      }
+      this.instructorList = response.data;
     });
   }
 
@@ -80,9 +86,10 @@ export class CreateCoursesComponent {
     console.log('courseDetails --- component ', courseDetails);
     this.courseService.saveCourse(courseDetails).subscribe((response) => {
       const responseBody = response.body;
-      console.log('component response : ', response);
       if (response.statusCode === 201) {
-        Swal.fire('Success!', 'Course created successfully', 'success');
+        Swal.fire('Success!', 'Course created successfully', 'success').then(()=>{
+          this.router.navigate(['/courses/all'])
+        });
       }
     });
   }

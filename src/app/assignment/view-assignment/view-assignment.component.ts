@@ -15,10 +15,11 @@ export class ViewAssignmentComponent {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
   assignmentList!: AssignmentViewModel[];
+  organizationId: number = 1
   constructor(
     private assignmentService: AssignmentService,
     private router: Router
-  ) {}
+  ) { }
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
@@ -26,10 +27,22 @@ export class ViewAssignmentComponent {
       processing: true,
     };
 
-    this.assignmentService
-      .getAssignemnt()
-      .subscribe((assignments) => (this.assignmentList = assignments));
-    console.log(this.assignmentList);
+    // this.assignmentService
+    //   .getAssignemnt()
+    //   .subscribe((assignments) => (this.assignmentList = assignments));
+    // console.log(this.assignmentList);
+    this.getAllAssignments();
+  }
+
+  getAllAssignments() {
+    this.assignmentService.getAllAssignment(this.organizationId).subscribe(response => {
+      if (response.statusCode !== 200) {
+        console.log(response)
+        return
+      }
+      this.assignmentList = response.data
+      this.dtTrigger.next(null)
+    })
   }
 
   editAssignment(id: number) {

@@ -15,6 +15,8 @@ import { CourseDDLViewModel } from '../ViewModel/CourseDDLViewModel';
 
 
 const API_URL = 'http://localhost:5000/api/common/'
+const USER_API_URL = 'http://localhost:5000/api/user/'
+const COURSE_API_URL = 'http://localhost:5000/api/course/'
 
 @Injectable({
   providedIn: 'root',
@@ -30,8 +32,11 @@ export class CommonService {
   // getAllInstructors(): Observable<ApiResponse<UsersDDLViewModel[]>> {
   //   return this.http.get<ApiResponse<UsersDDLViewModel[]>>(API_URL + `getCourseList/all/${organisationId}`);    
   // }
-  getAllInstructors(): Observable<UsersDDLViewModel[]> {
-    return of(instructors);
+  // getAllInstructors(): Observable<UsersDDLViewModel[]> {
+  //   return of(instructors);
+  // }
+  getAllInstructors(): Observable<ApiResponse<UsersDDLViewModel[]>> {
+    return this.http.get<ApiResponse<UsersDDLViewModel[]>>(USER_API_URL + 'getAllUserIdAndFirstNameAndLastName/1/2');
   }
 
   getStates(): Observable<ApiResponse<StateDDLViewModel[]>> {
@@ -44,18 +49,8 @@ export class CommonService {
   // getAllCourseList(organisationId: number): Observable<ApiResponse<CourseListViewModel[]>> {
   //   return this.http.get<ApiResponse<CourseListViewModel[]>>(API_URL + `getCourseList/all/${organisationId}`);
   // }
-  getAllCourseList(organisationId: number): Observable<CourseDDLViewModel[]> {
-    const courses: CourseDDLViewModel[] = [];
-
-    for (let i = 1; i <= 10; i++) {
-      const course = {
-        courseId: i,
-        courseName: `Course ${i}`
-      };
-      courses.push(course);
-    }
-
-    return of(courses)
+  getAllCourseList(instructorId: number): Observable<ApiResponse<CourseDDLViewModel[]>> {
+    return this.http.get<ApiResponse<CourseDDLViewModel[]>>(COURSE_API_URL + `getAllCourseIdAndName/${instructorId}`)
   }
 
   // getInstructorList():Observable<ApiResponse<UsersDDLViewModel[]>>{

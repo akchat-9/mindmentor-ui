@@ -23,7 +23,7 @@ export class CreateEditSessionsComponent {
     private route: ActivatedRoute,
     private router: Router,
     private commonService: CommonService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.coachingSessionForm = this.fb.group({
@@ -38,10 +38,10 @@ export class CreateEditSessionsComponent {
       .getAllCourses()
       .subscribe((courses) => (this.courses = courses));
 
-    this.commonService
-      .getAllInstructors()
-      .subscribe((teachers) => (this.teachers = teachers));
-
+    // this.commonService
+    //   .getAllInstructors()
+    //   .subscribe((teachers) => (this.teachers = teachers));
+    this.getAllInstructors();
     this.route.params.subscribe((params) => {
       if (params['id']) {
         this.isEditing = true;
@@ -49,7 +49,7 @@ export class CreateEditSessionsComponent {
         const coachingSessionId = +params['id'];
         this.CoachingSession =
           this.scheduleService.getCoachingSessionById(coachingSessionId);
-          // console.log(this.CoachingSession)
+        // console.log(this.CoachingSession)
         if (this.CoachingSession != null) {
           this.coachingSessionForm.patchValue({
             date: this.CoachingSession.date,
@@ -65,19 +65,29 @@ export class CreateEditSessionsComponent {
       }
     });
   }
-  get date(){
+
+  getAllInstructors() {
+    this.commonService.getAllInstructors().subscribe((response) => {
+      if (response.statusCode !== 200) {
+        console.log(response)
+        return;
+      }
+      this.teachers = response.data;
+    });
+  }
+  get date() {
     return this.coachingSessionForm.get('date')
   }
-  get time(){
+  get time() {
     return this.coachingSessionForm.get('time')
   }
-  get duration(){
+  get duration() {
     return this.coachingSessionForm.get('duration')
   }
-  get course(){
+  get course() {
     return this.coachingSessionForm.get('course')
   }
-  get teacher(){
+  get teacher() {
     return this.coachingSessionForm.get('teacher')
   }
   onSubmit() {

@@ -33,7 +33,7 @@
         </div>
         <div class="row feedback-row info-box card-body"
           *ngFor="let feedback of feedbackList|paginate:{ itemsPerPage: 5, currentPage: currentPage, totalItems: totalItems }">
-          <div class="col-7 table-col">
+          <div class="col-7 table-col" style="justify-content: start;">
             <div class="review-col">
               <p class="instructor-name">{{ feedback.instructorName }}</p>
               <p class="para-txt">{{ feedback.review }}</p>
@@ -86,9 +86,10 @@
           <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
               <label for="instructorId">Instructor</label>
-              <select class="form-control" id="instructorId" formControlName="instructorId">
+              <select class="form-control" id="instructorId" (change)="onInstructorSelectionChange()"
+                formControlName="instructorId">
                 <option [ngValue]="null" disabled>Select an instructor</option>
-                <option *ngFor="let instructor of instructors" [ngValue]="instructor.id">{{ instructor.firstName }} {{
+                <option *ngFor="let instructor of instructors" [ngValue]=instructor.userId>{{ instructor.firstName }} {{
                   instructor.lastName }}</option>
               </select>
             </div>

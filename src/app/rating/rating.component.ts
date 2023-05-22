@@ -10,6 +10,7 @@ import { UsersDDLViewModel } from '../ViewModel/UsersDDLViewModel';
 import { FeedbackModel } from '../model/FeedbackModel';
 import { CourseDDLViewModel } from '../ViewModel/CourseDDLViewModel';
 import { ReviewModal } from '../model/ReviewModal';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rating',
@@ -31,11 +32,13 @@ export class RatingComponent {
   totalItems = 0;
   closeResult = '';
   ratingValue: number = 0;
+  selectedInstructor: number = 0;
 
   constructor(private formBuilder: FormBuilder,
     private feedbackService: FeedbackService,
     private modalService: NgbModal,
-    private commonService: CommonService) { }
+    private commonService: CommonService,
+    private router: Router) { }
 
   ngOnInit() {
 
@@ -47,7 +50,7 @@ export class RatingComponent {
     });
 
     this.getAllFeedback();
-    this.getAllCourseList();
+    // this.getAllCourseList();
     this.getAllInstructors();
   }
 
@@ -70,6 +73,7 @@ export class RatingComponent {
       Swal.fire('Success!', 'Thanks for your feedback', 'success').then(() => {
         this.clearForm();
         document.getElementById('createFeedback')?.classList.remove('show')
+        this.router.navigate(['/rating'])
       })
 
     })
@@ -84,16 +88,40 @@ export class RatingComponent {
     this.currentPage = event;
   }
 
-  getAllCourseList() {
-    this.commonService.getAllCourseList(this.organisationId).subscribe(response => {
-      this.courses = response
-    })
+  // getAllCourseList() {
+  //   this.commonService.getAllCourseList(this.organisationId).subscribe(response => {
+  //     this.courses = response
+  //   })
+  // }
+
+  onInstructorSelectionChange() {
+    // Fetch courses based on the selected instructor
+    this.selectedInstructor = this.reviewForm.get('instructorId')?.value;
+    console.log(this.selectedInstructor)
+    this.commonService.getAllCourseList(this.selectedInstructor).subscribe((response) => {
+      if (response.statusCode !== 200) {
+        console.log(response);
+        return;
+      }
+      this.courses = response.data
+    });
+    this.selectedInstructor = 0
   }
 
+  // getAllInstructors() {
+  //   this.commonService.getAllInstructors().subscribe(response => {
+  //     this.instructors = response
+  //   })
+  // }
+
   getAllInstructors() {
-    this.commonService.getAllInstructors().subscribe(response => {
-      this.instructors = response
-    })
+    this.commonService.getAllInstructors().subscribe((response) => {
+      if (response.statusCode !== 200) {
+        console.log(response)
+        return;
+      }
+      this.instructors = response.data;
+    });
   }
 
   getAllFeedback() {

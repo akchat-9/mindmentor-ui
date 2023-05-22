@@ -2,7 +2,7 @@ export interface ScheduleModel {
     organisationId: number
     date: string
     time: string
-    duration: string
+    duration: number
     courseId: number
     instructorId: number
 }

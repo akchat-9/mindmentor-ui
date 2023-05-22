@@ -28,26 +28,27 @@
             Course Duration.</i></span>
       </div>
       <div class="form-group">
-        <label for="course">Course</label>
-        <select class="form-control select2" style="width: 100%" id="courseId" formControlName="courseId">
-          <option *ngFor="let course of courses" [value]="course.id">
-            {{ course.name }}
-          </option>
-        </select>
-        <span *ngIf="courseId && courseId.invalid && courseId.touched"><i class="validation">Please enter a valid
-            courseId name.</i></span>
-      </div>
-      <div class="form-group">
-        <label for="instructorId">instructorId</label>
-        <select class="form-control select2" style="width: 100%" id="instructorId" formControlName="instructorId">
-          <option *ngFor="let teacher of teachers" [value]="teacher.id">
-            {{ teacher.firstName }} {{ teacher.lastName }}
-          </option>
+        <label for="instructorId">Instructor</label>
+        <select class="form-control" id="instructorId" (change)="onInstructorSelectionChange()"
+          formControlName="instructorId">
+          <option [ngValue]="null" disabled>Select an instructor</option>
+          <option *ngFor="let instructor of instructors" [ngValue]=instructor.userId>{{ instructor.firstName }} {{
+            instructor.lastName }}</option>
         </select>
         <span *ngIf="instructorId && instructorId.invalid && instructorId.touched"><i class="validation">Please enter a
             valid
             instructorId name.</i></span>
       </div>
+      <div class="form-group">
+        <label for="course">Course</label>
+        <select class="form-control" id="courseId" formControlName="courseId">
+          <option [ngValue]="null" disabled>Select a course</option>
+          <option *ngFor="let course of courses" [ngValue]=course.courseId>{{ course.courseName }}</option>
+        </select>
+        <span *ngIf="courseId && courseId.invalid && courseId.touched"><i class="validation">Please enter a valid
+            course name.</i></span>
+      </div>
+
       <button type="submit" class="btn btn-primary" [disabled]="coachingSessionForm.invalid">
         Create
       </button>

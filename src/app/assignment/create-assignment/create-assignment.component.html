@@ -1,93 +1,90 @@
 <div class="container-fluid">
   <div class="box">
-      <div class="box-header with-border">
-          <h3 class="box-title" >Create New Assignment</h3>
+    <div class="box-header with-border">
+      <h3 class="box-title">Create New Assignment</h3>
+    </div>
+    <form [formGroup]="assignmentForm" (ngSubmit)="submitAssignment()">
+      <div class="form-group col-6">
+        <label for="instructorId">Instructor</label>
+        <select class="form-control" id="instructorId" (change)="onInstructorSelectionChange()"
+          formControlName="instructorId">
+          <option [ngValue]="null" disabled>Select an instructor</option>
+          <option *ngFor="let instructor of instructors" [ngValue]=instructor.userId>{{ instructor.firstName }} {{
+            instructor.lastName }}</option>
+        </select>
+        <span *ngIf="instructorId && instructorId.invalid && instructorId.touched"><i class="validation">Please enter a
+            valid
+            instructorId name.</i></span>
       </div>
-      <form [formGroup]="assignmentForm" (ngSubmit)="submitAssignment()">
-          <div class="box-body row card pt-2 ">
-              <div class="d-flex">
-                  <div class="form-group col-md-6">
-                      <input type="text" class="form-control" id="title" formControlName="title"
-                          placeholder="Enter Assignment Title">
-          <span *ngIf="title && title.invalid && title.touched"><i class="validation">Please enter a valid title.</i></span>
+      <div class="form-group col-6">
+        <label for="course">Course</label>
+        <select class="form-control" id="courseId" formControlName="courseId">
+          <option [ngValue]="null" disabled>Select a course</option>
+          <option *ngFor="let course of courses" [ngValue]=course.courseId>{{ course.courseName }}</option>
+        </select>
+        <span *ngIf="courseId && courseId.invalid && courseId.touched"><i class="validation">Please enter a valid
+            course name.</i></span>
+      </div>
 
-                  </div>
-                  <div class="form-group col-md-6">
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="maxPoints"
-                      formControlName="maxPoints"
-                      placeholder="Maximum Points Allowed"
-                    />
-                    <span *ngIf="maxPoints && maxPoints.invalid && maxPoints.touched"><i class="validation">Please enter the Maximum Points.</i></span>
-                  </div>
-              </div>
+      <div class="box-body row card pt-2 ">
+        <div class="d-flex">
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control" id="title" formControlName="title"
+              placeholder="Enter Assignment Title">
+            <span *ngIf="title && title.invalid && title.touched"><i class="validation">Please enter a valid
+                title.</i></span>
 
-              <div class="form-group col-md-12">
-                <textarea type="text" class="form-control" id="description" formControlName="description"
-                    placeholder="Description about Assignment"></textarea>
-                    <span *ngIf="description && description.invalid && description.touched"><i class="validation">Please enter a proper description.</i></span>
-            </div>
-            <div class="d-flex">
-              <div class="form-group col-md-6">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="allowedFileTypes"
-                  formControlName="allowedFileTypes"
-                  placeholder="Enter allowed file types"
-                />
-              </div>
-              <div class="form-group col-md-6">
-                <input
-                  type="number"
-                  class="form-control"
-                  id="maxFileSize"
-                  formControlName="maxFileSize"
-                  placeholder="Enter maximum file size"
-                />
-              </div>
           </div>
-          <div class="form-group col-md-12 ">
-            <label for="dueDate">Due Date</label>
-            <input
-              type="date"
-              class="form-control"
-              id="dueDate"
-              formControlName="dueDate"
-            />
-            <span *ngIf="dueDate&& dueDate.invalid && dueDate.touched"><i class="validation">Please provide a valid Date.</i></span>
+          <div class="form-group col-md-6">
+            <input type="number" class="form-control" id="maxPoint" formControlName="maxPoint"
+              placeholder="Maximum Points Allowed" />
+            <span *ngIf="maxPoint && maxPoint.invalid && maxPoint.touched"><i class="validation">Please enter the
+                Maximum Points.</i></span>
           </div>
-              <div class="d-flex">
-                <div class="form-group col-md-6">
-                  <label for="attachments">Attachments</label>
-                  <input
-                    type="file"
-                    class="form-control-file"
-                    id="attachments"
-                    formControlName="attachments"
-                  />
-                </div>
-                 
-                  <div class="form-group col-md-6 ">
-                    <label for="assignmentType">Assignment Type</label>
-                    <select
-                      class="form-control"
-                      id="assignmentType"
-                      formControlName="assignmentType"
-                    >
-                      <option value="default" [defaultSelected]="defaultSelected">Select Type..</option>
-                      <option value="essay" >Essay</option>
-                      <option value="multipleChoice">Multiple Choice</option>
-                      <option value="presentation">Presentation</option>
-                    </select>
-                  </div>
-              </div>           
-              <div class="box-footer ">
-                  <button type="submit" class="btn btn-primary" [disabled]="assignmentForm.invalid">Submit</button>
-              </div>
+        </div>
+
+        <!-- <div class="form-group col-md-12">
+          <textarea type="text" class="form-control" id="description" formControlName="description"
+            placeholder="Description about Assignment"></textarea>
+          <span *ngIf="description && description.invalid && description.touched"><i class="validation">Please enter a
+              proper description.</i></span>
+        </div> -->
+        <div class="d-flex">
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control" id="fileTypeAllowed" formControlName="fileTypeAllowed"
+              placeholder="Enter allowed file types" />
           </div>
-      </form>
+          <div class="form-group col-md-6">
+            <input type="number" class="form-control" id="maxFileSize" formControlName="maxFileSize"
+              placeholder="Enter maximum file size" />
+          </div>
+        </div>
+        <div class="form-group col-md-12 ">
+          <label for="dueDate">Due Date</label>
+          <input type="date" class="form-control" id="dueDate" formControlName="dueDate" />
+          <span *ngIf="dueDate&& dueDate.invalid && dueDate.touched"><i class="validation">Please provide a valid
+              Date.</i></span>
+        </div>
+        <div class="d-flex">
+          <div class="form-group col-md-6">
+            <label for="attachments">Attachments</label>
+            <input type="text" class="form-control-file" id="fileName" formControlName="fileName" />
+          </div>
+
+          <div class="form-group col-md-6 ">
+            <label for="assignmentType">Assignment Type</label>
+            <select class="form-control" id="assignmentType" formControlName="assignmentType">
+              <option value="default" [defaultSelected]="defaultSelected">Select Type..</option>
+              <option value="Theory">Theory</option>
+              <option value="MCQ">Multiple Choice</option>
+              <option value="presentation">Presentation</option>
+            </select>
+          </div>
+        </div>
+        <div class="box-footer ">
+          <button type="submit" class="btn btn-primary" [disabled]="assignmentForm.invalid">Submit</button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>

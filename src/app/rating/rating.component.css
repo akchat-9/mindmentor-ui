@@ -111,6 +111,7 @@
   .star{
     /* text-shadow:  0 0 1em white, 0 0 0.2em blue; */
     font-size: 1.2rem;
+    text-shadow: 0 0 black;
   }
   .low {
     color: #deb0b0;

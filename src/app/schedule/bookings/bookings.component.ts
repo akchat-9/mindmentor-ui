@@ -18,7 +18,8 @@ export class BookingsComponent {
   // CoachingSession!: Sche | null;
   ScheduleModel!: ScheduleModel
   courses: any[] = [];
-  teachers: any[] = [];
+  instructors: any[] = [];
+  selectedInstructor: number = 0
 
   constructor(
     private fb: FormBuilder,
@@ -33,16 +34,26 @@ export class BookingsComponent {
       date: ['', Validators.required],
       time: ['', Validators.required],
       duration: ['', Validators.required],
-      courseId: ['', Validators.required],
-      instructorId: ['', Validators.required],
+      courseId: [null, Validators.required],
+      instructorId: [null, Validators.required],
     });
-    this.commonService
-      .getAllCourses()
-      .subscribe((courses) => (this.courses = courses));
+    // this.commonService
+    //   .getAllCourses()
+    //   .subscribe((courses) => (this.courses = courses));
 
-    this.commonService
-      .getAllInstructors()
-      .subscribe((teachers) => (this.teachers = teachers));
+    // this.commonService
+    //   .getAllInstructors()
+    //   .subscribe((teachers) => (this.teachers = teachers));
+    this.getAllInstructors();
+  }
+  getAllInstructors() {
+    this.commonService.getAllInstructors().subscribe((response) => {
+      if (response.statusCode !== 200) {
+        console.log(response)
+        return;
+      }
+      this.instructors = response.data;
+    });
   }
   onSubmit() {
 
@@ -54,7 +65,7 @@ export class BookingsComponent {
         organisationId: 1,
         date: moment(this.ScheduleModel.date, 'DD-MM-YYYY').format('DD-MM-YYYY'),
         time: this.ScheduleModel.time,
-        duration: this.ScheduleModel.duration.toString(),
+        duration: this.ScheduleModel.duration,
         courseId: this.ScheduleModel.courseId,
         instructorId: this.ScheduleModel.instructorId
       }
@@ -71,6 +82,21 @@ export class BookingsComponent {
 
     }
   }
+
+  onInstructorSelectionChange() {
+    // Fetch courses based on the selected instructor
+    this.selectedInstructor = this.coachingSessionForm.get('instructorId')?.value;
+    console.log(this.selectedInstructor)
+    this.commonService.getAllCourseList(this.selectedInstructor).subscribe((response) => {
+      if (response.statusCode !== 200) {
+        console.log(response);
+        return;
+      }
+      this.courses = response.data
+    });
+    this.selectedInstructor = 0
+  }
+
   get date() {
     return this.coachingSessionForm.get('date')
   }
@@ -80,12 +106,12 @@ export class BookingsComponent {
   get duration() {
     return this.coachingSessionForm.get('duration')
   }
-  get courseId() {
-    return this.coachingSessionForm.get('courseId')
-  }
-  get instructorId() {
-    return this.coachingSessionForm.get('instructorId')
-  }
+    get courseId() {
+      return this.coachingSessionForm.get('courseId')
+    }
+    get instructorId() {
+      return this.coachingSessionForm.get('instructorId')
+    }
   onCancel() {
     this.router.navigate(['/schedule/sessions']);
   }
