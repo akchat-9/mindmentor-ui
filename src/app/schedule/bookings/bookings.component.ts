@@ -57,9 +57,9 @@ export class BookingsComponent {
   }
   onSubmit() {
 
-    console.log(this.coachingSessionForm.value)
+    // console.log(this.coachingSessionForm.value)
     if (this.coachingSessionForm.valid) {
-      console.log(this.coachingSessionForm.value)
+      // console.log(this.coachingSessionForm.value)
       this.ScheduleModel = this.coachingSessionForm.value;
       const scheduleDetails: ScheduleModel = {
         organisationId: 1,
@@ -72,6 +72,7 @@ export class BookingsComponent {
       this.scheduleService.addCoachingSession(scheduleDetails).subscribe(response => {
         if (response.statusCode !== 201) {
           console.log(response)
+          console.log(scheduleDetails)
           Swal.fire('Error!', 'Error while creating schedule', 'error')
           return;
         }
@@ -106,12 +107,12 @@ export class BookingsComponent {
   get duration() {
     return this.coachingSessionForm.get('duration')
   }
-    get courseId() {
-      return this.coachingSessionForm.get('courseId')
-    }
-    get instructorId() {
-      return this.coachingSessionForm.get('instructorId')
-    }
+  get courseId() {
+    return this.coachingSessionForm.get('courseId')
+  }
+  get instructorId() {
+    return this.coachingSessionForm.get('instructorId')
+  }
   onCancel() {
     this.router.navigate(['/schedule/sessions']);
   }

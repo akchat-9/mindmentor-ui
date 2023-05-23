@@ -72,7 +72,7 @@ export class RatingComponent {
       }
       Swal.fire('Success!', 'Thanks for your feedback', 'success').then(() => {
         this.clearForm();
-        document.getElementById('createFeedback')?.classList.remove('show')
+        document.getElementById('closebutton')?.click();
         this.router.navigate(['/rating'])
       })
 

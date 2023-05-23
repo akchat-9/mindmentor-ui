@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="box">
     <div class="box-header with-border">
-      <h3 class="box-title">Create New User</h3>
+      <h3 class="box-title">Update user details</h3>
     </div>
 
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
@@ -22,15 +22,32 @@
         <div class="d-flex">
           <div class="form-group col-md-6">
             <input type="emailAddress" class="form-control" id="emailAddress" formControlName="emailAddress"
-              placeholder="emailAddress Address" />
+              placeholder="email Address" />
             <span *ngIf="emailAddress && emailAddress.invalid && emailAddress.touched"><i class="validation">Please
                 enter a valid email address.</i></span>
           </div>
           <div class="form-group col-md-6">
-            <input type="text" class="form-control" id="password
-              formControlName=" password placeholder="password" />
+            <input type="text" class="form-control" id="password" formControlName="password" placeholder="password" />
             <span *ngIf="password && password.invalid && password.touched"><i class="validation">Update your
                 password.</i></span>
+          </div>
+        </div>
+        <div class="d-flex">
+          <div class="form-group col-md-6">
+            <select class="form-control" id="stateId" formControlName="stateId">
+              <option [ngValue]="null" selected>Select your state...</option>
+              <option *ngFor="let state of stateList" value={{state.stateId}}>{{state.stateName}}</option>
+            </select>
+            <span *ngIf="stateId && stateId.invalid && stateId.touched"><i class="validation">Please select your
+                state.</i></span>
+          </div>
+          <div class="form-group col-md-6">
+            <select class="form-control" id="cityId" formControlName="cityId">
+              <option [ngValue]="null" selected>Select your city...</option>
+              <option *ngFor="let city of cityList" value={{city.cityId}}>{{city.cityName}}</option>
+            </select>
+            <span *ngIf="cityId && cityId.invalid && cityId.touched"><i class="validation">Please select a valid
+                cityId.</i></span>
           </div>
         </div>
         <div class="d-flex">
@@ -74,8 +91,8 @@
                 Gender.</i></span>
           </div>
           <div class="form-group col-md-6">
-            <label for="role" class="label">User Role</label>
-            <select class="form-control" id="role" formControlName="role">
+            <label for="roleName" class="label">User role</label>
+            <select class="form-control" id="roleName" formControlName="roleName">
               <option value="" selected>Select a Role</option>
               <option value="ADMIN">Admin</option>
               <option value="TEACHER">Teacher</option>
@@ -87,7 +104,7 @@
         </div>
         <div class="box-footer">
           <button type="submit" class="btn btn-primary" [disabled]="registrationForm.invalid">
-            Submit
+            Update
           </button>
         </div>
       </div>

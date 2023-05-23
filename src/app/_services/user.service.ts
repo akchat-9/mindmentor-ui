@@ -73,6 +73,10 @@ export class UserService {
     return this.http.post<ApiResponse<string>>(API_URL + 'create', userDetails)
   }
 
+  updateUserDetails(userDetails: UserModel, userId: number): Observable<ApiResponse<string>> {
+    return this.http.put<ApiResponse<string>>(API_URL + `update/${userId}`, userDetails)
+  }
+
   getAllUsers(organisationId: number): Observable<ApiResponse<UserListViewModel[]>> {
     return this.http.get<ApiResponse<UserListViewModel[]>>(API_URL + `getUserList/all/${organisationId}`);
   }

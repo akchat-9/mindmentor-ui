@@ -2,7 +2,10 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
+import { CityDDLViewModel } from 'src/app/ViewModel/CityDDLViewModel';
+import { StateDDLViewModel } from 'src/app/ViewModel/StateDDLViewModel';
 import { UserViewModel } from 'src/app/ViewModel/UserViewModel';
+import { CommonService } from 'src/app/_services/common.service';
 import { UserService } from 'src/app/_services/user.service';
 import { UserModel } from 'src/app/model/UserModel';
 import Swal from 'sweetalert2';
@@ -14,14 +17,17 @@ import Swal from 'sweetalert2';
 })
 export class UserSettingsComponent {
   registrationForm!: FormGroup;
-  user!: UserViewModel | null;
+  user!: any;
   userDetails!: UserModel;
-
+  stateList!: StateDDLViewModel[];
+  cityList!: CityDDLViewModel[];
+  userId: number = 0;
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private commonService: CommonService
   ) { }
   ngOnInit(): void {
     this.registrationForm = this.formBuilder.group({
@@ -38,11 +44,12 @@ export class UserSettingsComponent {
       stateId: [null, Validators.required],
       cityId: [null, Validators.required]
     });
-
+    this.getStates();
+    this.getCities();
     this.route.params.subscribe((params) => {
       if (params['id']) {
-        const userId = params['id'];
-        this.userService.getUserById(userId).subscribe(response => {
+        this.userId = params['id'];
+        this.userService.getUserById(this.userId).subscribe(response => {
           console.log('User setting response: ', response);
           if (response.statusCode !== 200) {
             console.log('Error in course setting: ', response)
@@ -51,13 +58,14 @@ export class UserSettingsComponent {
           else {
             this.user = response.data;
             if (this.user != null) {
+              console.log(this.user)
               this.registrationForm.patchValue({
                 firstName: this.user.firstName,
                 lastName: this.user.lastName,
                 emailAddress: this.user.emailAddress,
                 joiningDate: this.user.joiningDate,
                 password: this.user.password,
-                roleName: this.user.roleName,
+                roleName: this.user.role,
                 dateOfBirth: this.user.dateOfBirth,
                 phoneNumber: this.user.phoneNumber,
                 cityId: this.user.cityId,
@@ -74,10 +82,15 @@ export class UserSettingsComponent {
 
   onSubmit() {
     if (this.registrationForm.valid) {
-      console.log('User seting update: ', this.registrationForm.value);
-      let userDetails: UserModel = this.registrationForm.value;
-      this.userService.saveUserDetails(userDetails).subscribe((response) => {
-        if (response.statusCode === 201) {
+      console.log('User setting update: ', this.registrationForm.value);
+      let userDetails: UserModel = {
+        ...this.registrationForm.value,
+        role: this.registrationForm.get('roleName')?.value,
+        dateOfBirth: moment(this.registrationForm.get('dateOfBirth')?.value, 'DD-MM-YYYY').format('DD-MM-YYYY'),
+        joiningDate: moment(this.registrationForm.get('joiningDate')?.value, 'DD-MM-YYYY').format('DD-MM-YYYY'),
+      };
+      this.userService.updateUserDetails(userDetails, this.userId).subscribe((response) => {
+        if (response.statusCode === 200) {
           Swal.fire('Success!', 'User details updated successfully', 'success').then(
             (result) => {
               if (result.isConfirmed) {
@@ -96,7 +109,25 @@ export class UserSettingsComponent {
       });
     }
   }
+  getStates() {
+    this.commonService.getStates().subscribe((response) => {
+      if (response.statusCode !== 200) {
+        console.log('State list: ', response);
+        return;
+      }
+      this.stateList = response.data
+    });
+  }
 
+  getCities() {
+    this.commonService.getCity().subscribe((response) => {
+      if (response.statusCode !== 200) {
+        console.log('city list: ', response);
+        return;
+      }
+      this.cityList = response.data
+    });
+  }
   get firstName() {
     return this.registrationForm.get('firstName');
   }
