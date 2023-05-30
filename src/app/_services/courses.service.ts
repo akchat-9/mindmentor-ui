@@ -62,5 +62,8 @@ export class CoursesService {
     return this.http.get<ApiResponse<CategoryCountViewModel[]>>(this.API_URL + `getCategoryAndCourseCount/all/${organisationId}`);
   }
 
+  updateCourseDetails(courseDetails: CourseModel, courseId: number): Observable<ApiResponse<string>> {
+    return this.http.put<ApiResponse<string>>(this.API_URL + `update/${courseId}`, courseDetails)
+  }
 
 }

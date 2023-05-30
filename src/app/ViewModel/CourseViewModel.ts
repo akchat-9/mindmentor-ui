@@ -1,6 +1,6 @@
 export interface CourseViewModel {
     courseName: string
-    instructorId: number[]
+    instructorIds: number[]
     courseFormat: string
     courseDuration: string
     courseFees: number

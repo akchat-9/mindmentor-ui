@@ -1,7 +1,8 @@
 export interface AssignmentViewModel {
   id: number;
   title: string;
-  point: number;
   duedate: string;
-  type: string;
+  instructorName:string
+  courseName:string
+  assignmentType:string
 }

@@ -7,14 +7,14 @@
         <p class="login-box-msg">Sign in to start your session</p>
         <form [formGroup]="loginForm" (ngSubmit)="login()">
           <div class="input-group mt-3">
-            <input type="text" class="form-control" placeholder="Username" formControlName="username">
+            <input type="text" class="form-control" placeholder="email" formControlName="email">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
               </div>
             </div>
           </div>
-          <span *ngIf="username && username.invalid && username.touched"><i class="validation">Please enter a valid Username.</i></span>
+          <span *ngIf="email && email.invalid && email.touched"><i class="validation">Please enter a valid email.</i></span>
           
           <div class="input-group mt-3">
             <input type="password" class="form-control" placeholder="Password" formControlName="password">

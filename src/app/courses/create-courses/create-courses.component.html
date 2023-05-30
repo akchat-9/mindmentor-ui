@@ -78,7 +78,7 @@
                     <div class="form-group col-md-6">
                         <select class="form-control" id="instructorIds" formControlName="instructorIds">
                             <option [ngValue]="null" disabled selected>Choose a instructor...</option>
-                            <option *ngFor="let instructor of instructorList" value={{instructor.id}}>
+                            <option *ngFor="let instructor of instructorList" value={{instructor.userId}}>
                                 {{instructor.firstName }} {{instructor.lastName }}
                             </option>
                         </select>

@@ -16,6 +16,7 @@ import { ApiResponse } from '../model/ApiResponseModel';
 import { RoleAndUserCountViewModel } from '../ViewModel/RoleAndUserCountViewModel';
 
 const API_URL = 'http://localhost:5000/api/user/';
+const NODE_API_URL = 'http://localhost:8080/api/auth/signup'
 
 // const httpOptions = {
 //   // observe: 'response',
@@ -62,7 +63,18 @@ export class UserService {
   // }
 
   saveUserDetails(userDetails: UserModel): Observable<ApiResponse<string>> {
+    const UserForNode = {
+      username: userDetails.firstName,
+      email: userDetails.emailAddress,
+      password: userDetails.password,
+      roles: [userDetails.role.toLowerCase()]
+    }
+    this.http.post(NODE_API_URL, UserForNode).subscribe(response => console.log('Node api signup response: ', response))
     return this.http.post<ApiResponse<string>>(API_URL + 'create', userDetails)
+  }
+
+  updateUserDetails(userDetails: UserModel, userId: number): Observable<ApiResponse<string>> {
+    return this.http.put<ApiResponse<string>>(API_URL + `update/${userId}`, userDetails)
   }
 
   getAllUsers(organisationId: number): Observable<ApiResponse<UserListViewModel[]>> {

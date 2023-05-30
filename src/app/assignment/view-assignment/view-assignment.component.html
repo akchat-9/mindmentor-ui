@@ -4,12 +4,12 @@
       <h3 _ngcontent-rnq-c3="" class="box-title">View Assignment</h3>
     </div>
     <div class="card card-primary card-outline p-2">
-      <table datatable [dtOptions]="dtOptions" class="table table-hover">
+      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover">
         <thead>
           <tr>
             <th class="table-title">Title</th>
-            <th class="table-title">Due date</th>
-            <th class="table-title">Point</th>
+            <th class="table-title">Instructor</th>
+            <th class="table-title">Course</th>
             <th class="table-title">Type</th>
             <th class="table-title">Actions</th>
           </tr>
@@ -17,21 +17,15 @@
         <tbody>
           <tr *ngFor="let assignment of assignmentList">
             <td>{{ assignment.title }}</td>
-            <td>{{ assignment.duedate }}</td>
-            <td>{{ assignment.point }}</td>
-            <td>{{ assignment.type }}</td>
+            <td>{{ assignment.instructorName }}</td>
+            <td>{{ assignment.courseName }}</td>
+            <td>{{ assignment.assignmentType }}</td>
             <td>
-              <a
-                class="btn bg-gradient-success btn-sm mr-2"
-                (click)="editAssignment(assignment.id)"
-                ><i class="fas fa-edit"></i
-              ></a>
+              <a class="btn bg-gradient-success btn-sm mr-2" (click)="editAssignment(assignment.id)"><i
+                  class="fas fa-edit"></i></a>
 
-              <a
-                class="btn bg-gradient-danger btn-sm"
-                (click)="editAssignment(assignment.id)"
-                ><i class="fas fa-trash"></i
-              ></a>
+              <a class="btn bg-gradient-danger btn-sm" (click)="editAssignment(assignment.id)"><i
+                  class="fas fa-trash"></i></a>
             </td>
           </tr>
         </tbody>

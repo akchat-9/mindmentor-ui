@@ -1,5 +1,5 @@
 export interface FeedbackViewModel {
-    id: number
+    feedbackId: number
     instructorName: string
     courseName: string
     review: string

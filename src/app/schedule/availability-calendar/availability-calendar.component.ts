@@ -13,6 +13,8 @@ import {
   DateSelectArg,
 } from '@fullcalendar/core';
 import { AllSessionsViewModel } from 'src/app/ViewModel/AllSessionsViewModel';
+import { ScheduleModel } from 'src/app/model/ScheduleModel';
+import { ScheduleViewModel } from 'src/app/ViewModel/ScheduleViewModel';
 @Component({
   selector: 'app-availability-calendar',
   templateUrl: './availability-calendar.component.html',
@@ -22,11 +24,12 @@ export class AvailabilityCalendarComponent {
   sessions!: any[];
   eventGuid: number = 0;
   currentEvents: any[] = [];
+  organizationId: number = 1
   calendarOptions!: CalendarOptions;
   constructor(
     private scheduleService: ScheduleService,
     private changeDetector: ChangeDetectorRef
-  ) {}
+  ) { }
   ngOnInit(): void {
     // Fetch the sessions data from the backend API
     // Transform the sessions data into the format required by FullCalendar
@@ -54,20 +57,43 @@ export class AvailabilityCalendarComponent {
     this.loadEvent();
   }
   loadEvent() {
-    this.scheduleService.getSessions().subscribe((sessions) => {
-      this.currentEvents = sessions;
-    });
-    this.calendarOptions.events = this.currentEvents.map((event) => {
-      const startDate = new Date(`${event.date} ${event.time}`);
-      const endDate = new Date(startDate.getTime() + event.duration * 60000);
-      return {
-        id: event.id,
-        title: `${event.course} - ${event.teacher}`,
-        start: startDate,
-        end: endDate,
-      };
-    });
+    this.scheduleService.getAllSessions(this.organizationId).subscribe((response) => {
+      if (response.statusCode !== 200) {
+        console.log(response)
+        return;
+      }
+      this.currentEvents = response.data.map((event) => {
+        const startDate = moment(`${event.date} ${event.time}`, 'DD-MM-YYYY HH:mm').toISOString();
+        const endDate = moment(startDate).add(moment.duration(event.duration)).toISOString();
+        return {
+          id: event.sessionId,
+          title: `${event.courseName} - ${event.instructorName}`,
+          start: startDate,
+          end: endDate,
+        };
+      });
+      this.calendarOptions.events = this.currentEvents
+      // this.calendarOptions.events = this.currentEvents.map((event) => {
+      //   const startDate = new Date(`${event.date} ${event.time}`);
+      //   const endDate = new Date(startDate.getTime() + event.duration * 60000);
+      //   console.log(
+      //     {
+      //       id: event.id,
+      //       title: `${event.course} - ${event.teacher}`,
+      //       start: startDate,
+      //       end: endDate,
+      //     }
+      //   )
+      //   return {
+      //     id: event.id,
+      //     title: `${event.course} - ${event.teacher}`,
+      //     start: startDate,
+      //     end: endDate,
+      //   };
+      // });
+    })
   }
+
   // calendarVisible = true;
   // calendarOptions: CalendarOptions = {
   //   plugins: [interactionPlugin, dayGridPlugin],

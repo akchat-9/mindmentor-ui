@@ -21,7 +21,7 @@ export class OrganisationComponent {
     private formBuilder: FormBuilder,
     private courseService: CoursesService,
     private commonService: CommonService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.organisationForm = this.formBuilder.group({
@@ -41,7 +41,7 @@ export class OrganisationComponent {
       enrollment: ['', [Validators.required, Validators.pattern('[0-9]+$')]],
     });
     this.getAllCategories();
-    this.getAllInstrutors();
+    this.getAllInstructors();
   }
 
   getAllCategories() {
@@ -49,9 +49,13 @@ export class OrganisationComponent {
       this.categoryList = categories;
     });
   }
-  getAllInstrutors() {
-    this.commonService.getAllInstructors().subscribe((instructors) => {
-      this.instructorList = instructors;
+  getAllInstructors() {
+    this.commonService.getAllInstructors().subscribe((response) => {
+      if (response.statusCode !== 200) {
+        console.log(response)
+        return;
+      }
+      this.instructorList = response.data;
     });
   }
 
