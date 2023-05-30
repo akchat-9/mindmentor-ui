@@ -17,7 +17,7 @@ import { ViewAssignmentComponent } from './assignment/view-assignment/view-assig
 import { ViewSubmissionsComponent } from './assignment/view-submissions/view-submissions.component';
 import { AssignmentRemindersComponent } from './assignment/reminders/reminders.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { CreateFeedbackComponent } from './feedback/create-feedback/create-feedback.component';
+// import { CreateFeedbackComponent } from './feedback/create-feedback/create-feedback.component';
 import { ViewFeedbackComponent } from './feedback/view-feedback/view-feedback.component';
 import { UserSettingsComponent } from './users/user-settings/user-settings.component';
 import { UserGroupsComponent } from './users/user-groups/user-groups.component';
@@ -27,10 +27,14 @@ import { RatingComponent } from './rating/rating.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+
+
   {
     path: 'dashboard',
     component: DashboardComponent,
   },
+
+  
   {
     path: 'rating',
     component: RatingComponent,
